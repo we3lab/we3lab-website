@@ -53,6 +53,8 @@ def _create_placeholder(entry):
             <li><a href="../research/energyflexibility.html">Energy Flexibility</a></li>
             <li><a href="../research/infrastructureplanning.html">Infrastructure Planning</a></li>
             <li><a href="../research/separations.html">Separations Technology</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
           </ul>
         </li>
         <li><a href="../why-we-do-it.html">Why We Do It</a></li>
@@ -190,11 +192,12 @@ def initials(name):
 
 def avatar_html(m, av, extra_style=""):
     clean = re.sub(r"^Dr\.\s+", "", m["name"], flags=re.IGNORECASE).strip()
-    slug = (re.sub(" ", "",clean)).lower() + ".png"
-    img_path = Path("members/images") / slug
+    base = re.sub(" ", "", clean).lower()
     style_attr = f' style="{extra_style}"' if extra_style else ""
-    if img_path.exists():
-        return f'<div class="person-avatar {av}"{style_attr}><img src="members/images/{slug}" alt="{m["name"]}"></div>'
+    for ext in ("png", "jpg"):
+        slug = f"{base}.{ext}"
+        if (Path("members/images") / slug).exists():
+            return f'<div class="person-avatar {av}"{style_attr}><img src="members/images/{slug}" alt="{m["name"]}"></div>'
     return f'<div class="person-avatar {av}"{style_attr}>{initials(m["name"])}</div>'
 
 
@@ -236,6 +239,7 @@ def card_pi(m, av):
 def card_alumni(m, av):
     degree_year = m.get("degree_year", "")
     placement   = m.get("placement", "")
+    links       = build_links(m)
     html = f'      <div class="person-card alumni-card">\n'
     html += f'        {avatar_html(m, av)}\n'
     html += '        <div class="info">\n'
@@ -244,6 +248,8 @@ def card_alumni(m, av):
         html += f'          <span class="role">{degree_year}</span>\n'
     if placement:
         html += f'          <span class="placement">&rarr; {placement}</span>\n'
+    if links:
+        html += f'          <div class="links">{links}</div>\n'
     html += "        </div>\n      </div>"
     return html
 

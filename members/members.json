@@ -22,7 +22,7 @@
       "cv": ""
     },
     {
-      "name": "Dr. Nitish Sarker",
+      "name": "Dr. Nitish Ranjan Sarker",
       "role": "postdoc",
       "groups": ["separations", "infrastructure planning"],
       "scholar_id": "aqHdI_0AAAAJ",
@@ -150,6 +150,22 @@
       "linkedin": "",
       "degree_year": "PhD 2020",
       "placement": "Founder, Horizon Modeling Solutions"
+    },
+    {
+      "name": "Corisa Wong",
+      "role": "phd student",
+      "groups": ["infrastructure planning", "water technology"],
+      "scholar_id": "",
+      "scholar_url": "",
+      "linkedin": ""
+    }, 
+    {
+      "name": "Abdullah Alhussain",
+      "role": "ms student",
+      "groups": ["water technology"],
+      "scholar_id": "",
+      "scholar_url": "",
+      "linkedin": ""
     }
   ]
 }

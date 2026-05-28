@@ -53,6 +53,45 @@ No rebuild is needed — the build script picks up the image the next time it ru
 
 ---
 
+## Adding a past dissertation
+
+Dissertation defense recordings live in [`research/dissertations.json`](research/dissertations.json). The page loads this file at runtime — no build step needed.
+
+### Step 1 — upload the defense recording to YouTube
+
+1. Go to [YouTube Studio](https://studio.youtube.com) and sign in with the lab account.
+2. Click **Create → Upload videos** and select the recording file.
+3. Fill in the title (e.g. *"Jane Smith — PhD Defense 2025"*) and description.
+4. Under **Visibility**, choose **Unlisted**. This keeps the video off public search while still allowing it to be embedded on the site.
+5. Finish uploading and wait for processing to complete.
+6. Copy the video URL from the address bar — it will look like `https://youtu.be/XXXXXXXXXXX`.
+
+### Step 2 — add the entry to `dissertations.json`
+
+Open [`research/dissertations.json`](research/dissertations.json) and add a new key–value pair using the graduate's full name as the key:
+
+```json
+{
+  "Jane Smith": {
+    "title": "Full Dissertation Title Here",
+    "year": 2025,
+    "tags": ["energy flexibility", "infrastructure planning"],
+    "link": "https://youtu.be/XXXXXXXXXXX"
+  },
+  "Akshay K. Rao": {
+    ...
+  }
+}
+```
+
+**Valid tags** (must match exactly, lowercase): `energy flexibility`, `infrastructure planning`, `separations`, `water technology`
+
+Each tag renders as a pill on the page that links directly to the corresponding research subgroup page. Use only tags that describe the dissertation's primary research areas.
+
+Push to `main`. Because `dissertations.json` is fetched client-side, no rebuild is required — the new entry appears immediately.
+
+---
+
 ## Adding a news item to the front page
 
 Edit [`assets/news.json`](assets/news.json) and prepend a new entry:
@@ -94,6 +133,7 @@ Push to `main` and trigger a manual workflow run.
 | `members/members.json` | `people.html`, all `research/*.html` member lists | GitHub Actions runs `build_people_page.py` + `update_subgroup_members.py` |
 | `members/images/*.png` | Nothing — images are served directly | Static file, no build needed |
 | `assets/news.json` | Nothing — loaded client-side at runtime | Push and it's live |
+| `research/dissertations.json` | Nothing — loaded client-side at runtime | Push and it's live |
 | `research/*.html` (content) | Nothing | Edit directly |
 
 The workflow runs **every Sunday at 6 pm PT** and can be triggered manually from the Actions tab.

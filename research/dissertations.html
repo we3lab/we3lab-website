@@ -1,28 +1,91 @@
-#!/usr/bin/env python3
-"""
-Reads members/members.json and updates the Group Members section
-in each research subgroup HTML file.
-"""
-
-import json
-import re
-from pathlib import Path
-
-def _create_placeholder(entry: dict) -> None:
-    path  = Path(entry["file"])
-    label = entry["label"]
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(f'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{label} — WE3 Lab</title>
+  <title>Past Dissertations — WE3 Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <style>
+    .dissertation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .dissertation-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .dissertation-video {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--deep-space);
+    }
+    .dissertation-video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .dissertation-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      flex: 1;
+    }
+    .dissertation-year {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--cerulean);
+    }
+    .dissertation-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--deep-space);
+      margin: 0;
+    }
+    .dissertation-title {
+      font-size: .9rem;
+      color: var(--gray-600, #4b5563);
+      font-style: italic;
+      margin: 0;
+    }
+    .dissertation-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .25rem;
+    }
+    .dissertation-tag {
+      display: inline-block;
+      padding: .25rem .65rem;
+      font-size: .75rem;
+      font-weight: 500;
+      border-radius: 999px;
+      background: rgba(29,114,155,.1);
+      color: var(--cerulean);
+      border: 1px solid rgba(29,114,155,.2);
+      text-decoration: none;
+      transition: background .15s, border-color .15s;
+    }
+    .dissertation-tag:hover {
+      background: rgba(29,114,155,.2);
+      border-color: var(--cerulean);
+    }
+  </style>
 </head>
 <body>
 
@@ -51,7 +114,7 @@ def _create_placeholder(entry: dict) -> None:
             <li><a href="../research/infrastructureplanning.html">Infrastructure Planning</a></li>
             <li><a href="../research/separations.html">Separations Technology</a></li>
             <li class="dropdown-divider"></li>
-            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
+            <li><a href="../research/dissertations.html" class="active">Past Dissertations</a></li>
           </ul>
         </li>
         <li><a href="../why-we-do-it.html">Why We Do It</a></li>
@@ -64,19 +127,16 @@ def _create_placeholder(entry: dict) -> None:
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <div class="breadcrumb"><a href="../research.html">What We Do</a> &rsaquo; {label}</div>
-    <h1>{label}</h1>
-    <p>This page is under development.</p>
+    <div class="breadcrumb"><a href="../research.html">What We Do</a> &rsaquo; Past Dissertations</div>
+    <h1>Past Dissertations</h1>
+    <p>Doctoral research completed in the WE3 Lab — watch the defense presentations below.</p>
   </div>
 </div>
 
+<!-- ── Dissertation List ──────────────────────────────── -->
 <section class="section">
-  <div class="container">
-    <!-- Team -->
-    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1.5rem">Group Members</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:1rem">
-      <p style="color:var(--gray-500);font-size:.875rem">No members currently assigned to this group.</p>
-    </div>
+  <div class="container" id="dissertation-container">
+    <div class="dissertation-grid" id="dissertation-grid"></div>
   </div>
 </section>
 
@@ -121,7 +181,7 @@ def _create_placeholder(entry: dict) -> None:
         <li><a href="https://www.stanford.edu/site/terms/">Terms of Use</a></li>
         <li><a href="https://www.stanford.edu/site/privacy/">Privacy</a></li>
         <li><a href="https://uit.stanford.edu/security/copyright-infringement">Copyright</a></li>
-        <li><a href="https://adminguide.stanford.edu/chapter-1/subchapter-5/policy-1-5-4">Trademarks</a></li>
+        <li><a href="https://adminguide.stanford.edu/adminguide.stanford.edu/chapter-1/subchapter-5/policy-1-5-4">Trademarks</a></li>
         <li><a href="https://studentservices.stanford.edu/more-resources/student-policies/non-academic/non-discrimination">Non-Discrimination</a></li>
         <li><a href="https://www.stanford.edu/site/accessibility">Accessibility</a></li>
       </ul>
@@ -133,123 +193,67 @@ def _create_placeholder(entry: dict) -> None:
 <script>
   const btn = document.querySelector('.nav-hamburger');
   const links = document.querySelector('.nav-links');
-  if (btn && links) {{
-    btn.addEventListener('click', () => {{
+  if (btn && links) {
+    btn.addEventListener('click', () => {
       links.classList.toggle('open');
       btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    }});
-  }}
+    });
+  }
+
+  const TAG_PAGES = {
+    'energy flexibility':      'energyflexibility.html',
+    'infrastructure planning':  'infrastructureplanning.html',
+    'separations':              'separations.html',
+    'water technology':         'watertechnology.html'
+  };
+
+  function youtubeEmbedUrl(url) {
+    const cleaned = url.split('__;')[0];
+    const shortMatch = cleaned.match(/youtu\.be\/([A-Za-z0-9_-]+)/);
+    if (shortMatch) return 'https://www.youtube.com/embed/' + shortMatch[1];
+    const longMatch = cleaned.match(/[?&]v=([A-Za-z0-9_-]+)/);
+    if (longMatch) return 'https://www.youtube.com/embed/' + longMatch[1];
+    return null;
+  }
+
+  fetch('dissertations.json')
+    .then(r => r.json())
+    .then(data => {
+      const entries = Object.entries(data)
+        .map(([name, d]) => ({ name, ...d }))
+        .sort((a, b) => b.year - a.year);
+
+      const grid = document.getElementById('dissertation-grid');
+      entries.forEach(({ name, title, year, tags, link }) => {
+        const embedUrl = youtubeEmbedUrl(link);
+        const tagsHtml = (tags || []).map(tag => {
+          const page = TAG_PAGES[tag.toLowerCase()];
+          return page
+            ? `<a class="dissertation-tag" href="${page}">${tag}</a>`
+            : `<span class="dissertation-tag" style="cursor:default">${tag}</span>`;
+        }).join('');
+
+        const videoHtml = embedUrl
+          ? `<div class="dissertation-video">
+               <iframe src="${embedUrl}" title="${name} dissertation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+             </div>`
+          : '';
+
+        const card = document.createElement('div');
+        card.className = 'dissertation-card';
+        card.innerHTML = `
+          ${videoHtml}
+          <div class="dissertation-body">
+            <span class="dissertation-year">${year}</span>
+            <p class="dissertation-name">${name}</p>
+            <p class="dissertation-title">${title}</p>
+            <div class="dissertation-tags">${tagsHtml}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    });
 </script>
 
 </body>
 </html>
-''')
-    print(f"  CREATED  {entry['file']} (placeholder page for '{entry['key']}')")
-
-
-def _load_group_to_file() -> dict[str, Path]:
-    entries = json.loads(Path("research/subgroups.json").read_text())["subgroups"]
-    for e in entries:
-        if not Path(e["file"]).exists():
-            _create_placeholder(e)
-    return {e["key"]: Path(e["file"]) for e in entries}
-
-GROUP_TO_FILE = _load_group_to_file()
-
-ROLE_LABEL = {
-    "pi":                     "Principal Investigator",
-    "postdoc":                "Postdoctoral Researcher",
-    "phd student":            "PhD Student",
-    "ms student":             "MS Student",
-    "undergraduate":          "Undergraduate Researcher",
-    "undergraduate researcher":"Undergraduate Researcher",
-    "staff":                  "Research Staff",
-}
-
-ROLE_ORDER = ["pi", "postdoc", "phd student", "ms student", "undergraduate", "undergraduate researcher", "staff"]
-
-
-def role_sort_key(member: dict) -> tuple:
-    raw = member.get("role", "").strip().lower()
-    order = ROLE_ORDER.index(raw) if raw in ROLE_ORDER else len(ROLE_ORDER)
-    last_name = member["name"].strip().split()[-1].lower()
-    return (order, last_name)
-
-SECTION_RE = re.compile(
-    r'(<!-- Team -->\s*\n\s*<h2[^>]*>Group Members</h2>\s*\n\s*)'
-    r'<div style="display:flex;flex-wrap:wrap;gap:1rem">'
-    r'.*?'
-    r'\n    </div>',   # matches outer container close (4-space indent, not 6-space inner cards)
-    re.DOTALL,
-)
-
-
-def role_label(raw: str) -> str:
-    return ROLE_LABEL.get(raw.strip().lower(), raw.strip().title())
-
-
-def make_card(member: dict) -> str:
-    name = member["name"]
-    label = role_label(member.get("role", ""))
-    return (
-        f'      <div style="background:var(--bright-snow);border:1px solid var(--gray-200);'
-        f'border-radius:var(--radius);padding:.75rem 1.25rem;font-size:.875rem">\n'
-        f'        <strong style="color:var(--deep-space)">{name}</strong>'
-        f' <span style="color:var(--cerulean)">· {label}</span>\n'
-        f'      </div>'
-    )
-
-
-def build_section(prefix: str, cards: list[str]) -> str:
-    inner = "\n".join(cards)
-    return (
-        f'{prefix}'
-        f'<div style="display:flex;flex-wrap:wrap;gap:1rem">\n'
-        f'{inner}\n'
-        f'    </div>'
-    )
-
-
-def main():
-    with open(Path("members/members.json")) as f:
-        data = json.load(f)
-
-    members = data["members"]
-
-    # Group members by their subgroup(s)
-    by_group: dict[str, list[dict]] = {g: [] for g in GROUP_TO_FILE}
-    for m in members:
-        if m.get("role", "").strip().lower() == "alumni":
-            continue
-        for g in m.get("groups", []):
-            key = g.strip().lower()
-            if key in by_group:
-                by_group[key].append(m)
-
-    for group, html_path in GROUP_TO_FILE.items():
-        group_members = by_group[group]
-        html = html_path.read_text()
-
-        if not SECTION_RE.search(html):
-            print(f"  SKIP  {html_path.name} (no Group Members section found)")
-            continue
-
-        if not group_members:
-            cards = ['      <p style="color:var(--gray-500);font-size:.875rem">No members currently assigned to this group.</p>']
-        else:
-            cards = [make_card(m) for m in sorted(group_members, key=role_sort_key)]
-
-        def replacer(m):
-            return build_section(m.group(1), cards)
-
-        new_html, n = SECTION_RE.subn(replacer, html)
-        if n == 0:
-            print(f"  SKIP  {html_path.name} (regex did not match)")
-            continue
-
-        html_path.write_text(new_html)
-        print(f"  OK    {html_path.name} — {len(group_members)} member(s)")
-
-
-if __name__ == "__main__":
-    main()
