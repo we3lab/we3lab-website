@@ -241,15 +241,17 @@ def card_alumni(m, av):
     placement   = m.get("placement", "")
     links       = build_links(m)
     html = f'      <div class="person-card alumni-card">\n'
-    html += f'        {avatar_html(m, av)}\n'
+    html += '        <div class="alumni-avatar-col">\n'
+    html += f'          {avatar_html(m, av)}\n'
+    if links:
+        html += f'          <div class="links">{links}</div>\n'
+    html += '        </div>\n'
     html += '        <div class="info">\n'
     html += f'          <h4>{m["name"]}</h4>\n'
     if degree_year:
         html += f'          <span class="role">{degree_year}</span>\n'
     if placement:
         html += f'          <span class="placement">&rarr; {placement}</span>\n'
-    if links:
-        html += f'          <div class="links">{links}</div>\n'
     html += "        </div>\n      </div>"
     return html
 

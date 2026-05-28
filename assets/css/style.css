@@ -383,7 +383,9 @@ p:last-child { margin-bottom: 0; }
 /* Alumni grid is slightly more compact */
 .alumni-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
 .alumni-card { padding: 1.25rem; text-align: left; display: flex; gap: .9rem; align-items: center; }
+.alumni-card .alumni-avatar-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
 .alumni-card .person-avatar { width: 52px; height: 52px; font-size: 1rem; flex-shrink: 0; }
+.alumni-card .alumni-avatar-col .links { margin-top: .4rem; justify-content: center; }
 .alumni-card .info h4  { font-size: .9rem; }
 .alumni-card .info .role { display: block; }
 .alumni-card .info .placement { font-size: .78rem; color: var(--gray-500); }
