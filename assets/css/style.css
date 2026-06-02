@@ -344,20 +344,23 @@ p:last-child { margin-bottom: 0; }
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
-.research-card { text-decoration: none; color: inherit; display: block; }
+.research-card { text-decoration: none; color: inherit; display: block; height: 100%; }
 .research-card-inner {
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: transform .2s, box-shadow .2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .research-card:hover .research-card-inner { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .research-card-banner {
   height: 140px; display: flex; align-items: center; justify-content: center;
-  font-size: 3rem;
+  font-size: 3rem; flex-shrink: 0;
 }
-.research-card-body { padding: 1.5rem; }
+.research-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
 .research-card-body h3 { color: var(--deep-space); margin-bottom: .5rem; }
 .research-card-body p  { font-size: .9rem; color: var(--gray-700); margin-bottom: 1rem; }
 .research-card-link { color: var(--cerulean); font-size: .875rem; font-weight: 600; display: flex; align-items: center; gap: .3rem; }

@@ -1,10 +1,13 @@
 {
-  "_comment": "Add each lab member's Google Scholar ID (the 'user=' param from their Scholar URL). Leave scholar_id blank if unknown — the scraper will search by name.",
+  "_comment": "Add each lab member's Google Scholar ID (the 'user=' param from their Scholar URL). Leave scholar_id blank if unknown \u2014 the scraper will search by name.",
   "members": [
     {
       "name": "Dr. Erin Musabandesu",
       "role": "postdoc",
-      "groups": ["energy flexibility", "infrastructure planning"],
+      "groups": [
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "fEKOsmoAAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=fEKOsmoAAAAJ",
       "linkedin": "https://www.linkedin.com/in/erin-musabandesu-pe-48154a10a",
@@ -14,7 +17,9 @@
     {
       "name": "Dr. Haochi Wu",
       "role": "postdoc",
-      "groups": ["energy flexibility"],
+      "groups": [
+        "energy flexibility"
+      ],
       "scholar_id": "512_0RoAAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=512_0RoAAAAJ",
       "linkedin": "https://www.linkedin.com/in/haochi-wu-58b0b3202/",
@@ -24,7 +29,10 @@
     {
       "name": "Dr. Nitish Ranjan Sarker",
       "role": "postdoc",
-      "groups": ["separations", "infrastructure planning"],
+      "groups": [
+        "separations",
+        "infrastructure planning"
+      ],
       "scholar_id": "aqHdI_0AAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=aqHdI_0AAAAJ",
       "linkedin": "https://www.linkedin.com/in/nitish-ranjan-sarker/",
@@ -34,7 +42,9 @@
     {
       "name": "Dr. Laxmicharan Samineni",
       "role": "postdoc",
-      "groups": ["separations"],
+      "groups": [
+        "separations"
+      ],
       "scholar_id": "k_DTvJgAAAAJ&hl=en",
       "scholar_url": "https://scholar.google.com/citations?user=k_DTvJgAAAAJ&hl=en",
       "linkedin": "https://www.linkedin.com/in/laxmicharan-samineni-b3b5822b/",
@@ -44,7 +54,11 @@
     {
       "name": "Akshay Rao",
       "role": "phd student",
-      "groups": ["energy flexibility", "infrastructure planning", "separations"],
+      "groups": [
+        "separations",
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "4jkAz8kAAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=4jkAz8kAAAAJ",
       "linkedin": "https://www.linkedin.com/in/akshayrao53/",
@@ -54,7 +68,9 @@
     {
       "name": "Sinan Abi Farraj",
       "role": "phd student",
-      "groups": ["infrastructure planning"],
+      "groups": [
+        "infrastructure planning"
+      ],
       "scholar_id": "jXY4gz0AAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=jXY4gz0AAAAJ",
       "linkedin": "https://www.linkedin.com/in/sinan-abi-farraj-832960148/",
@@ -64,7 +80,10 @@
     {
       "name": "Caroline Adkins",
       "role": "phd student",
-      "groups": ["infrastructure planning", "separations"],
+      "groups": [
+        "separations",
+        "infrastructure planning"
+      ],
       "scholar_id": "vUu8KmIAAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=vUu8KmIAAAAJ",
       "linkedin": "https://www.linkedin.com/in/caroline-adkins-154ab4197/",
@@ -74,7 +93,10 @@
     {
       "name": "Fletcher Chapin",
       "role": "phd student",
-      "groups": ["energy flexibility", "infrastructure planning"],
+      "groups": [
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "zZIdty8AAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=zZIdty8AAAAJ",
       "linkedin": "https://www.linkedin.com/in/fletcher-chapin-838171a0",
@@ -84,7 +106,11 @@
     {
       "name": "Carson Tucker",
       "role": "phd student",
-      "groups": ["energy flexibility", "infrastructure planning", "separations"],
+      "groups": [
+        "separations",
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "UbafTjMAAAAJ",
       "scholar_url": "https://scholar.google.com/citations?user=UbafTjMAAAAJ",
       "linkedin": "https://www.linkedin.com/in/carson-tucker-43b4a4145/",
@@ -94,7 +120,10 @@
     {
       "name": "Daly Wettermark",
       "role": "phd student",
-      "groups": ["energy flexibility", "infrastructure planning"],
+      "groups": [
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "U1mAz_8AAAAJ&hl=en",
       "scholar_url": "https://scholar.google.com/citations?user=U1mAz_8AAAAJ&hl=en",
       "linkedin": "https://www.linkedin.com/in/daly-wettermark",
@@ -104,7 +133,9 @@
     {
       "name": "Gina Kittleson",
       "role": "phd student",
-      "groups": ["infrastructure planning"],
+      "groups": [
+        "infrastructure planning"
+      ],
       "scholar_id": "",
       "scholar_url": "",
       "linkedin": "https://www.linkedin.com/in/gina-kittleson-a694a3207/",
@@ -114,7 +145,11 @@
     {
       "name": "Dr. Alexander Dudchenko",
       "role": "staff",
-      "groups": ["energy flexibility", "separations", "infrastructure planning"],
+      "groups": [
+        "separations",
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "",
       "scholar_url": "https://scholar.google.com/citations?user=qGxLrqoAAAAJ&hl=en&oi=ao",
       "linkedin": "https://www.linkedin.com/in/avdudchenko/",
@@ -124,7 +159,9 @@
     {
       "name": "Adhithyan Sakthivelu",
       "role": "alumni",
-      "groups": ["energy flexibility"],
+      "groups": [
+        "energy flexibility"
+      ],
       "scholar_id": "",
       "scholar_url": "https://scholar.google.com/citations?user=aKTIsW4AAAAJ&hl=en&oi=ao",
       "linkedin": "https://www.linkedin.com/in/adhithyan-sakthivelu-72b09a62",
@@ -134,7 +171,11 @@
     {
       "name": "Dr. Yang Liu",
       "role": "alumni",
-      "groups": ["energy flexibility", "infrastructure planning", "separations"],
+      "groups": [
+        "separations",
+        "energy flexibility",
+        "infrastructure planning"
+      ],
       "scholar_id": "",
       "scholar_url": "https://scholar.google.com/citations?user=158-kTQAAAAJ&hl=en&oi=sra",
       "linkedin": "https://www.linkedin.com/in/enzoyangliu/",
@@ -144,7 +185,11 @@
     {
       "name": "Dr. Timothy Bartholomew",
       "role": "alumni",
-      "groups": ["energy flexibility", "separations", "water technology"],
+      "groups": [
+        "separations",
+        "energy flexibility",
+        "water technology"
+      ],
       "scholar_id": "",
       "scholar_url": "https://scholar.google.com/citations?user=SXkRQAIAAAAJ&hl=en&oi=ao",
       "linkedin": "https://www.linkedin.com/in/tim-bartholomew/",
@@ -154,15 +199,20 @@
     {
       "name": "Corisa Wong",
       "role": "phd student",
-      "groups": ["infrastructure planning", "water technology"],
+      "groups": [
+        "infrastructure planning",
+        "water technology"
+      ],
       "scholar_id": "",
       "scholar_url": "",
       "linkedin": "https://www.linkedin.com/in/corisa-wong-12525a19a/"
-    }, 
+    },
     {
       "name": "Abdullah Alhussain",
       "role": "ms student",
-      "groups": ["water technology"],
+      "groups": [
+        "water technology"
+      ],
       "scholar_id": "",
       "scholar_url": "",
       "linkedin": "https://www.linkedin.com/in/akh891/"

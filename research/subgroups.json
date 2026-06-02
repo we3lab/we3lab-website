@@ -1,28 +1,34 @@
 {
   "subgroups": [
     {
+      "key": "separations",
+      "label": "Separations",
+      "file": "research/separations.html",
+      "active": true
+    },
+    {
       "key": "energy flexibility",
       "label": "Energy Flexibility",
       "file": "research/energyflexibility.html",
-      "active" : true
+      "active": true
     },
     {
       "key": "infrastructure planning",
       "label": "Infrastructure Planning",
       "file": "research/infrastructureplanning.html",
-      "active" : true
+      "active": true
     },
     {
-      "key": "separations",
-      "label": "Separations",
-      "file": "research/separations.html",
-      "active" : true
+      "key": "water energy food policies",
+      "label": "Water-Energy-Food Policies",
+      "file": "research/waterenergyfoodpolicies.html",
+      "active": true
     },
     {
       "key": "water technology",
       "label": "Water Technology",
       "file": "research/watertechnology.html",
-      "active" : false
+      "active": false
     }
   ]
 }
