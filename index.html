@@ -20,7 +20,7 @@
   <nav class="nav">
     <div class="container">
       <a class="nav-logo" href="index.html">
-        <img src="assets/logos/WE3_Lab_Logo_white_short.png" alt="WE3 Lab" height="96">
+        <img src="assets/images/WE3_Lab_Logo_white_short.png" alt="WE3 Lab" height="96">
       </a>
       <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -50,7 +50,7 @@
   <div class="container">
     <div class="hero-content">
       <a class="nav-logo" href="index.html">
-        <img src="assets/logos/WE3_Lab_Logo_color.png" alt="WE3 Lab logo" height="120">
+        <img src="assets/images/WE3_Lab_Logo_color.png" alt="WE3 Lab logo" height="120">
       </a>
       <div class="hero-actions">
         <a href="research.html" class="btn btn-black">Explore Research</a>
@@ -72,26 +72,18 @@
         <p>Our work spans three tightly connected domains — sustainable energy systems, environmental sensing and monitoring, and smart infrastructure — united by a commitment to open science and equitable outcomes.</p>
         <a href="research.html" class="btn btn-navy mt-2" style="display:inline-flex">Learn about our research &rarr;</a>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-        <div class="card card-body" style="background:var(--bright-snow)">
-          <div style="font-size:2rem;margin-bottom:.5rem">⚡</div>
-          <h4 class="text-deep-space">Sustainable Energy</h4>
-          <p style="font-size:.85rem;margin-top:.3rem">Grid decarbonization, renewable integration, and demand forecasting.</p>
+      <div class="mission-diamond">
+        <div class="mission-circle">
+          <h4 class="text-deep-space">Separations Process Modeling &amp; Design</h4>
         </div>
-        <div class="card card-body" style="background:var(--bright-snow)">
-          <div style="font-size:2rem;margin-bottom:.5rem">🌊</div>
-          <h4 class="text-deep-space">Environmental Sensing</h4>
-          <p style="font-size:.85rem;margin-top:.3rem">Low-cost sensors, IoT networks, and real-time environmental monitoring.</p>
+        <div class="mission-circle">
+          <h4 class="text-deep-space">Water-Energy Flexibility</h4>
         </div>
-        <div class="card card-body" style="background:var(--bright-snow)">
-          <div style="font-size:2rem;margin-bottom:.5rem">🏙️</div>
-          <h4 class="text-deep-space">Smart Infrastructure</h4>
-          <p style="font-size:.85rem;margin-top:.3rem">Water distribution, urban resilience, and digital twin modeling.</p>
+        <div class="mission-circle">
+          <h4 class="text-deep-space">Water &amp; Wastewater Systems Planning</h4>
         </div>
-        <div class="card card-body" style="background:var(--bright-snow)">
-          <div style="font-size:2rem;margin-bottom:.5rem">🤖</div>
-          <h4 class="text-deep-space">AI &amp; Data Science</h4>
-          <p style="font-size:.85rem;margin-top:.3rem">Physics-informed ML, uncertainty quantification, and optimization.</p>
+        <div class="mission-circle">
+          <h4 class="text-deep-space">Water-Energy-Food Policies</h4>
         </div>
       </div>
     </div>
@@ -105,7 +97,7 @@
       <h2 style="color:#183446">Recent News</h2>
       <div class="divider" style="background:#1D729B"></div>
     </div>
-    <div id="news-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
+    <div id="news-grid" style="display:flex;flex-direction:row;gap:1.5rem;overflow-x:auto;padding-bottom:.75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch">
 
 <!-- BEGIN:news-generated -->
 <!-- END:news-generated -->
@@ -114,17 +106,18 @@
   </div>
 </section>
 <script>
-fetch('assets/news.json')
+fetch('assets/news/news.json')
   .then(r => r.json())
   .then(items => {
     const grid = document.getElementById('news-grid');
     grid.innerHTML = items.map(item => `
-      <div class="card" style="background:#F8F9FA">
+      <div class="card" style="background:#F8F9FA;min-width:280px;max-width:280px;flex-shrink:0;scroll-snap-align:start">
         <div class="card-body">
           <span style="font-size:.75rem;color:#1D729B;font-weight:600">${item.date}</span>
-          <h4 style="color:#183446;margin:.4rem 0 .5rem">
+          <h4 style="color:#183446;margin:.4rem 0 .3rem">
             <a href="${item.link}" style="color:inherit;text-decoration:none">${item.headline}</a>
           </h4>
+          ${item.organization ? `<p style="font-size:.78rem;color:#8c96a3;margin:0">${item.organization}</p>` : ''}
         </div>
       </div>`).join('');
   });
@@ -156,7 +149,7 @@ fetch('assets/news.json')
       <div class="footer-stanford-copy">&copy; Stanford University.&nbsp; Stanford, California 94305.</div>
     </div>
     <div class="footer-we3-col">
-      <img src="assets/logos/WE3_Lab_Logo_white.png" alt="WE3 Lab" height="96">
+      <img src="assets/images/WE3_Lab_Logo_white.png" alt="WE3 Lab" height="96">
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/we3-lab" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://scholar.google.com/citations?user=04f-_PIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>

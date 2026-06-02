@@ -198,13 +198,13 @@ p:last-child { margin-bottom: 0; }
 /* ─── Hero (Home page specific) ─────────────────────────── */
 .hero {
   background: linear-gradient(rgba(255,255,255,0.62), rgba(255,255,255,0.62)),
-              url('../logos/sb_landscape.jpeg') center/cover no-repeat;
+              url('../images/sb_landscape.jpeg') center/cover no-repeat;
   color: var(--deep-space);
   padding: 7rem 0 5rem;
   position: relative; overflow: hidden;
 }
 .hero::after { display: none; }
-.hero-content { position: relative; max-width: 700px; }
+.hero-content { position: relative; max-width: 700px; margin: 0 auto; text-align: center; }
 .hero-badge {
   display: inline-block;
   background: rgba(29,114,155,.15);
@@ -218,12 +218,12 @@ p:last-child { margin-bottom: 0; }
 .hero h1 { margin-bottom: 1.25rem; }
 .hero h1 em { color: var(--cerulean); font-style: normal; }
 .hero p { color: rgba(20,40,70,.75); font-size: 1.1rem; max-width: 560px; }
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; justify-content: center; }
 
 /* ─── Page Banner (all inner pages) ────────────────────── */
 .page-banner {
   position: relative;
-  background: url('../logos/sb_landscape.jpeg') center/cover no-repeat;
+  background: url('../images/sb_landscape.jpeg') center/cover no-repeat;
   padding: 5rem 0 4rem;
   overflow: hidden;
 }
@@ -283,6 +283,60 @@ p:last-child { margin-bottom: 0; }
 }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .card-body { padding: 1.5rem; }
+
+/* ─── Mission diamond (Home page) ──────────────────────── */
+/*
+  Absolute layout. Container 500 × 500px square. Circle diameter 200px.
+  Centers: top (250,100), mid-left (100,250), mid-right (400,250), bottom (250,400).
+*/
+.mission-diamond {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+.mission-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--deep-space);
+  background: var(--bright-snow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.2rem;
+  overflow: hidden;
+  transition: transform .2s, box-shadow .2s;
+}
+.mission-circle:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.mission-circle h4 { font-size: 1.2rem; }
+/* top */
+.mission-diamond .mission-circle:nth-child(1) {
+  top: 0; left: 150px;
+  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
+              url('../images/reverse_osmosis.jpg') center/cover no-repeat;
+}
+/* mid-left */
+.mission-diamond .mission-circle:nth-child(2) {
+  top: 150px; left: 0;
+  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
+              url('../images/electric_shutoff.jpg') center/cover no-repeat;
+}
+/* mid-right */
+.mission-diamond .mission-circle:nth-child(3) {
+  top: 150px; left: 300px;
+  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
+              url('../images/wwtp.jpg') center/cover no-repeat;
+}
+/* bottom */
+.mission-diamond .mission-circle:nth-child(4) {
+  top: 300px; left: 150px;
+  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
+              url('../images/farm.jpg') center/cover no-repeat;
+}
 
 /* ─── Research page ─────────────────────────────────────── */
 .research-grid {
