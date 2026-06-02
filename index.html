@@ -50,7 +50,7 @@
   <div class="container">
     <div class="hero-content">
       <a class="nav-logo" href="index.html">
-        <img src="assets/images/WE3_Lab_Logo_color.png" alt="WE3 Lab logo" height="120">
+        <img src="assets/images/WE3_Lab_Logo_color.png" alt="WE3 Lab logo" height="140" style="width:auto">
       </a>
       <div class="hero-actions">
         <a href="research.html" class="btn btn-black">Explore Research</a>
@@ -97,7 +97,7 @@
       <h2 style="color:#183446">Recent News</h2>
       <div class="divider" style="background:#1D729B"></div>
     </div>
-    <div id="news-grid" style="display:flex;flex-direction:row;gap:1.5rem;overflow-x:auto;padding-bottom:.75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch">
+    <div id="news-grid" style="display:flex;flex-direction:row;align-items:stretch;gap:1.5rem;overflow-x:auto;padding-bottom:.75rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch">
 
 <!-- BEGIN:news-generated -->
 <!-- END:news-generated -->
@@ -111,7 +111,7 @@ fetch('assets/news/news.json')
   .then(items => {
     const grid = document.getElementById('news-grid');
     grid.innerHTML = items.map(item => `
-      <div class="card" style="background:#F8F9FA;min-width:280px;max-width:280px;flex-shrink:0;scroll-snap-align:start">
+      <div class="card" style="background:#F8F9FA;min-width:240px;width:max-content;max-width:380px;flex-shrink:0;scroll-snap-align:start">
         <div class="card-body">
           <span style="font-size:.75rem;color:#1D729B;font-weight:600">${item.date}</span>
           <h4 style="color:#183446;margin:.4rem 0 .3rem">
