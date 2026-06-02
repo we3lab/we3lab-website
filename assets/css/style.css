@@ -1,3 +1,14 @@
+/* ─── Stanford / Google Fonts ───────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@font-face {
+  font-family: "Stanford";
+  src: url("https://www-media.stanford.edu/assets/fonts/stanford.woff") format("woff"),
+       url("https://www-media.stanford.edu/assets/fonts/stanford.ttf") format("truetype");
+  font-weight: 300;
+  font-display: swap;
+}
+
 /* ─── Variables ─────────────────────────────────────────── */
 :root {
   --deep-space:  #183446;
@@ -18,8 +29,8 @@
   --radius:      8px;
   --radius-lg:   14px;
   --max-w:       1080px;
-  --nav-h:       68px;
-  --header-h:    108px; /* identity bar (~40px) + nav (68px) */
+  --nav-h:       96px;
+  --header-h:    136px; /* identity bar (~40px) + nav (96px) */
   --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -73,18 +84,17 @@ p:last-child { margin-bottom: 0; }
 /* ─── Stanford Identity Bar ─────────────────────────────── */
 .identity-bar {
   background: var(--deep-space);
-  padding: .55rem 0;
-  font-size: .82rem;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  padding: 5px 1.5rem 2px;
 }
 .identity-bar a {
   color: var(--white);
-  font-weight: 600;
-  letter-spacing: .02em;
+  font-size: 20px;
+  line-height: 1;
+  font-family: "Stanford", serif;
+  font-weight: 300;
   text-decoration: none;
-  font-family: var(--font);
 }
-.identity-bar a:hover { text-decoration: underline; color: var(--white); }
+.identity-bar a:hover { text-decoration: none; color: var(--white); }
 
 /* ─── Navigation ────────────────────────────────────────── */
 .nav {
@@ -92,9 +102,9 @@ p:last-child { margin-bottom: 0; }
   height: var(--nav-h);
   display: flex; align-items: center;
 }
-/* White logo in dark nav */
-.nav .nav-logo img {
-  filter: invert(1) brightness(2);
+.nav .container {
+  max-width: none;
+  margin: 0;
 }
 /* Dropdown menu styles */
 .nav-links .dropdown {
@@ -446,61 +456,98 @@ p:last-child { margin-bottom: 0; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 
-/* ─── WE3 Lab Footer ─────────────────────────────────────── */
-.footer-we3 {
-  background: var(--soft-linen);
-  padding: 2rem 0;
-  border-top: 1px solid #d8d7cf;
+/* ─── Footer social icons & WE3 col ─────────────────────── */
+.footer-we3-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
 }
-.footer-we3 .footer-inner {
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 1rem; flex-wrap: wrap;
-}
-.footer-we3 .footer-dept {
-  margin-top: .4rem; font-size: .8rem; color: var(--black);
+@media (min-width: 1024px) {
+  .footer-we3-col { align-items: flex-end; margin-top: -12px; }
+  .footer-we3-col .footer-social { margin-top: calc(0.75rem - 20px); }
 }
 .footer-social {
   display: flex; gap: 1rem; align-items: center;
+  margin-top: 0.75rem;
+  justify-content: center;
 }
 .footer-social a {
-  color: var(--black);
+  color: var(--white);
   font-size: 1.35rem;
-  opacity: .65;
+  opacity: .7;
   transition: opacity .2s;
   display: inline-flex; align-items: center;
 }
-.footer-social a:hover { opacity: 1; color: var(--deep-space); }
+.footer-social a:hover { opacity: 1; color: var(--white); }
 
 /* ─── Stanford Global Footer ─────────────────────────────── */
 .footer-stanford {
   background: var(--deep-space);
-  color: rgba(255,255,255,.8);
-  padding: 1.75rem 0;
-  font-size: .82rem;
+  color: var(--white);
+  padding: 2rem 1.5rem;
+  font-family: 'Source Sans 3', var(--font);
 }
-.footer-stanford a { color: rgba(255,255,255,.7); text-decoration: none; }
-.footer-stanford a:hover { color: var(--white); text-decoration: underline; }
 .footer-stanford-inner {
-  display: flex; flex-wrap: wrap;
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
-.footer-stanford-logo a {
-  color: var(--white); font-size: 1rem; font-weight: 700;
-  letter-spacing: -.01em; text-decoration: none; line-height: 1.2;
+@media (min-width: 1024px) {
+  .footer-stanford-inner { flex-direction: row; align-items: flex-start; padding-top: 1.25rem; }
 }
-.footer-stanford-logo a:hover { text-decoration: underline; color: var(--white); }
-.footer-stanford-links {
-  display: flex; flex-wrap: wrap;
-  gap: .35rem 1.1rem;
+.footer-stanford-wordmark {
+  text-align: center;
+  margin: 0 0 2rem;
+  flex-shrink: 0;
+}
+.footer-stanford-wordmark a {
+  font-family: 'Stanford', serif;
+  font-weight: 300;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  color: var(--white);
+  text-decoration: none;
+}
+.footer-stanford-wordmark a:hover { text-decoration: none; color: var(--white); }
+.footer-stanford-content {
+  flex-grow: 1;
+  text-align: center;
+}
+@media (min-width: 1024px) {
+  .footer-stanford-content { padding-left: 3rem; text-align: left; }
+}
+.footer-stanford-links-primary,
+.footer-stanford-links-secondary {
   list-style: none;
-  font-size: .78rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
 }
+@media (min-width: 640px) {
+  .footer-stanford-links-primary,
+  .footer-stanford-links-secondary { flex-direction: row; justify-content: center; }
+}
+@media (min-width: 1024px) {
+  .footer-stanford-links-primary,
+  .footer-stanford-links-secondary { justify-content: flex-start; }
+}
+.footer-stanford-links-primary li,
+.footer-stanford-links-secondary li { margin-right: 1.5rem; margin-bottom: 0.25rem; }
+.footer-stanford-links-primary a {
+  color: var(--white); font-size: 17px; text-decoration: none;
+}
+.footer-stanford-links-secondary a {
+  color: var(--white); font-size: 14px; text-decoration: none;
+}
+.footer-stanford-links-primary a:hover,
+.footer-stanford-links-secondary a:hover { text-decoration: underline; color: var(--white); }
 .footer-stanford-copy {
-  font-size: .78rem;
-  color: rgba(255,255,255,.55);
-  white-space: nowrap;
+  font-size: 13px;
+  color: rgba(255,255,255,.65);
+  margin-top: 0.5rem;
 }
 
 /* ─── Utilities ──────────────────────────────────────────── */
