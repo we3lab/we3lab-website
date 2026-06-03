@@ -1,26 +1,363 @@
 #!/usr/bin/env python3
-"""Reads members.json and writes the people section into people.html."""
+"""
+Builds the people content in people.html from:
+  content/members/meagan.json  → <!-- BEGIN/END:pi-generated -->
+  content/members/members.json → <!-- BEGIN/END:people-generated -->
 
+Also generates a shell profile page at people/{Slug}.html for every
+active (non-alumni) member except Meagan.
+
+Run from the repo root.
+"""
+
+import html
 import json
 import re
 from pathlib import Path
 
-MEMBERS_JSON   = Path("members/members.json")
-SUBGROUPS_JSON = Path("research/subgroups.json")
-PEOPLE_HTML    = Path("people.html")
+MEAGAN_JSON = Path("content/members/meagan.json")
+MEMBERS_JSON = Path("content/members/members.json")
+ALUMNI_JSON = Path("content/members/alumni.json")
+PEOPLE_HTML = Path("people.html")
+IMAGES_DIR = Path("content/members/images")
+PEOPLE_DIR = Path("people")
 
-ROLE_ORDER = ["PI", "postdoc", "phd student", "ms student", "undergrad", "staff", "admin staff", "alumni"]
+PI_RE = re.compile(r"<!-- BEGIN:pi-generated -->.*?<!-- END:pi-generated -->", re.DOTALL)
+PEOPLE_RE = re.compile(r"<!-- BEGIN:people-generated -->.*?<!-- END:people-generated -->", re.DOTALL)
 
-def _create_placeholder(entry):
-    path  = Path(entry["file"])
-    label = entry["label"]
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(f'''<!DOCTYPE html>
+AV_COUNT = 8
+
+ROLE_ORDER = ["postdoc", "phd student", "ms student", "undergrad", "staff", "alumni"]
+ROLE_LABELS = {
+    "postdoc":    "Postdoctoral Researchers",
+    "phd student":"PhD Students",
+    "ms student": "MS Students",
+    "undergrad":  "Undergraduate Researchers",
+    "staff":      "Research Staff",
+    "alumni":     "Alumni",
+}
+ROLE_DISPLAY = {
+    "postdoc":    "Postdoctoral Researcher",
+    "phd student":"PhD Student",
+    "ms student": "MS Student",
+    "undergrad":  "Undergraduate Researcher",
+    "staff":      "Research Staff",
+}
+
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def h(text: str) -> str:
+    return html.escape(str(text))
+
+
+def member_slug(name: str) -> str:
+    """'Dr. Foo Bar' → 'FooBar'"""
+    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
+    return "".join(w.capitalize() for w in clean.split())
+
+
+def initials(name: str) -> str:
+    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
+    parts = clean.split()
+    return (parts[0][0] + parts[-1][0]).upper() if len(parts) > 1 else parts[0][:2].upper()
+
+
+def find_image(name: str) -> str | None:
+    slug = member_slug(name)
+    for ext in ("png", "jpg"):
+        for variant in (slug, slug.lower()):
+            p = IMAGES_DIR / f"{variant}.{ext}"
+            if p.exists():
+                return str(p)
+    return None
+
+
+def avatar(name: str, av_class: str, size: int = 100, prefix: str = "") -> str:
+    """prefix: path prefix to prepend to image src (e.g. '../' for subdir pages)."""
+    img = find_image(name)
+    style_attr = f' style="width:{size}px;height:{size}px"' if size != 100 else ""
+    if img:
+        return f'<div class="person-avatar {av_class}"{style_attr}><img src="{prefix}{img}" alt="{h(name)}"></div>'
+    return f'<div class="person-avatar {av_class}"{style_attr}>{initials(name)}</div>'
+
+
+def av_class_for(name: str) -> str:
+    """Deterministic avatar colour based on name so it stays consistent across rebuilds."""
+    return f"av-{(sum(ord(c) for c in member_slug(name)) % AV_COUNT) + 1}"
+
+
+def social_links(m: dict) -> str:
+    parts = []
+    scholar = m.get("scholar_url") or (
+        f"https://scholar.google.com/citations?user={m['scholar_id']}"
+        if m.get("scholar_id") else ""
+    )
+    if scholar:
+        parts.append(f'<a href="{scholar}" target="_blank" rel="noopener" title="Google Scholar">'
+                     f'<i class="fa-brands fa-google-scholar"></i></a>')
+    if m.get("linkedin"):
+        parts.append(f'<a href="{m["linkedin"]}" target="_blank" rel="noopener" title="LinkedIn">'
+                     f'<i class="fa-brands fa-linkedin"></i></a>')
+    if m.get("website"):
+        parts.append(f'<a href="{m["website"]}" target="_blank" rel="noopener" title="Website"><i class="fa-solid fa-link"></i></a>')
+    if m.get("cv"):
+        parts.append(f'<a href="{m["cv"]}" target="_blank" rel="noopener">CV</a>')
+    return " &middot; ".join(parts)
+
+
+# ── PI section ────────────────────────────────────────────────────────────────
+
+def build_pi(pi: dict) -> str:
+    bio_html = "\n".join(
+        f'        <p style="font-size:.9rem;color:var(--blk);line-height:1.6;margin-bottom:.75rem">{h(p)}</p>'
+        for p in pi.get("bio", [])
+    )
+    edu_items = "\n".join(
+        f'            <li>{h(e)}</li>' for e in pi.get("education", [])
+    )
+    scholar_link = (
+        f'<a href="{pi["scholar_url"]}" target="_blank" rel="noopener" title="Google Scholar" '
+        f'style="display:inline-flex;align-items:center;opacity:.75;transition:opacity .2s">'
+        f'<i class="fa-brands fa-google-scholar" style="font-size:22px"></i></a>'
+    ) if pi.get("scholar_url") else ""
+    linkedin_link = (
+        f'<a href="{pi["linkedin"]}" target="_blank" rel="noopener" title="LinkedIn" '
+        f'style="display:inline-flex;align-items:center;opacity:.75;transition:opacity .2s">'
+        f'<i class="fa-brands fa-linkedin" style="font-size:22px"></i></a>'
+    ) if pi.get("linkedin") else ""
+    social = " ".join(filter(None, [scholar_link, linkedin_link]))
+
+    return f"""\
+    <div style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
+      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
+        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover">
+        <div style="margin-top:1rem;width:100%">
+          <p style="font-size:.8rem;font-weight:600;color:var(--blk);margin-bottom:.35rem">Education</p>
+          <ul style="font-size:.8rem;color:#444;line-height:1.7;margin:0;padding-left:1.1rem">
+{edu_items}
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-size:1.15rem;color:var(--blk);margin-bottom:.25rem">{h(pi['name'])}</h4>
+        <div style="display:flex;gap:.6rem;align-items:center;margin-top:.35rem">
+          {social}
+        </div>
+        <p style="font-size:.85rem;color:#555;margin-top:.4rem;margin-bottom:.75rem">{h(pi['title'])}</p>
+{bio_html}
+      </div>
+    </div>"""
+
+
+# ── Member cards ──────────────────────────────────────────────────────────────
+
+def build_member_card(m: dict, av_class: str) -> str:
+    role = m.get("role", "").lower()
+    label = ROLE_DISPLAY.get(role, role.title())
+    links = social_links(m)
+    slug = member_slug(m["name"])
+    links_html = f'        <div class="links">{links}</div>\n' if links else ""
+
+    return (
+        f'      <div class="person-card">\n'
+        f'        <a href="people/{slug}.html">{avatar(m["name"], av_class)}</a>\n'
+        f'        <h4><a href="people/{slug}.html" style="color:inherit;text-decoration:none">{h(m["name"])}</a></h4>\n'
+        f'        <div class="role">{label}</div>\n'
+        f'{links_html}'
+        f'      </div>'
+    )
+
+
+def build_alumni_card(a: dict, av_class: str) -> str:
+    parts = []
+    if a.get("scholar_url"):
+        parts.append(f'<a href="{a["scholar_url"]}" target="_blank" rel="noopener" title="Google Scholar">'
+                     f'<i class="fa-brands fa-google-scholar"></i></a>')
+    if a.get("linkedin"):
+        parts.append(f'<a href="{a["linkedin"]}" target="_blank" rel="noopener" title="LinkedIn">'
+                     f'<i class="fa-brands fa-linkedin"></i></a>')
+    links_html = f'        <div class="links">{" &middot; ".join(parts)}</div>\n' if parts else ""
+    deg_html   = f'        <div class="role">{h(a.get("degree_year", ""))}</div>\n' if a.get("degree_year") else ""
+    place_html = f'        <p class="research-area">{h(a.get("placement", ""))}</p>\n' if a.get("placement") else ""
+
+    return (
+        f'      <div class="person-card">\n'
+        f'        {avatar(a["name"], av_class)}\n'
+        f'        <h4>{h(a["name"])}</h4>\n'
+        f'{deg_html}'
+        f'{place_html}'
+        f'{links_html}'
+        f'      </div>'
+    )
+
+
+def _last_name(name: str) -> str:
+    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
+    return clean.split()[-1].lower()
+
+
+def _degree_year(a: dict) -> int:
+    """Extract the numeric year from a degree_year string like 'PhD 2022'."""
+    m = re.search(r"\d{4}", a.get("degree_year", ""))
+    return int(m.group()) if m else 0
+
+
+def build_people(members: list, alumni: list) -> str:
+    by_role: dict[str, list] = {r: [] for r in ROLE_ORDER if r != "alumni"}
+    for m in members:
+        key = m.get("role", "").lower()
+        if key in by_role:
+            by_role[key].append(m)
+
+    sections = []
+    av_idx = 0
+
+    # Active member sections — alphabetical by last name within each role
+    for role in ROLE_ORDER:
+        if role == "alumni":
+            continue
+        group = sorted(by_role.get(role, []), key=lambda m: _last_name(m["name"]))
+        if not group:
+            continue
+        cards = []
+        for m in group:
+            av = f"av-{(av_idx % AV_COUNT) + 1}"
+            av_idx += 1
+            cards.append(build_member_card(m, av))
+        sections.append(
+            f'    <h2 class="people-section-title">{ROLE_LABELS[role]}</h2>\n'
+            f'    <div class="people-grid">\n'
+            + "\n".join(cards) + "\n"
+            f'    </div>'
+        )
+
+    # Alumni section — most recent degree year first
+    if alumni:
+        sorted_alumni = sorted(alumni, key=_degree_year, reverse=True)
+        cards = []
+        for a in sorted_alumni:
+            av = f"av-{(av_idx % AV_COUNT) + 1}"
+            av_idx += 1
+            cards.append(build_alumni_card(a, av))
+        sections.append(
+            f'    <h2 class="people-section-title">{ROLE_LABELS["alumni"]}</h2>\n'
+            f'    <div class="people-grid">\n'
+            + "\n".join(cards) + "\n"
+            f'    </div>'
+        )
+
+    return "\n".join(sections)
+
+
+# ── Profile sub-pages ─────────────────────────────────────────────────────────
+
+NAV_DROPDOWN = """\
+          <ul class="dropdown-content">
+            <li><a href="../research/separations.html">Separations</a></li>
+            <li><a href="../research/energyflexibility.html">Water-Energy Flexibility</a></li>
+            <li><a href="../research/infrastructureplanning.html">Systems Planning</a></li>
+            <li><a href="../research/waterenergyfoodpolicies.html">WEF Policies</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
+          </ul>"""
+
+
+def build_contact_section(m: dict, top_offset: str = "0") -> str:
+    """Build the Contact sidebar. Returns empty string if nothing to show."""
+    link_style = "color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin-bottom:.4rem"
+    items = []
+    netid = m.get("netID", "").strip()
+    if netid:
+        items.append(
+            f'<a href="mailto:{netid}@stanford.edu" style="{link_style}">'
+            f'<i class="fa-solid fa-envelope"></i> {netid}@stanford.edu</a>'
+        )
+    if m.get("scholar_url"):
+        items.append(
+            f'<a href="{m["scholar_url"]}" target="_blank" rel="noopener" style="{link_style}">'
+            f'<i class="fa-brands fa-google-scholar"></i> Google Scholar</a>'
+        )
+    if m.get("linkedin"):
+        items.append(
+            f'<a href="{m["linkedin"]}" target="_blank" rel="noopener" style="{link_style}">'
+            f'<i class="fa-brands fa-linkedin"></i> LinkedIn</a>'
+        )
+    if m.get("website"):
+        items.append(
+            f'<a href="{m["website"]}" target="_blank" rel="noopener" style="{link_style}">'
+            f'<i class="fa-solid fa-link"></i> Website</a>'
+        )
+    if m.get("cv"):
+        items.append(
+            f'<a href="{m["cv"]}" target="_blank" rel="noopener" style="{link_style}">'
+            f'<i class="fa-solid fa-file-lines"></i> CV</a>'
+        )
+    if not items:
+        return ""
+    label = '<p style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.6rem">Contact</p>'
+    return (
+        f'    <div style="flex-shrink:0;margin-top:{top_offset}">\n'
+        f'      {label}\n      '
+        + "\n      ".join(items)
+        + "\n    </div>"
+    )
+
+
+def build_profile_page(m: dict) -> str:
+    role_display = ROLE_DISPLAY.get(m.get("role", "").lower(), m.get("role", "").title())
+    bio_text     = m.get("bio", "").strip()
+    img_path     = find_image(m["name"])
+
+    bio_html = (
+        f'      <p style="color:rgba(255,255,255,.8);font-size:1.1rem;'
+        f'line-height:1.6;margin-top:1rem;margin-bottom:0">{h(bio_text)}</p>'
+        if bio_text else
+        f'      <p style="color:rgba(255,255,255,.45);font-size:1.05rem;font-style:italic;'
+        f'margin-top:1rem;margin-bottom:0">Bio coming soon.</p>'
+    )
+
+    contact = build_contact_section(m, top_offset="220px")
+
+    if img_path:
+        left_col = f"""\
+      <div style="display:flex;align-items:flex-start;gap:1.25rem">
+        <img src="../{img_path}" alt="{h(m['name'])}"
+             style="width:220px;height:220px;border-radius:50%;object-fit:cover;flex-shrink:0">
+        <div style="min-height:220px;display:flex;flex-direction:column;justify-content:center">
+          <h1 style="margin-bottom:.2rem">{h(m["name"])}</h1>
+          <p style="color:rgba(255,255,255,.75);margin:0">{role_display}</p>
+        </div>
+      </div>
+{bio_html}"""
+        banner_content = (
+            f'    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-top:.5rem">\n'
+            f'      <div style="flex:1">\n{left_col}\n      </div>\n'
+            + (contact + "\n" if contact else "")
+            + "    </div>"
+        )
+    else:
+        left_col = f"""\
+    <h1 style="margin-bottom:.2rem;margin-top:.5rem">{h(m["name"])}</h1>
+    <p style="color:rgba(255,255,255,.75);margin:0">{role_display}</p>
+{bio_html}"""
+        no_img_contact = build_contact_section(m, top_offset="0")
+        if no_img_contact:
+            banner_content = (
+                f'    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-top:.5rem">\n'
+                f'      <div style="flex:1">\n{left_col}\n      </div>\n'
+                + no_img_contact + "\n    </div>"
+            )
+        else:
+            banner_content = left_col
+
+    return f"""\
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{label} — WE3 Lab</title>
+  <title>{h(m["name"])} — WE3 Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -37,24 +374,17 @@ def _create_placeholder(entry):
   <nav class="nav">
     <div class="container">
       <a class="nav-logo" href="../index.html">
-        <img src="../assets/images/WE3_Lab_Logo_white_short.png" alt="WE3 Lab" height="96">
+        <img src="../assets/logos/WE3_Lab_Logo_white_short.png" alt="WE3 Lab" height="96">
       </a>
       <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../people.html">Who We Are</a></li>
+        <li><a href="../people.html" class="active">Who We Are</a></li>
         <li class="dropdown">
-          <a href="../research.html" class="active">What We Do</a>
-          <ul class="dropdown-content">
-            <li><a href="../research/separations.html">Separations</a></li>
-            <li><a href="../research/energyflexibility.html">Water-Energy Flexibility</a></li>
-            <li><a href="../research/infrastructureplanning.html">Systems Planning</a></li>
-            <li><a href="../research/waterenergyfoodpolicies.html">WEF Policies</a></li>
-            <li class="dropdown-divider"></li>
-            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
-          </ul>
+          <a href="../research.html">What We Do</a>
+{NAV_DROPDOWN}
         </li>
         <li><a href="../why-we-do-it.html">Why We Do It</a></li>
         <li><a href="../contact.html">Contact Us</a></li>
@@ -66,18 +396,23 @@ def _create_placeholder(entry):
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <div class="breadcrumb"><a href="../research.html">What We Do</a> &rsaquo; {label}</div>
-    <h1>{label}</h1>
-    <p>This page is under development.</p>
+    <div class="breadcrumb"><a href="../people.html">Who We Are</a> &rsaquo; {h(m["name"])}</div>
+{banner_content}
   </div>
 </div>
 
+<!-- ── Profile Content ─────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <!-- Team -->
-    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1.5rem">Group Members</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:1rem">
-      <p style="color:var(--gray-500);font-size:.875rem">No members currently assigned to this group.</p>
+
+    <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
+    <p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>
+
+    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
+    <p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>
+
+    <div style="margin-top:3rem">
+      <a href="../people.html" class="btn btn-navy">&larr; Back to Who We Are</a>
     </div>
   </div>
 </section>
@@ -108,7 +443,7 @@ def _create_placeholder(entry):
       <div class="footer-stanford-copy">&copy; Stanford University.&nbsp; Stanford, California 94305.</div>
     </div>
     <div class="footer-we3-col">
-      <img src="../assets/images/WE3_Lab_Logo_white.png" alt="WE3 Lab" height="96">
+      <img src="../assets/logos/WE3_Lab_Logo_white.png" alt="WE3 Lab" height="96">
       <div class="footer-social">
         <a href="https://www.linkedin.com/company/we3-lab" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
         <a href="https://scholar.google.com/citations?user=04f-_PIAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>
@@ -132,209 +467,50 @@ def _create_placeholder(entry):
 
 </body>
 </html>
-''')
-    print(f"  CREATED  {entry['file']} (placeholder page for '{entry['key']}')")
+"""
 
 
-def _load_subgroups():
-    entries = json.loads(SUBGROUPS_JSON.read_text())["subgroups"]
-    for e in entries:
-        if not Path(e["file"]).exists():
-            _create_placeholder(e)
-    urls   = {e["key"]: e["file"]  for e in entries}
-    labels = {e["key"]: e["label"] for e in entries}
-    return urls, labels
-
-GROUP_URLS, GROUP_LABELS = _load_subgroups()
-SECTION_LABEL = {
-    "PI":          "Principal Investigator",
-    "postdoc":     "Postdoctoral Researchers",
-    "phd student": "PhD Students",
-    "ms student":  "MS Students",
-    "undergrad":   "Undergraduate Researchers",
-    "staff":       "Research Staff",
-    "admin staff": "Administrative Staff",
-    "alumni":      "Alumni",
-}
-ROLE_DISPLAY = {
-    "PI":          "Principal Investigator",
-    "postdoc":     "Postdoctoral Researcher",
-    "phd student": "PhD Student",
-    "ms student":  "MS Student",
-    "undergrad":   "Undergraduate Researcher",
-    "staff":       "Research Staff",
-    "admin staff": "Administrative Staff",
-}
-AV_COUNT = 8
-
-
-def initials(name):
-    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
-    parts = clean.split()
-    if len(parts) == 1:
-        return parts[0][:2].upper()
-    return (parts[0][0] + parts[-1][0]).upper()
-
-
-def avatar_html(m, av, extra_style=""):
-    clean = re.sub(r"^Dr\.\s+", "", m["name"], flags=re.IGNORECASE).strip()
-    base = re.sub(" ", "", clean).lower()
-    style_attr = f' style="{extra_style}"' if extra_style else ""
-    for ext in ("png", "jpg"):
-        slug = f"{base}.{ext}"
-        if (Path("members/images") / slug).exists():
-            return f'<div class="person-avatar {av}"{style_attr}><img src="members/images/{slug}" alt="{m["name"]}"></div>'
-    return f'<div class="person-avatar {av}"{style_attr}>{initials(m["name"])}</div>'
-
-
-def build_links(m):
-    parts = []
-    scholar_url = m.get("scholar_url") or (
-        f"https://scholar.google.com/citations?user={m['scholar_id']}"
-        if m.get("scholar_id") else ""
-    )
-    if scholar_url:
-        parts.append(f'<a href="{scholar_url}" target="_blank" rel="noopener" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>')
-    if m.get("linkedin"):
-        parts.append(f'<a href="{m["linkedin"]}" target="_blank" rel="noopener" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>')
-    if m.get("website"):
-        parts.append(f'<a href="{m["website"]}" target="_blank" rel="noopener">Web</a>')
-    if m.get("cv"):
-        parts.append(f'<a href="{m["cv"]}" target="_blank" rel="noopener">CV</a>')
-    if m.get("email"):
-        parts.append(f'<a href="mailto:{m["email"]}">Email</a>')
-    return " &middot; ".join(parts)
-
-
-def card_pi(m, av):
-    links = build_links(m)
-    bio   = m.get("bio", "")
-    html  = f'''      <div class="person-card" style="display:flex;gap:1.5rem;text-align:left;padding:1.75rem;align-items:flex-start">
-        {avatar_html(m, av, "width:90px;height:90px;font-size:1.5rem;flex-shrink:0")}
-        <div>
-          <h4>{m["name"]}</h4>
-          <div class="role">Principal Investigator</div>'''
-    if bio:
-        html += f'\n          <p class="research-area" style="margin-top:.35rem">{bio}</p>'
-    if links:
-        html += f'\n          <div class="links" style="justify-content:flex-start;margin-top:.75rem">{links}</div>'
-    html += "\n        </div>\n      </div>"
-    return html
-
-
-def card_alumni(m, av):
-    degree_year = m.get("degree_year", "")
-    placement   = m.get("placement", "")
-    links       = build_links(m)
-    html = f'      <div class="person-card alumni-card">\n'
-    html += '        <div class="alumni-avatar-col">\n'
-    html += f'          {avatar_html(m, av)}\n'
-    if links:
-        html += f'          <div class="links">{links}</div>\n'
-    html += '        </div>\n'
-    html += '        <div class="info">\n'
-    html += f'          <h4>{m["name"]}</h4>\n'
-    if degree_year:
-        html += f'          <span class="role">{degree_year}</span>\n'
-    if placement:
-        html += f'          <span class="placement">&rarr; {placement}</span>\n'
-    html += "        </div>\n      </div>"
-    return html
-
-
-def card_member(m, av):
-    role_text = m.get("role_label") or ROLE_DISPLAY.get(m["role"], m["role"])
-    groups = m.get("groups") or []
-    links = build_links(m)
-    html  = f'      <div class="person-card">\n'
-    html += f'        {avatar_html(m, av)}\n'
-    html += f'        <h4>{m["name"]}</h4>\n'
-    html += f'        <div class="role">{role_text}</div>\n'
-    if groups:
-        tags = "".join(
-            f'<a href="{GROUP_URLS.get(g.lower(), "#")}" class="group-tag">{GROUP_LABELS.get(g.lower(), g.title())}</a>'
-            for g in groups
-        )
-        html += f'        <div class="group-tags">{tags}</div>\n'
-    elif m.get("research_area"):
-        html += f'        <p class="research-area">{m["research_area"]}</p>\n'
-    if links:
-        html += f'        <div class="links">{links}</div>\n'
-    html += "      </div>"
-    return html
-
-
-ALUMNI_ROLE_ORDER = ["staff", "postdoc", "phd", "ms", "undergrad"]
-
-def last_name(m):
-    clean = re.sub(r"^Dr\.\s+", "", m["name"], flags=re.IGNORECASE).strip()
-    return clean.split()[-1].lower()
-
-
-def alumni_sort_key(m):
-    dy = m.get("degree_year", "").strip().lower()
-    for i, label in enumerate(ALUMNI_ROLE_ORDER):
-        if dy.startswith(label):
-            return (i, last_name(m))
-    return (len(ALUMNI_ROLE_ORDER), last_name(m))
-
-
-def render_section(role, members, av_idx):
-    if not members:
-        return "", av_idx
-    if role == "alumni":
-        members = sorted(members, key=alumni_sort_key)
-    elif role != "PI":
-        members = sorted(members, key=last_name)
-    label    = SECTION_LABEL.get(role, role)
-    is_pi    = role == "PI"
-    is_alumni = role == "alumni"
-    grid_class = "people-grid alumni-grid" if is_alumni else "people-grid"
-    grid_style = ' style="grid-template-columns:repeat(auto-fill,minmax(240px,1fr))"' if is_pi else ""
-
-    lines = [f'    <h2 class="people-section-title">{label}</h2>',
-             f'    <div class="{grid_class}"{grid_style}>']
+def generate_profile_pages(members: list) -> int:
+    PEOPLE_DIR.mkdir(exist_ok=True)
+    count = 0
     for m in members:
-        av = f"av-{(av_idx % AV_COUNT) + 1}"
-        av_idx += 1
-        if is_pi:
-            lines.append(card_pi(m, av))
-        elif is_alumni:
-            lines.append(card_alumni(m, av))
-        else:
-            lines.append(card_member(m, av))
-    lines.append("    </div>")
-    return "\n".join(lines), av_idx
+        if m.get("role", "").lower() == "alumni":
+            continue
+        slug = member_slug(m["name"])
+        out = PEOPLE_DIR / f"{slug}.html"
+        out.write_text(build_profile_page(m))
+        print(f"  OK  people/{slug}.html  ({m['name']})")
+        count += 1
+    return count
 
+
+# ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    data    = json.loads(MEMBERS_JSON.read_text())
-    members = data.get("members", [])
+    pi = json.loads(MEAGAN_JSON.read_text())
+    data = json.loads(MEMBERS_JSON.read_text())
+    members = data["members"] if isinstance(data, dict) else data
+    alumni_data = json.loads(ALUMNI_JSON.read_text())
+    alumni = alumni_data["alumni"] if isinstance(alumni_data, dict) else alumni_data
 
-    groups = {r.lower(): [] for r in ROLE_ORDER}
-    for m in members:
-        key = m["role"].lower()
-        if key not in groups:
-            key = "admin staff"
-        groups[key].append(m)
+    page = PEOPLE_HTML.read_text()
 
-    sections, av_idx = [], 0
-    for role in ROLE_ORDER:
-        html, av_idx = render_section(role, groups[role.lower()], av_idx)
-        if html:
-            sections.append(html)
+    # Inject PI section
+    pi_block = f"<!-- BEGIN:pi-generated -->\n{build_pi(pi)}\n<!-- END:pi-generated -->"
+    page = PI_RE.sub(pi_block, page)
+    print("  OK    PI section (Meagan)")
 
-    generated = "\n".join(sections)
+    # Inject people grid (cards now link to profile pages)
+    people_html = build_people(members, alumni)
+    people_block = f"<!-- BEGIN:people-generated -->\n{people_html}\n<!-- END:people-generated -->"
+    page = PEOPLE_RE.sub(people_block, page)
+    print(f"  OK    people grid — {len(members)} member(s)")
 
-    original = PEOPLE_HTML.read_text()
-    updated  = re.sub(
-        r"(<!-- BEGIN:people-generated -->).*?(<!-- END:people-generated -->)",
-        f"\\1\n{generated}\n    \\2",
-        original,
-        flags=re.DOTALL,
-    )
-    PEOPLE_HTML.write_text(updated)
-    print(f"Updated {PEOPLE_HTML} with {len(members)} members.")
+    PEOPLE_HTML.write_text(page)
+
+    # Generate profile shell pages
+    n = generate_profile_pages(members)
+    print(f"  OK    {n} new profile page(s) in people/")
 
 
 if __name__ == "__main__":

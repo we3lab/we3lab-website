@@ -24,6 +24,9 @@ jobs:
       - name: Run update_subgroup_members
         run: python scripts/update_subgroup_members.py
 
+      - name: Run build_research_pages
+        run: python scripts/build_research_pages.py
+
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"

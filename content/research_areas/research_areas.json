@@ -1,0 +1,64 @@
+[
+  {
+    "id": "separations",
+    "name": "Separations Process Modeling & Design",
+    "label": "Separations",
+    "file": "research/separations.html",
+    "active": true,
+    "image": "content/research_areas/reverse_osmosis.jpg",
+    "description": "We advance the science and engineering of membrane-based and electrochemical separations for water treatment, contaminant removal, and resource recovery, with an emphasis on energy-efficient processes and circular water economy applications.",
+    "overview": [
+      "The WE3 Lab develops physics-based and data-driven models to design, optimize, and scale separation processes for water treatment and resource recovery. We study the transport phenomena governing membrane performance, build process simulation frameworks spanning unit operations from nanofiltration to electrodialysis, and develop techno-economic optimization tools that guide technology selection and system design across spatial scales.",
+      "Our modeling work is validated against experimental data generated in-house and through collaborative partnerships, bridging the gap between fundamental membrane science and full-scale process engineering. Priority applications include energy-efficient desalination, selective removal of contaminants of emerging concern, and recovery of critical minerals and nutrients from impaired water streams."
+    ]
+  },
+  {
+    "id": "energy flexibility",
+    "name": "Water-Energy Flexibility",
+    "label": "Water-Energy Flexibility",
+    "file": "research/energyflexibility.html",
+    "active": true,
+    "image": "content/research_areas/electric_shutoff.jpg",
+    "description": "We develop optimization and control frameworks that make electricity demand more responsive to grid conditions — enabling deeper integration of renewables, reducing peak loads, and unlocking value from distributed energy resources including EVs, batteries, and flexible building loads.",
+    "overview": [
+      "Water systems — from pumping and treatment to distribution and end use — are among the largest electricity consumers in most municipalities, and energy accounts for up to 40% of operating costs at water utilities. The WE3 Lab exploits this coupling by developing optimization and control frameworks that harness the inherent flexibility of water and wastewater infrastructure to provide grid services, reduce electricity costs, and facilitate renewable integration.",
+      "Our work spans multiple scales: individual flexible assets such as variable-speed pumps and treatment processes, aggregated demand response programs managed by utilities, and grid-level market mechanisms that enable water systems to participate as active grid resources. We draw on stochastic and robust optimization, model predictive control, and reinforcement learning to operate across the water-energy interface under uncertainty."
+    ]
+  },
+  {
+    "id": "infrastructure planning",
+    "name": "Water & Wastewater Systems Planning",
+    "label": "Systems Planning",
+    "file": "research/infrastructureplanning.html",
+    "active": true,
+    "image": "content/research_areas/wwtp.jpg",
+    "description": "We build data-driven and model-based tools for planning, operating, and maintaining water infrastructure — from distribution networks and stormwater systems to regional supply planning under climate uncertainty.",
+    "overview": [
+      "Water and wastewater systems are among the most capital-intensive and long-lived components of urban infrastructure, requiring planning horizons that span decades. The WE3 Lab builds decision-support tools that help utilities and planners navigate uncertainty in climate, population growth, regulatory requirements, and technology evolution — integrating hydraulic simulation, machine learning, and stochastic optimization into practical workflows.",
+      "Our work spans the full infrastructure lifecycle: capital investment planning and asset prioritization, real-time operational optimization, and long-range supply planning under climate uncertainty. We collaborate directly with municipal water and wastewater authorities to deploy and validate tools in real operational settings, ensuring that research outcomes translate into actionable guidance for engineers and decision-makers."
+    ]
+  },
+  {
+    "id": "water energy food policies",
+    "name": "Water-Energy-Food Policies",
+    "label": "WEF Policies",
+    "file": "research/waterenergyfoodpolicies.html",
+    "active": true,
+    "image": "content/research_areas/farm.jpg",
+    "description": "We examine the intersection of water, energy, and food systems to inform policy decisions that promote sustainability, equity, and resilience.",
+    "overview": [
+      "The water-energy-food (WEF) nexus recognizes that these three critical resource systems are deeply interconnected — decisions made in one sector inevitably affect the others. The WE3 Lab develops quantitative models and policy frameworks that illuminate these interdependencies, enabling decision-makers to evaluate tradeoffs, identify co-benefits, and design governance structures that promote sustainability and equity across sectors.",
+      "Our policy research combines optimization, scenario analysis, and stakeholder engagement to bridge the gap between technical modeling and real-world governance. We examine how evolving regulatory frameworks, market structures, and infrastructure investments shape resource allocation across the WEF nexus — with particular attention to environmental justice, climate adaptation, and the distributional consequences of policy choices."
+    ]
+  },
+  {
+    "id": "water technology",
+    "name": "Water Treatment Technology",
+    "label": "Water Technology",
+    "file": "research/watertechnology.html",
+    "active": false,
+    "image": "",
+    "description": "Early-stage research on advanced oxidation, disinfection byproduct formation, and treatment process optimization.",
+    "overview": []
+  }
+]

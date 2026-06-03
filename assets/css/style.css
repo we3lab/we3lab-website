@@ -198,7 +198,7 @@ p:last-child { margin-bottom: 0; }
 /* ─── Hero (Home page specific) ─────────────────────────── */
 .hero {
   background: linear-gradient(rgba(255,255,255,0.62), rgba(255,255,255,0.62)),
-              url('../images/sb_landscape.jpeg') center/cover no-repeat;
+              url('../logos/sb_landscape.jpeg') center/cover no-repeat;
   color: var(--deep-space);
   padding: 7rem 0 5rem;
   position: relative; overflow: hidden;
@@ -223,7 +223,7 @@ p:last-child { margin-bottom: 0; }
 /* ─── Page Banner (all inner pages) ────────────────────── */
 .page-banner {
   position: relative;
-  background: url('../images/sb_landscape.jpeg') center/cover no-repeat;
+  background: url('../logos/sb_landscape.jpeg') center/cover no-repeat;
   padding: 5rem 0 4rem;
   overflow: hidden;
 }
@@ -313,30 +313,7 @@ p:last-child { margin-bottom: 0; }
 }
 .mission-circle:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 .mission-circle h4 { font-size: 1.2rem; }
-/* top */
-.mission-diamond .mission-circle:nth-child(1) {
-  top: 0; left: 150px;
-  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
-              url('../images/reverse_osmosis.jpg') center/cover no-repeat;
-}
-/* mid-left */
-.mission-diamond .mission-circle:nth-child(2) {
-  top: 150px; left: 0;
-  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
-              url('../images/electric_shutoff.jpg') center/cover no-repeat;
-}
-/* mid-right */
-.mission-diamond .mission-circle:nth-child(3) {
-  top: 150px; left: 300px;
-  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
-              url('../images/wwtp.jpg') center/cover no-repeat;
-}
-/* bottom */
-.mission-diamond .mission-circle:nth-child(4) {
-  top: 300px; left: 150px;
-  background: linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7)),
-              url('../images/farm.jpg') center/cover no-repeat;
-}
+/* Positions injected as inline styles by build_home_page.py */
 
 /* ─── Research page ─────────────────────────────────────── */
 .research-grid {

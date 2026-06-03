@@ -1,0 +1,25 @@
+{
+  "alumni": [
+    {
+      "name": "Adhithyan Sakthivelu",
+      "degree_year": "MS 2023",
+      "placement": "PhD student, UT Austin",
+      "scholar_url": "https://scholar.google.com/citations?user=aKTIsW4AAAAJ&hl=en&oi=ao",
+      "linkedin": "https://www.linkedin.com/in/adhithyan-sakthivelu-72b09a62"
+    },
+    {
+      "name": "Dr. Yang Liu",
+      "degree_year": "PhD 2022",
+      "placement": "Associate, McKinsey & Company",
+      "scholar_url": "https://scholar.google.com/citations?user=158-kTQAAAAJ&hl=en&oi=sra",
+      "linkedin": "https://www.linkedin.com/in/enzoyangliu/"
+    },
+    {
+      "name": "Dr. Timothy Bartholomew",
+      "degree_year": "PhD 2020",
+      "placement": "Founder, Horizon Modeling Solutions",
+      "scholar_url": "https://scholar.google.com/citations?user=SXkRQAIAAAAJ&hl=en&oi=ao",
+      "linkedin": "https://www.linkedin.com/in/tim-bartholomew/"
+    }
+  ]
+}
