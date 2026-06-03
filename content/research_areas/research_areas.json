@@ -59,6 +59,7 @@
     "active": false,
     "image": "",
     "description": "Early-stage research on advanced oxidation, disinfection byproduct formation, and treatment process optimization.",
-    "overview": []
+    "archive_note": "This page documents the Water Treatment Technology research area that was active from the lab's founding through 2022 and produced many of our group's most cited publications. Active research has since evolved into our Separations Process Modeling & Design work.",
+    "overview": ["Insert overview here."]
   }
 ]

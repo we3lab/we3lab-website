@@ -382,10 +382,7 @@ def build_profile_page(m: dict) -> str:
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../people.html" class="active">Who We Are</a></li>
-        <li class="dropdown">
-          <a href="../research.html">What We Do</a>
-{NAV_DROPDOWN}
-        </li>
+        <li><a href="../research.html">What We Do</a></li>
         <li><a href="../why-we-do-it.html">Why We Do It</a></li>
         <li><a href="../contact.html">Contact Us</a></li>
       </ul>

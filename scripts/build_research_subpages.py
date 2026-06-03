@@ -1,9 +1,87 @@
+#!/usr/bin/env python3
+"""
+Generates a sub-page for each active research area listed in
+content/research_areas/research_areas.json.
+
+Page structure:
+  - Site header + nav
+  - Page banner  (name as h1, description as subtitle)
+  - Main content:
+      Research Overview  (from area["overview"], between BEGIN/END:overview-generated)
+      Projects           (placeholder)
+      Publications       (placeholder)
+  - Footer
+
+If the page already exists and contains the overview markers, only the
+overview block is updated — other content is left untouched.
+
+Run from the repo root.
+"""
+
+import html
+import json
+import re
+from pathlib import Path
+
+RESEARCH_AREAS_JSON = Path("content/research_areas/research_areas.json")
+
+OVERVIEW_RE = re.compile(
+    r"<!-- BEGIN:overview-generated -->.*?<!-- END:overview-generated -->",
+    re.DOTALL,
+)
+
+NAV_DROPDOWN = """\
+          <ul class="dropdown-content">
+            <li><a href="../research/separations.html">Separations</a></li>
+            <li><a href="../research/energyflexibility.html">Water-Energy Flexibility</a></li>
+            <li><a href="../research/infrastructureplanning.html">Systems Planning</a></li>
+            <li><a href="../research/waterenergyfoodpolicies.html">WEF Policies</a></li>
+            <li class="dropdown-divider"></li>
+            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
+          </ul>"""
+
+
+def h(text: str) -> str:
+    return html.escape(str(text))
+
+
+def build_overview_block(area: dict) -> str:
+    paras = "\n".join(
+        f'    <p style="max-width:760px">{h(p)}</p>'
+        for p in area.get("overview", [])
+    )
+    if not paras:
+        paras = '    <p style="color:var(--gray-500);font-style:italic">Overview coming soon.</p>'
+    return (
+        f"<!-- BEGIN:overview-generated -->\n"
+        f"{paras}\n"
+        f"<!-- END:overview-generated -->"
+    )
+
+
+def build_archive_note(area: dict) -> str:
+    note = area.get("archive_note", "").strip()
+    if not note:
+        return ""
+    return (
+        f'    <div style="background:#fff8e1;border-left:4px solid #f9a825;'
+        f'border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:2rem">\n'
+        f'      <p style="margin:0;font-size:.9rem;color:#5d4037">'
+        f'<strong>Archive note:</strong> {h(note)}</p>\n'
+        f'    </div>\n'
+    )
+
+
+def build_full_page(area: dict) -> str:
+    overview_block  = build_overview_block(area)
+    archive_note_html = build_archive_note(area)
+    return f"""\
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corisa Wong — WE3 Lab</title>
+  <title>{h(area["name"])} — WE3 Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -27,8 +105,8 @@
       </button>
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="../people.html" class="active">Who We Are</a></li>
-        <li><a href="../research.html">What We Do</a></li>
+        <li><a href="../people.html">Who We Are</a></li>
+        <li><a href="../research.html" class="active">What We Do</a></li>
         <li><a href="../why-we-do-it.html">Why We Do It</a></li>
         <li><a href="../contact.html">Contact Us</a></li>
       </ul>
@@ -39,35 +117,30 @@
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <div class="breadcrumb"><a href="../people.html">Who We Are</a> &rsaquo; Corisa Wong</div>
-    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-top:.5rem">
-      <div style="flex:1">
-    <h1 style="margin-bottom:.2rem;margin-top:.5rem">Corisa Wong</h1>
-    <p style="color:rgba(255,255,255,.75);margin:0">PhD Student</p>
-      <p style="color:rgba(255,255,255,.45);font-size:1.05rem;font-style:italic;margin-top:1rem;margin-bottom:0">Bio coming soon.</p>
-      </div>
-    <div style="flex-shrink:0;margin-top:0">
-      <p style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:.6rem">Contact</p>
-      <a href="mailto:corisaw@stanford.edu" style="color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin-bottom:.4rem"><i class="fa-solid fa-envelope"></i> corisaw@stanford.edu</a>
-      <a href="https://www.linkedin.com/in/corisa-wong-12525a19a/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin-bottom:.4rem"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-    </div>
-    </div>
+    <div class="breadcrumb"><a href="../research.html">What We Do</a> &rsaquo; {h(area["name"])}</div>
+    <h1>{h(area["name"])}</h1>
+    <p>{h(area["description"])}</p>
   </div>
 </div>
 
-<!-- ── Profile Content ─────────────────────────────────── -->
+<!-- ── Page Content ────────────────────────────────────── -->
 <section class="section">
   <div class="container">
 
-    <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
+{archive_note_html}    <h2 class="text-deep-space">Research Overview</h2>
+    <div class="divider" style="margin:1rem 0"></div>
+{overview_block}
+
+    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Projects</h2>
     <p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>
 
     <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
     <p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>
 
     <div style="margin-top:3rem">
-      <a href="../people.html" class="btn btn-navy">&larr; Back to Who We Are</a>
+      <a href="../research.html" class="btn btn-navy">&larr; Back to What We Do</a>
     </div>
+
   </div>
 </section>
 
@@ -111,13 +184,37 @@
 <script>
   const btn = document.querySelector('.nav-hamburger');
   const links = document.querySelector('.nav-links');
-  if (btn && links) {
-    btn.addEventListener('click', () => {
+  if (btn && links) {{
+    btn.addEventListener('click', () => {{
       links.classList.toggle('open');
       btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    });
-  }
+    }});
+  }}
 </script>
 
 </body>
 </html>
+"""
+
+
+def main():
+    areas = json.loads(RESEARCH_AREAS_JSON.read_text())
+
+    for area in areas:
+
+        path = Path(area["file"])
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        if path.exists() and "<!-- BEGIN:overview-generated -->" in path.read_text():
+            # Page exists with markers — update only the overview block
+            updated = OVERVIEW_RE.sub(build_overview_block(area), path.read_text())
+            path.write_text(updated)
+            print(f"  UPDATED  {area['file']}  ({area['name']})")
+        else:
+            # Create the full page
+            path.write_text(build_full_page(area))
+            print(f"  CREATED  {area['file']}  ({area['name']})")
+
+
+if __name__ == "__main__":
+    main()
