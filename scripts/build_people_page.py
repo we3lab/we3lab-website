@@ -374,7 +374,7 @@ def build_profile_page(m: dict) -> str:
   <nav class="nav">
     <div class="container">
       <a class="nav-logo" href="../index.html">
-        <img src="../assets/logos/WE3_Lab_Logo_white_short.png" alt="WE3 Lab" height="96">
+        <img src="../assets/logos/WE3_Lab_Logo_white.png" alt="WE3 Lab" height="96">
       </a>
       <button class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false">
         <span></span><span></span><span></span>
