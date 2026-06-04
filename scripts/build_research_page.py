@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """
-Reads JSON content files and injects generated HTML into research.html
-between BEGIN/END marker pairs:
-
-  <!-- BEGIN:research-cards-generated -->   active research area cards
-  <!-- BEGIN:teaching-generated -->         course cards from teaching.json
-  <!-- BEGIN:previous-research-generated --> inactive area cards
+Reads JSON content files and injects generated HTML into:
+  research-areas.html  — research cards + previous research
+  teaching.html        — course cards
 
 Run from the repo root.
 """
@@ -15,13 +12,16 @@ import json
 import re
 from pathlib import Path
 
-RESEARCH_AREAS_JSON = Path("content/research_areas/research_areas.json")
-TEACHING_JSON       = Path("content/teaching/teaching.json")
-RESEARCH_HTML       = Path("research.html")
+RESEARCH_AREAS_JSON  = Path("content/research_areas/research_areas.json")
+TEACHING_JSON        = Path("content/teaching/teaching.json")
+DISSERTATIONS_JSON   = Path("content/dissertations/dissertations.json")
+RESEARCH_AREAS_HTML  = Path("research-areas.html")
+TEACHING_HTML        = Path("teaching.html")
 
 OVERLAY = "linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4))"
 
-CARDS_RE    = re.compile(r"<!-- BEGIN:research-cards-generated -->.*?<!-- END:research-cards-generated -->",       re.DOTALL)
+CARDS_RE         = re.compile(r"<!-- BEGIN:research-cards-generated -->.*?<!-- END:research-cards-generated -->",       re.DOTALL)
+DISSERTATIONS_RE = re.compile(r"<!-- BEGIN:dissertations-generated -->.*?<!-- END:dissertations-generated -->",       re.DOTALL)
 TEACHING_RE = re.compile(r"<!-- BEGIN:teaching-generated -->.*?<!-- END:teaching-generated -->",                   re.DOTALL)
 PREVIOUS_RE = re.compile(r"<!-- BEGIN:previous-research-generated -->.*?<!-- END:previous-research-generated -->", re.DOTALL)
 
@@ -93,43 +93,73 @@ def build_teaching_card(course: dict) -> str:
     )
 
 
+# ── Dissertation cards ────────────────────────────────────────────────────────
+
+def youtube_id(url: str) -> str | None:
+    """Extract YouTube video ID from a youtu.be or youtube.com URL."""
+    m = re.search(r'(?:youtu\.be/|[?&]v=)([A-Za-z0-9_-]{11})', url or "")
+    return m.group(1) if m else None
+
+
+def build_dissertation_card(d: dict) -> str:
+    vid_id = youtube_id(d.get("link", ""))
+    link   = d.get("link", "").strip()
+    title  = h(d.get("title", ""))
+    name   = h(d.get("name", ""))
+    date   = h(d.get("date", ""))
+
+    if vid_id:
+        embed_url  = f"https://www.youtube.com/embed/{vid_id}"
+        copy_js    = (f"navigator.clipboard.writeText('{link}').then(function(){{"
+                      f"var b=this;b.innerHTML='<i class=\\'fa-solid fa-check\\'></i>';"
+                      f"setTimeout(function(){{b.innerHTML='<i class=\\'fa-solid fa-link\\'></i>';}},1500);}}.bind(this))")
+        video_html = (
+            f'<div class="dissertation-video-wrap">\n'
+            f'          <iframe src="{embed_url}" title="{name}" '
+            f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" '
+            f'allowfullscreen loading="lazy"></iframe>\n'
+            f'          <button class="dissertation-copy-btn" onclick="{copy_js}" title="Copy link">'
+            f'<i class="fa-solid fa-link"></i></button>\n'
+            f'        </div>'
+        )
+    else:
+        video_html = ('<div class="dissertation-thumb">'
+                      '<div class="dissertation-thumb-placeholder">🎓</div></div>')
+
+    title_html = f'<p class="dissertation-title">{title}</p>' if title else ""
+
+    return (
+        f'      <div class="dissertation-card">\n'
+        f'        {video_html}\n'
+        f'        <div class="dissertation-body">\n'
+        f'          <p class="dissertation-date">{date}</p>\n'
+        f'          <p class="dissertation-name">{name}</p>\n'
+        f'          {title_html}\n'
+        f'        </div>\n'
+        f'      </div>'
+    )
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
-    areas   = json.loads(RESEARCH_AREAS_JSON.read_text())
-    courses = json.loads(TEACHING_JSON.read_text()) if TEACHING_JSON.exists() else []
-    page    = RESEARCH_HTML.read_text()
+    areas         = json.loads(RESEARCH_AREAS_JSON.read_text())
+    courses       = json.loads(TEACHING_JSON.read_text()) if TEACHING_JSON.exists() else []
+    dissertations = json.loads(DISSERTATIONS_JSON.read_text()) if DISSERTATIONS_JSON.exists() else []
 
     active   = [a for a in areas if a.get("active")]
     inactive = [a for a in areas if not a.get("active")]
 
-    # Active research cards
+    # ── research-areas.html: research cards + previous research ──────────────
+    ra_page = RESEARCH_AREAS_HTML.read_text()
+
     cards_html = "\n".join(build_active_card(a) for a in active)
-    page = CARDS_RE.sub(
+    ra_page = CARDS_RE.sub(
         f"<!-- BEGIN:research-cards-generated -->\n{cards_html}\n<!-- END:research-cards-generated -->",
-        page
+        ra_page
     )
     print(f"  OK    research cards — {len(active)} area(s)")
 
-    # Teaching cards
-    if courses:
-        teaching_cards = "\n".join(build_teaching_card(c) for c in courses)
-        teaching_block = (
-            f'    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));'
-            f'gap:1.5rem;margin-top:1.5rem">\n'
-            f'{teaching_cards}\n'
-            f'    </div>'
-        )
-    else:
-        teaching_block = '    <p style="color:var(--gray-500);font-style:italic">Coming soon.</p>'
-
-    page = TEACHING_RE.sub(
-        f"<!-- BEGIN:teaching-generated -->\n{teaching_block}\n<!-- END:teaching-generated -->",
-        page
-    )
-    print(f"  OK    teaching — {len(courses)} course(s)")
-
-    # Previous research
     if inactive:
         prev_cards = "\n".join(build_previous_card(a) for a in inactive)
         prev_block = (
@@ -144,13 +174,52 @@ def main():
     else:
         prev_block = ""
 
-    page = PREVIOUS_RE.sub(
+    ra_page = PREVIOUS_RE.sub(
         f"<!-- BEGIN:previous-research-generated -->\n{prev_block}\n<!-- END:previous-research-generated -->",
-        page
+        ra_page
     )
     print(f"  OK    previous research — {len(inactive)} area(s)")
 
-    RESEARCH_HTML.write_text(page)
+    # Dissertations strip
+    if dissertations:
+        from datetime import datetime
+
+        def parse_date(d):
+            raw = d.get("date", "")
+            for fmt in ("%B %d, %Y", "%B %Y", "%Y-%m-%d", "%Y"):
+                try:
+                    return datetime.strptime(raw.strip(), fmt)
+                except ValueError:
+                    continue
+            return datetime.min
+
+        sorted_d = sorted(dissertations, key=parse_date, reverse=True)
+        d_cards  = "\n".join(build_dissertation_card(d) for d in sorted_d)
+    else:
+        d_cards = '      <p style="color:var(--gray-500);font-style:italic">Coming soon.</p>'
+    ra_page = DISSERTATIONS_RE.sub(
+        f"<!-- BEGIN:dissertations-generated -->\n{d_cards}\n<!-- END:dissertations-generated -->",
+        ra_page
+    )
+    print(f"  OK    dissertations — {len(dissertations)} entry(ies)")
+
+    RESEARCH_AREAS_HTML.write_text(ra_page)
+
+    # ── teaching.html: course cards ───────────────────────────────────────────
+    t_page = TEACHING_HTML.read_text()
+
+    if courses:
+        teaching_block = "\n".join(build_teaching_card(c) for c in courses)
+    else:
+        teaching_block = '      <p style="color:var(--gray-500);font-style:italic">Coming soon.</p>'
+
+    t_page = TEACHING_RE.sub(
+        f"<!-- BEGIN:teaching-generated -->\n{teaching_block}\n<!-- END:teaching-generated -->",
+        t_page
+    )
+    print(f"  OK    teaching — {len(courses)} course(s)")
+
+    TEACHING_HTML.write_text(t_page)
 
 
 if __name__ == "__main__":

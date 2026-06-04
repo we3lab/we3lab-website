@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Demand response event simulator and risk-aware bidding tool for industrial customers",
+    "authors": "Sakthivelu, A., Chapin, F.T., Bolorinos, J., Mauter, M.S.",
+    "journal": "Applied Energy",
+    "year": 2026,
+    "doi": "https://doi.org/10.1016/j.apenergy.2026.127456",
+    "research_areas": ["energy flexibility"],
+    "team": ["fchapin"]
+  },
+  {
+    "title": "Incorporating corrosion design constraints in desalination process optimization: A case study in mechanical vapor compression",
+    "authors": "Tucker, C.I., Amusat, O.O., Atia, A.A., Dudchenko, A.D., Bartholomew, T.V., Mauter, M.S.",
+    "journal": "Desalination",
+    "year": 2025,
+    "doi": "https://doi.org/10.1016/j.desal.2025.119698",
+    "research_areas": ["separations"],
+    "team": ["carsont", "avd"]
+  },
+  {
+    "title": "Probabilistic estimates of fresh and saline groundwater availability and composition for a 0.5˚ grid of the contiguous United States",
+    "authors": "Adkins, C., Fritz, A.G., Mauter, M.S.",
+    "journal": "In preparation",
+    "year": 2026,
+    "doi": "",
+    "research_areas": ["separations", "infrastructure planning"],
+    "team": ["cadkins"]
+  }
+]

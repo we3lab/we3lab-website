@@ -1,25 +1,91 @@
-# WE3Lab Website — Editing Guide
+# WE3 Lab Website — Editing Guide
 
-All routine content updates are made by editing JSON files and pushing to `main`. GitHub Actions rebuilds the affected HTML automatically (weekly on Sunday nights, or triggered manually).
+All routine content updates are made by editing JSON files in the `content/` folder and running the build scripts. The site is rebuilt automatically by GitHub Actions every Sunday at 6 pm PT, or you can trigger it manually.
+
+---
+
+## Table of Contents
+
+- [Triggering a rebuild manually](#triggering-a-rebuild-manually)
+- [Site structure overview](#site-structure-overview)
+- [Content folder overview](#content-folder-overview)
+- [Adding a new group member](#adding-a-new-group-member)
+- [Moving a group member to alumni](#moving-a-group-member-to-alumni)
+- [Adding a news item](#adding-a-news-item)
+- [Adding a project](#adding-a-project)
+- [Adding a publication](#adding-a-publication)
+- [Modifying a research area](#modifying-a-research-area)
+- [Adding a course](#adding-a-course)
+- [Adding a dissertation](#adding-a-dissertation)
+- [How the automation works](#how-the-automation-works)
 
 ---
 
 ## Triggering a rebuild manually
 
-Go to **Actions → Update Site → Run workflow** in GitHub to rebuild immediately rather than waiting for the Sunday schedule.
+**Option 1 — GitHub Actions:** Go to **Actions → Update Site → Run workflow** in the GitHub repository.
+
+**Option 2 — Local:** Run all build scripts from the repo root:
+
+```bash
+python3 scripts/build_home_page.py
+python3 scripts/build_research_page.py
+python3 scripts/build_research_subpages.py
+python3 scripts/build_people_page.py
+```
 
 ---
 
-## Adding or updating a lab member
+## Site structure overview
 
-Edit [`members/members.json`](members/members.json) and add or update an entry in the `members` array:
+| Page | URL | Description |
+|---|---|---|
+| Home | `index.html` | Landing page with news strip and mission circles |
+| Who We Are | `people.html` | Lab members grid; links to individual profile pages |
+| Member profiles | `people/{Name}.html` | Auto-generated profile pages |
+| What We Do | `work.html` | Landing page with Research and Teaching boxes |
+| Research | `research-areas.html` | Research area cards, Previous Research, Dissertations strip |
+| Research sub-pages | `research/{area}.html` | Per-area page with overview, projects, publications |
+| Teaching | `teaching.html` | Course cards |
+| Why We Do It | `stories.html` | Mission/stories page |
+| Contact | `contact.html` | Contact form and info |
+
+---
+
+## Content folder overview
+
+All content you manually edit lives in `content/`:
+
+| File | Controls |
+|---|---|
+| `content/members/members.json` | Active lab members (all roles except alumni) |
+| `content/members/meagan.json` | PI profile — bio, education, title, links |
+| `content/members/alumni.json` | Alumni |
+| `content/members/images/` | Member headshots |
+| `content/news/news.json` | Front-page news strip |
+| `content/projects/projects.json` | Lab projects |
+| `content/publications/publications.json` | Lab publications |
+| `content/research_areas/research_areas.json` | Research areas (name, description, overview, image) |
+| `content/research_areas/` (images) | Research area banner images |
+| `content/teaching/teaching.json` | Courses taught by lab members |
+| `content/dissertations/dissertations.json` | PhD dissertation defenses |
+
+---
+
+## Adding a new group member
+
+1. Add a headshot to `content/members/images/` named `{FirstLast}.png` (PascalCase, no spaces, no "Dr." — e.g. `JaneSmith.png`). Crop to a square; 400×400 px is ideal.
+
+2. Add an entry to `content/members/members.json`:
 
 ```json
 {
   "name": "Jane Smith",
+  "netID": "jsmith",
+  "email": "jsmith@stanford.edu",
   "role": "phd student",
-  "groups": ["energy flexibility", "infrastructure planning"],
-  "scholar_id": "XXXXXXXXX",
+  "bio": "One or two sentences about Jane's research focus.",
+  "research_areas": ["separations", "infrastructure planning"],
   "scholar_url": "https://scholar.google.com/citations?user=XXXXXXXXX",
   "linkedin": "https://www.linkedin.com/in/janesmith/",
   "website": "",
@@ -27,113 +93,195 @@ Edit [`members/members.json`](members/members.json) and add or update an entry i
 }
 ```
 
-**Valid roles:** `postdoc`, `phd student`, `ms student`, `undergrad`, `staff`, `alumni`
+**Valid roles:** `postdoc` · `phd student` · `ms student` · `undergrad` · `staff`
 
-**Valid groups** (must match exactly): `energy flexibility`, `infrastructure planning`, `separations`, `water technology`
+**Valid `research_areas` IDs** (must match `id` fields in `research_areas.json`):
+`separations` · `energy flexibility` · `infrastructure planning` · `water energy food policies`
 
-For **alumni**, add:
-```json
-"degree_year": "PhD 2024",
-"placement": "Google DeepMind"
-```
-
-Push to `main`. The next GitHub Actions run regenerates `people.html` and all research subgroup pages.
+3. Run `build_people_page.py`. This regenerates `people.html` and creates a profile page at `people/JaneSmith.html`.
 
 ---
 
-## Adding a member photo
+## Moving a group member to alumni
 
-Photos are displayed automatically if a file named `{first}{last}.png` (lowercase, no spaces) exists in [`members/images/`](members/images/).
-
-1. Crop the photo to a square (any resolution; 400×400px is fine).
-2. Save it as e.g. `janesmith.png`.
-3. Commit and push to `members/images/janesmith.png`.
-
-No rebuild is needed — the build script picks up the image the next time it runs.
-
----
-
-## Adding a past dissertation
-
-Dissertation defense recordings live in [`research/dissertations.json`](research/dissertations.json). The page loads this file at runtime — no build step needed.
-
-### Step 1 — upload the defense recording to YouTube
-
-1. Go to [YouTube Studio](https://studio.youtube.com) and sign in with the lab account.
-2. Click **Create → Upload videos** and select the recording file.
-3. Fill in the title (e.g. *"Jane Smith — PhD Defense 2025"*) and description.
-4. Under **Visibility**, choose **Unlisted**. This keeps the video off public search while still allowing it to be embedded on the site.
-5. Finish uploading and wait for processing to complete.
-6. Copy the video URL from the address bar — it will look like `https://youtu.be/XXXXXXXXXXX`.
-
-### Step 2 — add the entry to `dissertations.json`
-
-Open [`research/dissertations.json`](research/dissertations.json) and add a new key–value pair using the graduate's full name as the key:
+1. Remove the person's entry from `content/members/members.json`.
+2. Add an entry to `content/members/alumni.json`:
 
 ```json
 {
-  "Jane Smith": {
-    "title": "Full Dissertation Title Here",
-    "year": 2025,
-    "tags": ["energy flexibility", "infrastructure planning"],
-    "link": "https://youtu.be/XXXXXXXXXXX"
-  },
-  "Akshay K. Rao": {
-    ...
-  }
+  "name": "Jane Smith",
+  "degree_year": "PhD 2025",
+  "placement": "Assistant Professor, MIT",
+  "scholar_url": "https://scholar.google.com/citations?user=XXXXXXXXX",
+  "linkedin": "https://www.linkedin.com/in/janesmith/"
 }
 ```
 
-**Valid tags** (must match exactly, lowercase): `energy flexibility`, `infrastructure planning`, `separations`, `water technology`
-
-Each tag renders as a pill on the page that links directly to the corresponding research subgroup page. Use only tags that describe the dissertation's primary research areas.
-
-Push to `main`. Because `dissertations.json` is fetched client-side, no rebuild is required — the new entry appears immediately.
+3. Run `build_people_page.py`. The person will move from the active members grid to the Alumni section, and their profile page will no longer be generated.
 
 ---
 
-## Adding a news item to the front page
+## Adding a news item
 
-Edit [`assets/news.json`](assets/news.json) and prepend a new entry:
+Edit `content/news/news.json` and prepend a new entry (most recent first):
 
 ```json
 {
-  "date": "May 2026",
+  "date": "June 2026",
   "headline": "Paper accepted at Nature Water",
-  "link": "https://example.com/paper"
+  "organization": "Nature Portfolio",
+  "link": "https://doi.org/10.XXXX/XXXXX"
 }
 ```
 
-Push to `main`. The front page loads `news.json` at runtime (no build step required), so the item appears immediately after the push.
+Run `build_home_page.py` to update the front page news strip.
 
 ---
 
-## Adding a new research subgroup
+## Adding a project
 
-This requires two small edits:
+1. (Optional) Add a project image to `content/projects/images/`.
 
-1. **Create the subgroup page** by copying an existing one (e.g. `research/separations.html`) and editing the title and description.
+2. Add an entry to `content/projects/projects.json`:
 
-2. **Register the group in [`subgroups.json`](research/subgroups.json):**
-   ```json
-   { "key": "new group name", "label": "New Group Name", "file": "research/newgroup.html" }
-   ```
-   The build scripts read this file automatically — no Python edits needed. If the HTML file listed in `research/subgroups.json` does not exist, the scripts will exit with a 404 error identifying the missing page.
+```json
+{
+  "id": "unique-project-id",
+  "title": "Project Title",
+  "team": ["netid1", "netid2"],
+  "description": "Long-form description of the project.",
+  "research_areas": ["separations", "infrastructure planning"],
+  "image": "content/projects/images/myproject.jpg",
+  "funding": ["NSF CBET Award #XXXXXXX"],
+  "links": [
+    { "label": "Web Application", "url": "https://example.com" },
+    { "label": "GitHub", "url": "https://github.com/we3lab/repo" }
+  ]
+}
+```
 
-3. **Add members to the group** using the `groups` field in `members/members.json` (see above).
+- `team`: list of `netID` values from `members.json` — headshots and profile links are resolved automatically.
+- `research_areas`: list of area `id` values from `research_areas.json` — determines which research sub-pages show this project.
+- `funding`: list of funding source strings displayed as a bulleted "Supported By" list.
 
-Push to `main` and trigger a manual workflow run.
+3. Run `build_research_subpages.py` and `build_people_page.py`.
+
+---
+
+## Adding a publication
+
+Add an entry to `content/publications/publications.json`:
+
+```json
+{
+  "title": "Full Publication Title",
+  "authors": "Smith, J., Adkins, C., & Mauter, M. S.",
+  "journal": "Environmental Science & Technology",
+  "year": 2025,
+  "doi": "10.1021/acs.est.5c00001",
+  "research_areas": ["separations"],
+  "team": ["cadkins"]
+}
+```
+
+- `doi`: DOI without the `https://doi.org/` prefix. Used to build the clickable link on the card.
+- `research_areas`: list of area `id` values — determines which research sub-pages list this publication.
+- `team`: list of `netID` values — determines which member profile pages list this publication.
+
+Run `build_research_subpages.py` and `build_people_page.py`.
+
+---
+
+## Modifying a research area
+
+Edit `content/research_areas/research_areas.json`. Each entry has:
+
+```json
+{
+  "id": "separations",
+  "name": "Separations Process Modeling & Design",
+  "label": "Separations",
+  "file": "research/separations.html",
+  "active": true,
+  "image": "content/research_areas/reverse_osmosis.jpg",
+  "description": "Short description shown on cards.",
+  "overview": [
+    "First paragraph of the Research Overview section.",
+    "Second paragraph."
+  ],
+  "archive_note": ""
+}
+```
+
+- `active: true` — area appears in the main Research grid and the home page diamond.
+- `active: false` — area appears in the "Previous Research" section with an archive note box.
+- `archive_note` — message shown in the amber warning box on inactive area pages.
+- `label` — short name used in the "What We Do" nav dropdown.
+
+To add a **new** research area:
+1. Add an entry to `research_areas.json` with a unique `id` and a `file` path (e.g. `research/newarea.html`).
+2. Place a banner image in `content/research_areas/`.
+3. Run `build_research_page.py` (updates the Research page) and `build_research_subpages.py` (creates the sub-page).
+4. Add "What We Do" nav dropdown entries to all HTML files and build script templates — search for `research-areas.html` to find all locations.
+
+Run all build scripts after any change to `research_areas.json`.
+
+---
+
+## Adding a course
+
+Add an entry to `content/teaching/teaching.json`:
+
+```json
+{
+  "course_code": "CEE 273X",
+  "name": "Course Title",
+  "quarters": ["Autumn 2026"],
+  "description": "Brief course description.",
+  "link": "https://explorecourses.stanford.edu/..."
+}
+```
+
+- `quarters`: array of strings — each renders as a pill tag on the card.
+- `link`: optional URL to the course listing or syllabus.
+
+Run `build_research_page.py` to update the Teaching page.
+
+---
+
+## Adding a dissertation
+
+Add an entry to `content/dissertations/dissertations.json`:
+
+```json
+{
+  "title": "Full Dissertation Title",
+  "name": "Graduate Student Full Name",
+  "date": "May 26, 2026",
+  "link": "https://youtu.be/XXXXXXXXXXX"
+}
+```
+
+- `title`: full dissertation title. Can be left empty (`""`) if not yet available.
+- `name`: graduate's full name as it should appear on the card.
+- `date`: defense date in any readable format — `"May 26, 2026"`, `"June 2026"`, etc. Entries are sorted most-recent-first automatically.
+- `link`: YouTube URL of the defense recording (upload as **Unlisted**). The video will be embedded directly on the page with a copy-link button. Leave empty (`""`) if no recording is available.
+
+Run `build_research_page.py` to update the Dissertations strip on the Research page.
 
 ---
 
 ## How the automation works
 
-| File edited | What rebuilds | How |
+| Content file | Pages rebuilt | Script |
 |---|---|---|
-| `members/members.json` | `people.html`, all `research/*.html` member lists | GitHub Actions runs `build_people_page.py` + `update_subgroup_members.py` |
-| `members/images/*.png` | Nothing — images are served directly | Static file, no build needed |
-| `assets/news.json` | Nothing — loaded client-side at runtime | Push and it's live |
-| `research/dissertations.json` | Nothing — loaded client-side at runtime | Push and it's live |
-| `research/*.html` (content) | Nothing | Edit directly |
-
-The workflow runs **every Sunday at 6 pm PT** and can be triggered manually from the Actions tab.
+| `content/news/news.json` | `index.html` | `build_home_page.py` |
+| `content/research_areas/research_areas.json` | `index.html`, `research-areas.html`, `teaching.html` | `build_home_page.py`, `build_research_page.py` |
+| `content/teaching/teaching.json` | `teaching.html` | `build_research_page.py` |
+| `content/dissertations/dissertations.json` | `research-areas.html` | `build_research_page.py` |
+| `content/research_areas/research_areas.json` | `research/*.html` sub-pages | `build_research_subpages.py` |
+| `content/projects/projects.json` | `research/*.html`, `people/*.html` | `build_research_subpages.py`, `build_people_page.py` |
+| `content/publications/publications.json` | `research/*.html`, `people/*.html` | `build_research_subpages.py`, `build_people_page.py` |
+| `content/members/members.json` | `people.html`, `people/*.html` | `build_people_page.py` |
+| `content/members/alumni.json` | `people.html` | `build_people_page.py` |
+| `content/members/meagan.json` | `people.html` | `build_people_page.py` |

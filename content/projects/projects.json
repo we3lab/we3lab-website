@@ -1,0 +1,27 @@
+[
+  {
+    "id": "saws",
+    "title": "Screening Alternative Water Sources to Secure American Water Supplies (SAWS)",
+    "team": ["cadkins","meerasr","mhodge27"],
+    "description": "Increasing water stress is forcing state and local water resource managers to evaluate non-traditional water supplies. Complicating this process is the fact that local political, economic, social, technical, legal, and environmental (PESTLE) contexts for tapping alternative source waters vary widely by geographic location. The screening of alternative water sources to secure American water supplies (SAWS) tool aims to provide a centralized data repository, analysis, and mapping tool for factors influencing adoption of non-traditional water supplies at the county scale. SAWS integrates these previously disparate PESTLE datasets into a centralized, uniform viability assessment framework to enable comparisons across different water supplies and geographic regions. SAWS supports a regional supply portfolio optimization, comparative supply viability assessments, and goal prioritization for technological development, among other analyses. Finally, the ability to import new datasets, combined with native flexibility in how viability metrics are calculated and weighted, allows users to perform sensitivity analysis and assess the value of additional data collection. SAWS was designed to provide policy makers, water resource managers, consulting engineers, and other stakeholders with a common platform for gathering, interpreting, and visualizing pathways to enhanced water security, resilience, and affordability.",
+    "research_areas": ["infrastructure planning", "water energy food policies"],
+    "image": "/content/projects/images/saws_logo_no_bkgrnd.png",
+    "funding": ["National Science Foundation", "ExxonMobil"],
+    "links": [
+      { "label": "Web Application", "url": "https://saws.lexunit.ai/" },
+      { "label": "GitHub Repository", "url": "https://github.com/we3lab/saws" }
+    ]
+  },
+  {
+    "id": "nawi326",
+    "title": "Technoeconomic Assessment of Brine Valorization from Brackish Water Desalination",
+    "team": ["cadkins","carsont"],
+    "description": "Desalination at inland brackish groundwater treatment plants is currently limited by high costs of concentrate management and disposal. With current methods, 5-25% of the feed is disposed of as concentrate, with 98% of disposal using conventional methods (i.e. no byproduct recovery). The levelized cost of water (LCOW) for current plants in operation ranges from $0.42-1.5/m3. This project aims to assess the technical and economic feasibility of industrial ecosystems to desalinate brackish groundwater and supply existing and potential markets for clean concentrate or other bulk constituents from the brine. Specific project goals include: 1) Developing location specific byproduct revenue models using market assessments, and 2) Creating treatment train schemas in WaterTAP for treatment and valorization of brackish groundwater and establish pipe parity cost and performance targets for brackish groundwater treatment.",
+    "research_areas": ["infrastructure planning", "separations"],
+    "image": "",
+    "funding": ["National Alliance for Water Innovation", "U.S. Department of Energy"],
+    "links": [
+      { "label": "Research Brief", "url": "https://www.nawihub.org/wp-content/uploads/sites/16/2024/03/3.26-Alison-Fritz-Technoeconomic-Assessment-of-Brine-Valorization-from-Brackish-Water-Desalination.pdf" }
+    ]
+  }
+]

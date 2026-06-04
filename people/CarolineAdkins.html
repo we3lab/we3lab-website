@@ -28,8 +28,14 @@
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../people.html" class="active">Who We Are</a></li>
-        <li><a href="../research.html">What We Do</a></li>
-        <li><a href="../why-we-do-it.html">Why We Do It</a></li>
+        <li class="dropdown">
+          <a href="../work.html">What We Do</a>
+          <ul class="dropdown-content">
+            <li><a href="../research-areas.html">Research</a></li>
+            <li><a href="../teaching.html">Teaching</a></li>
+          </ul>
+        </li>
+        <li><a href="../stories.html">Why We Do It</a></li>
         <li><a href="../contact.html">Contact Us</a></li>
       </ul>
     </div>
@@ -67,10 +73,56 @@
   <div class="container">
 
     <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
-    <p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>
+<details class="project-expand">
+  <summary>
+    <img src="../content/projects/images/saws_logo_no_bkgrnd.png" style="width:64px;height:48px;object-fit:cover;border-radius:4px;flex-shrink:0" alt="">
+    <span class="project-expand-title">Screening Alternative Water Sources to Secure American Water Supplies (SAWS)</span>
+  </summary>
+  <div class="project-expand-body">
+    <p class="project-section-label">Team Members</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">
+      <a href="CarolineAdkins.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit"><div class="person-avatar" style="width:44px;height:44px;border-radius:50%;font-size:.8rem;flex-shrink:0"><img src="../content/members/images/CarolineAdkins.jpg" alt="Caroline Adkins"></div><span style="font-weight:600;font-size:.875rem">Caroline Adkins</span></a>
+      <a href="MeerashreeSundaraRaju.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit"><div class="person-avatar av-1" style="width:44px;height:44px;border-radius:50%;font-size:.8rem;flex-shrink:0">MR</div><span style="font-weight:600;font-size:.875rem">Meerashree Sundara Raju</span></a>
+      <a href="MadelineHodge.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit"><div class="person-avatar av-1" style="width:44px;height:44px;border-radius:50%;font-size:.8rem;flex-shrink:0">MH</div><span style="font-weight:600;font-size:.875rem">Madeline Hodge</span></a>
+    </div>
+    <p class="project-section-label">Overview</p>
+    <p style="font-size:.9rem;margin-bottom:.75rem">Increasing water stress is forcing state and local water resource managers to evaluate non-traditional water supplies. Complicating this process is the fact that local political, economic, social, technical, legal, and environmental (PESTLE) contexts for tapping alternative source waters vary widely by geographic location. The screening of alternative water sources to secure American water supplies (SAWS) tool aims to provide a centralized data repository, analysis, and mapping tool for factors influencing adoption of non-traditional water supplies at the county scale. SAWS integrates these previously disparate PESTLE datasets into a centralized, uniform viability assessment framework to enable comparisons across different water supplies and geographic regions. SAWS supports a regional supply portfolio optimization, comparative supply viability assessments, and goal prioritization for technological development, among other analyses. Finally, the ability to import new datasets, combined with native flexibility in how viability metrics are calculated and weighted, allows users to perform sensitivity analysis and assess the value of additional data collection. SAWS was designed to provide policy makers, water resource managers, consulting engineers, and other stakeholders with a common platform for gathering, interpreting, and visualizing pathways to enhanced water security, resilience, and affordability.</p>
+    <p class="project-section-label">Links</p>
+    <div class="project-expand-links"><a href="https://saws.lexunit.ai/" target="_blank" rel="noopener">Web Application</a><a href="https://github.com/we3lab/saws" target="_blank" rel="noopener">GitHub Repository</a></div>
+    <p class="project-section-label" style="margin-top:.75rem">Supported By</p>
+    <ul style="margin:.25rem 0 0 1.1rem;font-size:.875rem;line-height:1.7"><li>National Science Foundation</li><li>ExxonMobil</li></ul>
+  </div>
+</details>
+<details class="project-expand">
+  <summary>
+    
+    <span class="project-expand-title">Technoeconomic Assessment of Brine Valorization from Brackish Water Desalination</span>
+  </summary>
+  <div class="project-expand-body">
+    <p class="project-section-label">Team Members</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">
+      <a href="CarolineAdkins.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit"><div class="person-avatar" style="width:44px;height:44px;border-radius:50%;font-size:.8rem;flex-shrink:0"><img src="../content/members/images/CarolineAdkins.jpg" alt="Caroline Adkins"></div><span style="font-weight:600;font-size:.875rem">Caroline Adkins</span></a>
+      <a href="CarsonTucker.html" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit"><div class="person-avatar" style="width:44px;height:44px;border-radius:50%;font-size:.8rem;flex-shrink:0"><img src="../content/members/images/CarsonTucker.png" alt="Carson Tucker"></div><span style="font-weight:600;font-size:.875rem">Carson Tucker</span></a>
+    </div>
+    <p class="project-section-label">Overview</p>
+    <p style="font-size:.9rem;margin-bottom:.75rem">Desalination at inland brackish groundwater treatment plants is currently limited by high costs of concentrate management and disposal. With current methods, 5-25% of the feed is disposed of as concentrate, with 98% of disposal using conventional methods (i.e. no byproduct recovery). The levelized cost of water (LCOW) for current plants in operation ranges from $0.42-1.5/m3. This project aims to assess the technical and economic feasibility of industrial ecosystems to desalinate brackish groundwater and supply existing and potential markets for clean concentrate or other bulk constituents from the brine. Specific project goals include: 1) Developing location specific byproduct revenue models using market assessments, and 2) Creating treatment train schemas in WaterTAP for treatment and valorization of brackish groundwater and establish pipe parity cost and performance targets for brackish groundwater treatment.</p>
+    <p class="project-section-label">Links</p>
+    <div class="project-expand-links"><a href="https://www.nawihub.org/wp-content/uploads/sites/16/2024/03/3.26-Alison-Fritz-Technoeconomic-Assessment-of-Brine-Valorization-from-Brackish-Water-Desalination.pdf" target="_blank" rel="noopener">Research Brief</a></div>
+    <p class="project-section-label" style="margin-top:.75rem">Supported By</p>
+    <ul style="margin:.25rem 0 0 1.1rem;font-size:.875rem;line-height:1.7"><li>National Alliance for Water Innovation</li><li>U.S. Department of Energy</li></ul>
+  </div>
+</details>
 
     <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
-    <p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>
+<ul class="publication-list">
+<li>
+  <a href="#" target="_blank" rel="noopener" style="display:block;color:inherit;text-decoration:none">
+    <strong>Probabilistic estimates of fresh and saline groundwater availability and composition for a 0.5˚ grid of the contiguous United States</strong>
+    Adkins, C., Fritz, A.G., Mauter, M.S.. <em>In preparation</em>, 2026.
+    
+  </a>
+</li>
+</ul>
 
     <div style="margin-top:3rem">
       <a href="../people.html" class="btn btn-navy">&larr; Back to Who We Are</a>

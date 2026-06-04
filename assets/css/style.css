@@ -114,7 +114,7 @@ p:last-child { margin-bottom: 0; }
 .nav-links .dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% + 8px);
+  top: 100%;
   left: 0;
   min-width: 200px;
   background-color: var(--deep-space);
@@ -122,7 +122,7 @@ p:last-child { margin-bottom: 0; }
   box-shadow: 0 6px 20px rgba(0,0,0,.25);
   z-index: 1200;
   list-style: none;
-  padding: 0.5rem 0;
+  padding: 8px 0 0.5rem;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.1);
 }
@@ -604,3 +604,161 @@ p:last-child { margin-bottom: 0; }
 .av-6  { background: #922b21; }
 .av-7  { background: #1f618d; }
 .av-8  { background: #27804b; }
+
+/* ─── Expandable Project Cards ──────────────────────── */
+details.project-expand {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  background: var(--bright-snow);
+  margin-bottom: .75rem;
+  overflow: hidden;
+}
+details.project-expand > summary {
+  padding: .85rem 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+  user-select: none;
+  transition: background .15s;
+}
+details.project-expand > summary:hover { background: rgba(0,0,0,.03); }
+details.project-expand > summary::-webkit-details-marker { display: none; }
+details.project-expand > summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--cerulean);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+details.project-expand[open] > summary::after { transform: rotate(45deg); }
+.project-expand-title { font-weight: 600; font-size: .95rem; color: var(--deep-space); }
+.project-expand-body {
+  padding: .75rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--gray-200);
+}
+.project-expand-body > p { font-size: .9rem; margin-bottom: .75rem; }
+.project-section-label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gray-500);
+  margin: 0 0 .4rem;
+}
+.project-expand-members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .75rem;
+}
+.project-member-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .2rem .7rem .2rem .2rem;
+  border: 1px solid var(--gray-200);
+  border-radius: 100px;
+  background: var(--white);
+  text-decoration: none;
+  font-size: .8rem;
+  color: var(--deep-space);
+  transition: border-color .2s;
+}
+.project-member-chip:hover { border-color: var(--cerulean); color: var(--cerulean); }
+.project-member-chip .person-avatar { width: 26px; height: 26px; font-size: .58rem; }
+.project-expand-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-top: .75rem;
+}
+.project-expand-links a {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--cerulean);
+  text-decoration: none;
+  padding: .2rem .65rem;
+  border: 1px solid rgba(29,114,155,.3);
+  border-radius: 100px;
+  transition: background .15s, border-color .15s;
+}
+.project-expand-links a:hover {
+  background: rgba(29,114,155,.08);
+  border-color: var(--cerulean);
+}
+
+/* ─── Dissertation Cards ─────────────────────────────── */
+.dissertation-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden;
+  min-width: 360px;
+  max-width: 360px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+.dissertation-video-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--deep-space);
+}
+.dissertation-video-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.dissertation-copy-btn {
+  position: absolute;
+  bottom: .5rem;
+  left: .5rem;
+  background: rgba(0,0,0,.55);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  padding: .3rem .5rem;
+  cursor: pointer;
+  font-size: .85rem;
+  line-height: 1;
+  transition: background .15s;
+}
+.dissertation-copy-btn:hover { background: rgba(0,0,0,.8); }
+.dissertation-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--deep-space);
+  display: block;
+  overflow: hidden;
+}
+.dissertation-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.dissertation-thumb-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.3); font-size: 2rem;
+}
+.dissertation-body {
+  padding: 1rem 1.25rem 1.25rem;
+  display: flex; flex-direction: column; gap: .3rem; flex: 1;
+}
+.dissertation-date {
+  font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--cerulean); margin: 0;
+}
+.dissertation-name {
+  font-size: 1rem; font-weight: 700; color: var(--deep-space); margin: 0;
+}
+.dissertation-title {
+  font-size: .875rem; color: var(--gray-700); font-style: italic; margin: 0;
+}

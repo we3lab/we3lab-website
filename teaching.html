@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>What We Do — WE3 Lab</title>
+  <title>Teaching — WE3 Lab — WE3 Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -28,8 +28,14 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="people.html">Who We Are</a></li>
-        <li><a href="research.html" class="active">What We Do</a></li>
-        <li><a href="why-we-do-it.html">Why We Do It</a></li>
+        <li class="dropdown">
+          <a href="work.html" class="active">What We Do</a>
+          <ul class="dropdown-content">
+            <li><a href="research-areas.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+          </ul>
+        </li>
+        <li><a href="stories.html">Why We Do It</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </div>
@@ -39,64 +45,17 @@
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <h1>What We Do</h1>
+    <div class="breadcrumb"><a href="work.html">What We Do</a> &rsaquo; Teaching</div>
+    <h1>Teaching</h1>
     <p>INSERT PAGE DESCRIPTION HERE</p>
   </div>
 </div>
 
-<!-- ── Research Area Cards ─────────────────────────────── -->
+<!-- ── Courses ─────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-
-    <h2 class="people-section-title">Research</h2>
-    <div class="research-grid" style="grid-template-columns:1fr 1fr">
-<!-- BEGIN:research-cards-generated -->
-      <a class="research-card" href="research/separations.html">
-        <div class="research-card-inner">
-          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/reverse_osmosis.jpg') center/cover no-repeat"></div>
-          <div class="research-card-body">
-            <h3>Separations Process Modeling &amp; Design</h3>
-            <p>We advance the science and engineering of membrane-based and electrochemical separations for water treatment, contaminant removal, and resource recovery, with an emphasis on energy-efficient processes and circular water economy applications.</p>
-            <span class="research-card-link">Learn more &rarr;</span>
-          </div>
-        </div>
-      </a>
-      <a class="research-card" href="research/energyflexibility.html">
-        <div class="research-card-inner">
-          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/electric_shutoff.jpg') center/cover no-repeat"></div>
-          <div class="research-card-body">
-            <h3>Water-Energy Flexibility</h3>
-            <p>We develop optimization and control frameworks that make electricity demand more responsive to grid conditions — enabling deeper integration of renewables, reducing peak loads, and unlocking value from distributed energy resources including EVs, batteries, and flexible building loads.</p>
-            <span class="research-card-link">Learn more &rarr;</span>
-          </div>
-        </div>
-      </a>
-      <a class="research-card" href="research/infrastructureplanning.html">
-        <div class="research-card-inner">
-          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/wwtp.jpg') center/cover no-repeat"></div>
-          <div class="research-card-body">
-            <h3>Water &amp; Wastewater Systems Planning</h3>
-            <p>We build data-driven and model-based tools for planning, operating, and maintaining water infrastructure — from distribution networks and stormwater systems to regional supply planning under climate uncertainty.</p>
-            <span class="research-card-link">Learn more &rarr;</span>
-          </div>
-        </div>
-      </a>
-      <a class="research-card" href="research/waterenergyfoodpolicies.html">
-        <div class="research-card-inner">
-          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/farm.jpg') center/cover no-repeat"></div>
-          <div class="research-card-body">
-            <h3>Water-Energy-Food Policies</h3>
-            <p>We examine the intersection of water, energy, and food systems to inform policy decisions that promote sustainability, equity, and resilience.</p>
-            <span class="research-card-link">Learn more &rarr;</span>
-          </div>
-        </div>
-      </a>
-<!-- END:research-cards-generated -->
-    </div>
-
-    <h2 class="people-section-title" style="margin-top:4rem">Teaching</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem">
 <!-- BEGIN:teaching-generated -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-top:1.5rem">
       <div class="card card-body">
         <p style="font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cerulean);margin-bottom:.25rem">CEE 273W</p>
         <h4 class="text-deep-space">Water Innovation &amp; Investment</h4>
@@ -111,38 +70,14 @@
         <p style="font-size:.875rem">As climate induced variability, aging infrastructure, and regulatory pressure stress traditional water networks, utilities and water end users are forced to get creative about how they procure, treat, and deliver water. These stressors are creating new investment opportunities, as well as opportunities for researchers and entrepreneurs to introduce new solutions. This course will explore the emerging water landscape from a business and innovation perspective. Students will learn about how water systems are currently financed and operated, how technology innovation is changing the status-quo, and which specific technology spaces are most likely to deliver value.</p>
           <a href="https://navigator.stanford.edu/classes/1264/30837" target="_blank" rel="noopener" style="font-size:.875rem;font-weight:600;color:var(--cerulean);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;margin-top:.75rem">View course &rarr;</a>
       </div>
-    </div>
+      <div class="card card-body">
+        <p style="font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cerulean);margin-bottom:.25rem">CEE 273M</p>
+        <h4 class="text-deep-space">Desalination for a Circular Water Economy</h4>
+        <div class="tags" style="margin:.4rem 0 .6rem"><span class="tag">Winter 2024</span></div>
+        <p style="font-size:.875rem">This course explores the technological innovations required to support a circular water economy in which nontraditional water is treated to fit-for-purpose standards and reused locally. The first part of this course reviews the key constituents present in nontraditional source waters and the state-of-the-art pretreatment, desalination, and concentrate disposal technologies for their removal. Attention is given to the thermodynamic and operational barriers to improving the efficiency and cost-effectiveness of current technologies. The second part of this course identifies opportunities for next generation autonomous, precise, resilient, process-intensified, modular, and electrically powered desalination alternatives to lower the cost and energy intensity of water reuse. Over the duration of the course, students will form teams to perform an in-depth review of a single nontraditional source water treatment train, research the state-of-technology relative to that required for reuse, and perform a quantitative estimate of life cycle capex and opex costs.</p>
+          <a href="https://navigator.stanford.edu/classes/1256/6384" target="_blank" rel="noopener" style="font-size:.875rem;font-weight:600;color:var(--cerulean);text-decoration:none;display:inline-flex;align-items:center;gap:.3rem;margin-top:.75rem">View course &rarr;</a>
+      </div>
 <!-- END:teaching-generated -->
-
-<!-- BEGIN:previous-research-generated -->
-    <div style="margin-top:4rem">
-      <h2 class="people-section-title">Previous Research</h2>
-      <p style="color:var(--gray-500);max-width:640px;margin-bottom:2rem">This thrust was the foundation of the lab's early work and produced many of our most-cited publications. The group has since evolved into our current research directions.</p>
-      <a class="research-card" href="research/watertechnology.html" style="max-width:380px;display:block">
-        <div class="research-card-inner" style="opacity:.8">
-          <div class="research-card-body">
-            <h3>Water Treatment Technology</h3>
-            <p>Early-stage research on advanced oxidation, disinfection byproduct formation, and treatment process optimization.</p>
-            <span class="research-card-link" style="color:var(--gray-500)">View archive &rarr;</span>
-          </div>
-        </div>
-      </a>
-    </div>
-<!-- END:previous-research-generated -->
-
-  </div>
-</section>
-
-<!-- ── Funding & Collaborators ────────────────────────── -->
-<section class="section-sm" style="background:var(--bright-snow);border-top:1px solid var(--gray-200)">
-  <div class="container">
-    <div class="section-title">
-      <h2>Funding &amp; Collaborators</h2>
-      <div class="divider"></div>
-      <p>Our research is made possible through generous support from federal agencies and collaborative partnerships.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
-      <!-- funding cards will go here -->
     </div>
   </div>
 </section>
@@ -194,6 +129,5 @@
     });
   }
 </script>
-
 </body>
 </html>

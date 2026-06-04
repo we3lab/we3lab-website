@@ -1,6 +1,13 @@
 {
   "alumni": [
     {
+      "name": "Dr. Corisa Wong",
+      "degree_year": "PhD 2026",
+      "placement": "",
+      "scholar_url": "https://scholar.google.com/citations?user=9n7sXoAAAAAJ&hl=en&oi=sra",
+      "linkedin": "https://www.linkedin.com/in/corisa-wong-12525a19a/"
+    },
+    {
       "name": "Adhithyan Sakthivelu",
       "degree_year": "MS 2023",
       "placement": "PhD student, UT Austin",
@@ -20,6 +27,20 @@
       "placement": "Founder, Horizon Modeling Solutions",
       "scholar_url": "https://scholar.google.com/citations?user=SXkRQAIAAAAJ&hl=en&oi=ao",
       "linkedin": "https://www.linkedin.com/in/tim-bartholomew/"
+    },
+    {
+      "name": "Dr. Alison G. Fritz",
+      "degree_year": "PhD 2023",
+      "placement": "Research Engineer, National Energy Technology Laboratory",
+      "scholar_url": "https://scholar.google.com/citations?user=9n7sXoAAAAAJ&hl=en&oi=sra",
+      "linkedin": "https://www.linkedin.com/in/alisongfritz/"
+    },
+    {
+      "name": "Dr. Connor Doherty",
+      "degree_year": "PhD 2023",
+      "placement": "Remote Sensing Research Scientist, NASA Ames Research Center",
+      "scholar_url": "",
+      "linkedin": "https://www.linkedin.com/in/conor-doherty-85a1857b/"
     }
   ]
 }

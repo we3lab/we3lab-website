@@ -15,8 +15,10 @@ import json
 import re
 from pathlib import Path
 
-MEAGAN_JSON = Path("content/members/meagan.json")
+MEAGAN_JSON  = Path("content/members/meagan.json")
 MEMBERS_JSON = Path("content/members/members.json")
+PROJECTS_JSON      = Path("content/projects/projects.json")
+PUBLICATIONS_JSON  = Path("content/publications/publications.json")
 ALUMNI_JSON = Path("content/members/alumni.json")
 PEOPLE_HTML = Path("people.html")
 IMAGES_DIR = Path("content/members/images")
@@ -40,7 +42,7 @@ ROLE_DISPLAY = {
     "postdoc":    "Postdoctoral Researcher",
     "phd student":"PhD Student",
     "ms student": "MS Student",
-    "undergrad":  "Undergraduate Researcher",
+    "undergrad":  "Undergraduate Student",
     "staff":      "Research Staff",
 }
 
@@ -214,10 +216,27 @@ def build_people(members: list, alumni: list) -> str:
     av_idx = 0
 
     # Active member sections — alphabetical by last name within each role
+    # ms student and undergrad are merged into one combined section
+    COMBINED = {"ms student", "undergrad"}
+    combined_label = "Undergraduate & Master's Students"
+    combined_emitted = False
+
     for role in ROLE_ORDER:
         if role == "alumni":
             continue
-        group = sorted(by_role.get(role, []), key=lambda m: _last_name(m["name"]))
+        if role in COMBINED:
+            if combined_emitted:
+                continue
+            # Emit combined section for ms student + undergrad together
+            group = sorted(
+                by_role.get("ms student", []) + by_role.get("undergrad", []),
+                key=lambda m: _last_name(m["name"])
+            )
+            combined_emitted = True
+            label = combined_label
+        else:
+            group = sorted(by_role.get(role, []), key=lambda m: _last_name(m["name"]))
+            label = ROLE_LABELS[role]
         if not group:
             continue
         cards = []
@@ -226,7 +245,7 @@ def build_people(members: list, alumni: list) -> str:
             av_idx += 1
             cards.append(build_member_card(m, av))
         sections.append(
-            f'    <h2 class="people-section-title">{ROLE_LABELS[role]}</h2>\n'
+            f'    <h2 class="people-section-title">{label}</h2>\n'
             f'    <div class="people-grid">\n'
             + "\n".join(cards) + "\n"
             f'    </div>'
@@ -263,15 +282,130 @@ NAV_DROPDOWN = """\
           </ul>"""
 
 
+def build_member_projects(netid: str, projects: list, members_by_netid: dict = None) -> str:
+    """Return expandable project cards for a member's profile page."""
+    if members_by_netid is None:
+        members_by_netid = {}
+    member_projects = [p for p in projects if netid in p.get("team", [])]
+    if not member_projects:
+        return '<p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>'
+
+    cards = []
+    for project in member_projects:
+        img_path = project.get("image", "").lstrip("/")
+        img_html = (
+            f'<img src="../{img_path}" style="width:64px;height:48px;object-fit:cover;'
+            f'border-radius:4px;flex-shrink:0" alt="">'
+            if img_path else ""
+        )
+        summary = (
+            f'  <summary>\n    {img_html}\n'
+            f'    <span class="project-expand-title">{h(project["title"])}</span>\n'
+            f'  </summary>'
+        )
+
+        # Team Members
+        team_items = []
+        for tid in project.get("team", []):
+            m = members_by_netid.get(tid)
+            if not m:
+                team_items.append(f'<span style="font-weight:600;font-size:.875rem">{h(tid)}</span>')
+                continue
+            slug = member_slug(m["name"])
+            img = find_image(m["name"])
+            av = (
+                f'<div class="person-avatar" style="width:44px;height:44px;border-radius:50%;'
+                f'font-size:.8rem;flex-shrink:0"><img src="../{img}" alt="{h(m["name"])}"></div>'
+                if img else
+                f'<div class="person-avatar av-1" style="width:44px;height:44px;border-radius:50%;'
+                f'font-size:.8rem;flex-shrink:0">{initials(m["name"])}</div>'
+            )
+            team_items.append(
+                f'<a href="{slug}.html" style="display:flex;align-items:center;gap:.5rem;'
+                f'text-decoration:none;color:inherit">'
+                f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></a>'
+            )
+        team_html = ""
+        if team_items:
+            team_html = (
+                f'    <p class="project-section-label">Team Members</p>\n'
+                f'    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">\n'
+                f'      ' + "\n      ".join(team_items) + '\n    </div>\n'
+            )
+
+        # Overview
+        overview_html = (
+            f'    <p class="project-section-label">Overview</p>\n'
+            f'    <p style="font-size:.9rem;margin-bottom:.75rem">{h(project.get("description", ""))}</p>\n'
+        )
+
+        # Resources
+        links_html = ""
+        if project.get("links"):
+            link_tags = "".join(
+                f'<a href="{lnk["url"]}" target="_blank" rel="noopener">{h(lnk["label"])}</a>'
+                for lnk in project["links"] if lnk.get("url")
+            )
+            if link_tags:
+                links_html = (
+                    f'    <p class="project-section-label">Links</p>\n'
+                    f'    <div class="project-expand-links">{link_tags}</div>\n'
+                )
+
+        # Supported By
+        funding_html = ""
+        funders = [f for f in project.get("funding", []) if f]
+        if funders:
+            items = "".join(f"<li>{h(f)}</li>" for f in funders)
+            funding_html = (
+                f'    <p class="project-section-label" style="margin-top:.75rem">Supported By</p>\n'
+                f'    <ul style="margin:.25rem 0 0 1.1rem;font-size:.875rem;line-height:1.7">{items}</ul>\n'
+            )
+
+        body = (
+            f'  <div class="project-expand-body">\n'
+            f'{team_html}'
+            f'{overview_html}'
+            f'{links_html}'
+            f'{funding_html}'
+            f'  </div>'
+        )
+        cards.append(f'<details class="project-expand">\n{summary}\n{body}\n</details>')
+    return "\n".join(cards)
+
+
+def build_member_publications(netid: str, publications: list) -> str:
+    member_pubs = [p for p in publications if netid in p.get("team", [])]
+    if not member_pubs:
+        return '<p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>'
+    sorted_pubs = sorted(member_pubs, key=lambda p: p.get("year", 0), reverse=True)
+    cards = []
+    for pub in sorted_pubs:
+        doi  = pub.get("doi", "").strip()
+        href = f"https://doi.org/{doi}" if doi else "#"
+        doi_span = f'<span>doi:{h(doi)}</span>' if doi else ""
+        cards.append(
+            f'<li>\n'
+            f'  <a href="{href}" target="_blank" rel="noopener" '
+            f'style="display:block;color:inherit;text-decoration:none">\n'
+            f'    <strong>{h(pub.get("title",""))}</strong>\n'
+            f'    {h(pub.get("authors",""))}. <em>{h(pub.get("journal",""))}</em>, {pub.get("year","")}.' 
+            f'\n    {doi_span}\n'
+            f'  </a>\n'
+            f'</li>'
+        )
+    return '<ul class="publication-list">\n' + "\n".join(cards) + '\n</ul>'
+
+
 def build_contact_section(m: dict, top_offset: str = "0") -> str:
     """Build the Contact sidebar. Returns empty string if nothing to show."""
     link_style = "color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin-bottom:.4rem"
     items = []
-    netid = m.get("netID", "").strip()
-    if netid:
+    email = m.get("email", "").strip()
+    if email:
         items.append(
-            f'<a href="mailto:{netid}@stanford.edu" style="{link_style}">'
-            f'<i class="fa-solid fa-envelope"></i> {netid}@stanford.edu</a>'
+            f'<a href="mailto:{email}" style="{link_style}">'
+            f'<i class="fa-solid fa-envelope"></i> {email}</a>'
         )
     if m.get("scholar_url"):
         items.append(
@@ -304,7 +438,13 @@ def build_contact_section(m: dict, top_offset: str = "0") -> str:
     )
 
 
-def build_profile_page(m: dict) -> str:
+def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = None, publications: list = None) -> str:
+    if projects is None:
+        projects = []
+    if members_by_netid is None:
+        members_by_netid = {}
+    if publications is None:
+        publications = []
     role_display = ROLE_DISPLAY.get(m.get("role", "").lower(), m.get("role", "").title())
     bio_text     = m.get("bio", "").strip()
     img_path     = find_image(m["name"])
@@ -382,8 +522,14 @@ def build_profile_page(m: dict) -> str:
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="../people.html" class="active">Who We Are</a></li>
-        <li><a href="../research.html">What We Do</a></li>
-        <li><a href="../why-we-do-it.html">Why We Do It</a></li>
+        <li class="dropdown">
+          <a href="../work.html">What We Do</a>
+          <ul class="dropdown-content">
+            <li><a href="../research-areas.html">Research</a></li>
+            <li><a href="../teaching.html">Teaching</a></li>
+          </ul>
+        </li>
+        <li><a href="../stories.html">Why We Do It</a></li>
         <li><a href="../contact.html">Contact Us</a></li>
       </ul>
     </div>
@@ -403,10 +549,10 @@ def build_profile_page(m: dict) -> str:
   <div class="container">
 
     <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
-    <p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>
+{build_member_projects(m.get("netID",""), projects, members_by_netid)}
 
     <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
-    <p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>
+{build_member_publications(m.get("netID",""), publications)}
 
     <div style="margin-top:3rem">
       <a href="../people.html" class="btn btn-navy">&larr; Back to Who We Are</a>
@@ -467,7 +613,9 @@ def build_profile_page(m: dict) -> str:
 """
 
 
-def generate_profile_pages(members: list) -> int:
+def generate_profile_pages(members: list, projects: list, members_by_netid: dict, publications: list = None) -> int:
+    if publications is None:
+        publications = []
     PEOPLE_DIR.mkdir(exist_ok=True)
     count = 0
     for m in members:
@@ -475,8 +623,9 @@ def generate_profile_pages(members: list) -> int:
             continue
         slug = member_slug(m["name"])
         out = PEOPLE_DIR / f"{slug}.html"
-        out.write_text(build_profile_page(m))
-        print(f"  OK  people/{slug}.html  ({m['name']})")
+        out.write_text(build_profile_page(m, projects, members_by_netid, publications))
+        n = sum(1 for p in projects if m.get("netID", "") in p.get("team", []))
+        print(f"  OK  people/{slug}.html  ({m['name']}, {n} project(s))")
         count += 1
     return count
 
@@ -487,6 +636,9 @@ def main():
     pi = json.loads(MEAGAN_JSON.read_text())
     data = json.loads(MEMBERS_JSON.read_text())
     members = data["members"] if isinstance(data, dict) else data
+    projects      = json.loads(PROJECTS_JSON.read_text()) if PROJECTS_JSON.exists() else []
+    publications  = json.loads(PUBLICATIONS_JSON.read_text()) if PUBLICATIONS_JSON.exists() else []
+    members_by_netid = {m.get("netID", ""): m for m in members if m.get("netID")}
     alumni_data = json.loads(ALUMNI_JSON.read_text())
     alumni = alumni_data["alumni"] if isinstance(alumni_data, dict) else alumni_data
 
@@ -506,7 +658,7 @@ def main():
     PEOPLE_HTML.write_text(page)
 
     # Generate profile shell pages
-    n = generate_profile_pages(members)
+    n = generate_profile_pages(members, projects, members_by_netid, publications)
     print(f"  OK    {n} new profile page(s) in people/")
 
 
