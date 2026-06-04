@@ -40,14 +40,14 @@ python3 scripts/build_people_page.py
 
 | Page | URL | Description |
 |---|---|---|
-| Home | `index.html` | Landing page with news strip and mission circles |
+| Home | `index.html` | Landing page with lab mission, research areas, and news strip |
 | Who We Are | `people.html` | Lab members grid; links to individual profile pages |
 | Member profiles | `people/{Name}.html` | Auto-generated profile pages |
 | What We Do | `work.html` | Landing page with Research and Teaching boxes |
-| Research | `research-areas.html` | Research area cards, Previous Research, Dissertations strip |
+| Research | `research-areas.html` | Research areas, Previous Research, Dissertations strip |
 | Research sub-pages | `research/{area}.html` | Per-area page with overview, projects, publications |
 | Teaching | `teaching.html` | Course cards |
-| Why We Do It | `stories.html` | Mission/stories page |
+| Why We Do It | `stories.html` | Lab stories page |
 | Contact | `contact.html` | Contact form and info |
 
 ---
@@ -67,8 +67,8 @@ All content you manually edit lives in `content/`:
 | `content/publications/publications.json` | Lab publications |
 | `content/research_areas/research_areas.json` | Research areas (name, description, overview, image) |
 | `content/research_areas/` (images) | Research area banner images |
-| `content/teaching/teaching.json` | Courses taught by lab members |
-| `content/dissertations/dissertations.json` | PhD dissertation defenses |
+| `content/teaching/teaching.json` | Courses taught by group |
+| `content/dissertations/dissertations.json` | dissertation defenses |
 
 ---
 
