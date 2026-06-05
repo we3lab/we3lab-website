@@ -25,5 +25,14 @@
     "doi": "",
     "research_areas": ["separations", "infrastructure planning"],
     "team": ["cadkins"]
+  }, 
+{
+    "title": "Optimizing distribution controls for safe, affordable, low-carbon water supply",
+    "authors": "Musabandesu, E and Mauter, MS",
+    "journal": "Water Resources Research",
+    "year": 2025,
+    "doi": "10.1029/2024WR039830",
+    "research_areas": ["energy flexibility"],
+    "team": ["emusa"]
   }
 ]
