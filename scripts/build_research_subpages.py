@@ -352,6 +352,13 @@ def main():
     raw      = members["members"] if isinstance(members, dict) else members
     members_by_netid = {m.get("netID", ""): m for m in raw if m.get("netID")}
 
+    # Remove any research sub-pages no longer listed in research_areas.json
+    expected = {Path(a["file"]) for a in areas}
+    for existing in Path("research").glob("*.html"):
+        if existing not in expected:
+            existing.unlink()
+            print(f"  REMOVED  {existing} (no longer in research_areas.json)")
+
     for area in areas:
         path = Path(area["file"])
         path.parent.mkdir(parents=True, exist_ok=True)

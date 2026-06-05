@@ -617,6 +617,9 @@ def generate_profile_pages(members: list, projects: list, members_by_netid: dict
     if publications is None:
         publications = []
     PEOPLE_DIR.mkdir(exist_ok=True)
+    # Clear all existing profile pages so removed members don't leave stale files
+    for stale in PEOPLE_DIR.glob("*.html"):
+        stale.unlink()
     count = 0
     for m in members:
         if m.get("role", "").lower() == "alumni":
