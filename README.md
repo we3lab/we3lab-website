@@ -93,7 +93,9 @@ All content you manually edit lives in `content/`:
 }
 ```
 
-**Valid roles:** `postdoc` · `phd student` · `ms student` · `undergrad` · `staff`
+**Valid roles:** `postdoc` · `phd student` · `ms student` · `undergrad` · `staff` · `staff scientist` · `research engineer`
+
+The roles `staff`, `staff scientist`, and `research engineer` all appear under the **Research Staff** section. The card label will reflect the specific role (e.g. "Staff Scientist", "Research Engineer").
 
 **Valid `research_areas` IDs** (must match `id` fields in `research_areas.json`):
 `separations` · `energy flexibility` · `infrastructure planning` · `water energy food policies`
