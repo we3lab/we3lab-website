@@ -141,7 +141,7 @@ def build_project_card(project: dict, members_by_netid: dict,
 def build_pub_card(pub: dict) -> str:
     doi  = pub.get("doi", "").strip()
     href = f"https://doi.org/{doi}" if doi else "#"
-    doi_span = f'<span>doi:{h(doi)}</span>' if doi else ""
+    doi_span = f'<span>{h(doi)}</span>' if doi else ""
     return (
         f'<li>\n'
         f'  <a href="{href}" target="_blank" rel="noopener" '

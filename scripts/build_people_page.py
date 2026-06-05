@@ -383,7 +383,7 @@ def build_member_publications(netid: str, publications: list) -> str:
     for pub in sorted_pubs:
         doi  = pub.get("doi", "").strip()
         href = f"https://doi.org/{doi}" if doi else "#"
-        doi_span = f'<span>doi:{h(doi)}</span>' if doi else ""
+        doi_span = f'<span>{h(doi)}</span>' if doi else ""
         cards.append(
             f'<li>\n'
             f'  <a href="{href}" target="_blank" rel="noopener" '
