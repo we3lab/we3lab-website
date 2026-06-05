@@ -39,11 +39,19 @@ ROLE_LABELS = {
     "alumni":     "Alumni",
 }
 ROLE_DISPLAY = {
-    "postdoc":    "Postdoctoral Researcher",
-    "phd student":"PhD Student",
-    "ms student": "MS Student",
-    "undergrad":  "Undergraduate Student",
-    "staff":      "Research Staff",
+    "postdoc":           "Postdoctoral Researcher",
+    "phd student":       "PhD Student",
+    "ms student":        "MS Student",
+    "undergrad":         "Undergraduate Student",
+    "staff":             "Research Staff",
+    "staff scientist":   "Staff Scientist",
+    "research engineer": "Research Engineer",
+}
+
+# Maps specific roles to their section group in ROLE_ORDER
+ROLE_GROUP = {
+    "staff scientist":   "staff",
+    "research engineer": "staff",
 }
 
 
@@ -209,6 +217,7 @@ def build_people(members: list, alumni: list) -> str:
     by_role: dict[str, list] = {r: [] for r in ROLE_ORDER if r != "alumni"}
     for m in members:
         key = m.get("role", "").lower()
+        key = ROLE_GROUP.get(key, key)  # map staff scientist / research engineer → staff
         if key in by_role:
             by_role[key].append(m)
 
