@@ -116,7 +116,7 @@ p:last-child { margin-bottom: 0; }
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 200px;
+  min-width: 260px;
   background-color: var(--deep-space);
   border-radius: var(--radius);
   box-shadow: 0 6px 20px rgba(0,0,0,.25);
@@ -253,6 +253,12 @@ p:last-child { margin-bottom: 0; }
   max-width: 640px;
   margin-bottom: 0;
 }
+.page-banner.page-banner-light::before { background: rgba(255,255,255,0.70); }
+.page-banner.page-banner-light h1,
+.page-banner.page-banner-light p { color: var(--deep-space); }
+.page-banner.page-banner-light p { color: rgba(24,52,70,.75); margin: 0 auto; text-align: center; font-size: 1.75rem; max-width: 950px; }
+
+#news-scroll::-webkit-scrollbar { display: none; }
 
 /* ─── Buttons ───────────────────────────────────────────── */
 .btn {
@@ -271,6 +277,10 @@ p:last-child { margin-bottom: 0; }
 .btn-navy:hover     { background: #0f2333; color: var(--white); }
 .btn-black     { background: var(--deep-space); color: #fff; }
 .btn-black:hover    { background: #0f2333; color: #fff; }
+.btn-white     { background: var(--white); color: var(--deep-space); }
+.btn-white:hover    { background: #e8eaec; color: var(--deep-space); }
+.btn-white-outline  { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,.7); }
+.btn-white-outline:hover { background: rgba(255,255,255,.12); color: var(--white); border-color: var(--white); }
 
 /* ─── Cards ─────────────────────────────────────────────── */
 .card {

@@ -15,19 +15,34 @@ from pathlib import Path
 RESEARCH_AREAS_JSON  = Path("content/research_areas/research_areas.json")
 TEACHING_JSON        = Path("content/teaching/teaching.json")
 DISSERTATIONS_JSON   = Path("content/dissertations/dissertations.json")
+PUBLICATIONS_JSON    = Path("content/publications/publications.json")
 RESEARCH_AREAS_HTML  = Path("research-areas.html")
 TEACHING_HTML        = Path("teaching.html")
+PUBLICATIONS_HTML    = Path("publications.html")
 
 OVERLAY = "linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4))"
 
 CARDS_RE         = re.compile(r"<!-- BEGIN:research-cards-generated -->.*?<!-- END:research-cards-generated -->",       re.DOTALL)
 DISSERTATIONS_RE = re.compile(r"<!-- BEGIN:dissertations-generated -->.*?<!-- END:dissertations-generated -->",       re.DOTALL)
 TEACHING_RE = re.compile(r"<!-- BEGIN:teaching-generated -->.*?<!-- END:teaching-generated -->",                   re.DOTALL)
-PREVIOUS_RE = re.compile(r"<!-- BEGIN:previous-research-generated -->.*?<!-- END:previous-research-generated -->", re.DOTALL)
+PREVIOUS_RE      = re.compile(r"<!-- BEGIN:previous-research-generated -->.*?<!-- END:previous-research-generated -->", re.DOTALL)
+PUBLICATIONS_RE  = re.compile(r"<!-- BEGIN:publications-generated -->.*?<!-- END:publications-generated -->", re.DOTALL)
 
 
 def h(text: str) -> str:
     return html.escape(str(text))
+
+def hm(text: str) -> str:
+    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
+    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
+    out = []
+    for part in parts:
+        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
+        if m:
+            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
+        else:
+            out.append(html.escape(part))
+    return ''.join(out)
 
 
 # ── Research area cards ───────────────────────────────────────────────────────
@@ -40,7 +55,7 @@ def build_active_card(area: dict) -> str:
         f'          <div class="research-card-banner" style="{img_css}"></div>\n'
         f'          <div class="research-card-body">\n'
         f'            <h3>{h(area["name"])}</h3>\n'
-        f'            <p>{h(area["description"])}</p>\n'
+        f'            <p>{hm(area["description"])}</p>\n'
         f'            <span class="research-card-link">Learn more &rarr;</span>\n'
         f'          </div>\n'
         f'        </div>\n'
@@ -50,11 +65,11 @@ def build_active_card(area: dict) -> str:
 
 def build_previous_card(area: dict) -> str:
     return (
-        f'      <a class="research-card" href="{area["file"]}" style="max-width:380px;display:block">\n'
+        f'      <a class="research-card" href="{area["file"]}" style="max-width:380px">\n'
         f'        <div class="research-card-inner" style="opacity:.8">\n'
         f'          <div class="research-card-body">\n'
         f'            <h3>{h(area["name"])}</h3>\n'
-        f'            <p>{h(area["description"])}</p>\n'
+        f'            <p>{hm(area["description"])}</p>\n'
         f'            <span class="research-card-link" style="color:var(--gray-500)">View archive &rarr;</span>\n'
         f'          </div>\n'
         f'        </div>\n'
@@ -87,7 +102,7 @@ def build_teaching_card(course: dict) -> str:
         f'{h(course.get("course_code", ""))}</p>\n'
         f'        <h4 class="text-deep-space">{h(course.get("name", ""))}</h4>\n'
         f'{quarters_html}'
-        f'        <p style="font-size:.875rem">{h(course.get("description", ""))}</p>'
+        f'        <p style="font-size:.875rem">{hm(course.get("description", ""))}</p>'
         f'{link_html}\n'
         f'      </div>'
     )
@@ -140,12 +155,48 @@ def build_dissertation_card(d: dict) -> str:
     )
 
 
+# ── Publications page ─────────────────────────────────────────────────────────
+
+def build_publications_page(publications: list) -> str:
+    if not publications:
+        return '    <p style="color:var(--gray-500);font-style:italic">No publications listed yet.</p>'
+    sorted_pubs = sorted(publications, key=lambda p: p.get("year", 0), reverse=True)
+    by_year: dict = {}
+    for pub in sorted_pubs:
+        year = str(pub.get("year", ""))
+        by_year.setdefault(year, []).append(pub)
+    blocks = []
+    for year, pubs in by_year.items():
+        items = []
+        for pub in pubs:
+            doi  = pub.get("doi", "").strip()
+            href = f"https://doi.org/{doi}" if doi else "#"
+            doi_span = f'<span style="font-size:.8rem;color:var(--gray-500)">{h(doi)}</span>' if doi else ""
+            items.append(
+                f'  <li style="margin-bottom:1rem">\n'
+                f'    <a href="{href}" target="_blank" rel="noopener" style="display:block;color:inherit;text-decoration:none">\n'
+                f'      <strong>{h(pub.get("title",""))}</strong><br>\n'
+                f'      <span style="font-size:.9rem">{h(pub.get("authors",""))}. <em>{h(pub.get("journal",""))}</em>, {pub.get("year","")}.</span>\n'
+                f'      {"<br>" + doi_span if doi_span else ""}\n'
+                f'    </a>\n'
+                f'  </li>'
+            )
+        blocks.append(
+            f'    <h3 style="color:var(--deep-space);margin:2rem 0 .75rem;padding-bottom:.4rem;border-bottom:2px solid var(--gray-200)">{h(year)}</h3>\n'
+            f'    <ul style="list-style:none;padding:0;margin:0">\n'
+            + "\n".join(items) +
+            f'\n    </ul>'
+        )
+    return "\n".join(blocks)
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
     areas         = json.loads(RESEARCH_AREAS_JSON.read_text())
     courses       = json.loads(TEACHING_JSON.read_text()) if TEACHING_JSON.exists() else []
     dissertations = json.loads(DISSERTATIONS_JSON.read_text()) if DISSERTATIONS_JSON.exists() else []
+    publications  = json.loads(PUBLICATIONS_JSON.read_text()) if PUBLICATIONS_JSON.exists() else []
 
     active   = [a for a in areas if a.get("active")]
     inactive = [a for a in areas if not a.get("active")]
@@ -166,9 +217,11 @@ def main():
             f'    <div style="margin-top:4rem">\n'
             f'      <h2 class="people-section-title">Previous Research</h2>\n'
             f'      <p style="color:var(--gray-500);max-width:640px;margin-bottom:2rem">'
-            f'This thrust was the foundation of the lab\'s early work and produced many of our most-cited '
+            f'These thrusts helped lay the foundations of the lab\'s early work and produced many of our most-cited '
             f'publications. The group has since evolved into our current research directions.</p>\n'
+            f'      <div style="display:flex;gap:1.5rem;flex-wrap:wrap">\n'
             f'{prev_cards}\n'
+            f'      </div>\n'
             f'    </div>'
         )
     else:
@@ -220,6 +273,16 @@ def main():
     print(f"  OK    teaching — {len(courses)} course(s)")
 
     TEACHING_HTML.write_text(t_page)
+
+    # ── publications.html ─────────────────────────────────────────────────────
+    p_page = PUBLICATIONS_HTML.read_text()
+    pub_block = build_publications_page(publications)
+    p_page = PUBLICATIONS_RE.sub(
+        f"<!-- BEGIN:publications-generated -->\n{pub_block}\n<!-- END:publications-generated -->",
+        p_page
+    )
+    PUBLICATIONS_HTML.write_text(p_page)
+    print(f"  OK    publications — {len(publications)} entry(ies)")
 
 
 if __name__ == "__main__":

@@ -1,53 +1,186 @@
-{
-  "alumni": [
-    {
-      "name": "Dr. Corisa Wong",
-      "degree_year": "PhD 2026",
-      "placement": "",
-      "scholar_url": "https://scholar.google.com/citations?user=9n7sXoAAAAAJ&hl=en&oi=sra",
-      "linkedin": "https://www.linkedin.com/in/corisa-wong-12525a19a/"
-    },
-    {
-      "name": "Adhithyan Sakthivelu",
-      "degree_year": "MS 2023",
-      "placement": "PhD student, UT Austin",
-      "scholar_url": "https://scholar.google.com/citations?user=aKTIsW4AAAAJ&hl=en&oi=ao",
-      "linkedin": "https://www.linkedin.com/in/adhithyan-sakthivelu-72b09a62"
-    },
-    {
-      "name": "Dr. Yang Liu",
-      "degree_year": "PhD 2022",
-      "placement": "Associate, McKinsey & Company",
-      "scholar_url": "https://scholar.google.com/citations?user=158-kTQAAAAJ&hl=en&oi=sra",
-      "linkedin": "https://www.linkedin.com/in/enzoyangliu/"
-    },
-    {
-      "name": "Dr. Timothy Bartholomew",
-      "degree_year": "PhD 2020",
-      "placement": "Founder, Horizon Modeling Solutions",
-      "scholar_url": "https://scholar.google.com/citations?user=SXkRQAIAAAAJ&hl=en&oi=ao",
-      "linkedin": "https://www.linkedin.com/in/tim-bartholomew/"
-    },
-    {
-      "name": "Dr. Alison G. Fritz",
-      "degree_year": "PhD 2023",
-      "placement": "Research Engineer, National Energy Technology Laboratory",
-      "scholar_url": "https://scholar.google.com/citations?user=9n7sXoAAAAAJ&hl=en&oi=sra",
-      "linkedin": "https://www.linkedin.com/in/alisongfritz/"
-    },
-    {
-      "name": "Dr. Connor Doherty",
-      "degree_year": "PhD 2023",
-      "placement": "Remote Sensing Research Scientist, NASA Ames Research Center",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/conor-doherty-85a1857b/"
-    },
-    {
-      "name": "Emily Winn",
-      "degree_year": "Co-Term 2026",
-      "placement": "Transmission & Interconnection Analyst, Fervo Energy",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/winnemily/"
-    }
-  ]
-}
+[
+  {
+    "name": "Dr. Corisa Wong",
+    "degree_year": "PhD 2026",
+    "placement": "",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/corisa-wong-12525a19a/",
+    "netID": "corisaw"
+  },
+  {
+    "name": "Adhithyan Sakthivelu",
+    "degree_year": "MS 2023",
+    "placement": "PhD student, UT Austin",
+    "scholar_url": "https://scholar.google.com/citations?user=aKTIsW4AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/adhithyan-sakthivelu-72b09a62",
+    "netID": "adhiths"
+  },
+  {
+    "name": "Dr. Yang Liu",
+    "degree_year": "PhD 2022",
+    "placement": "Associate, McKinsey & Company",
+    "scholar_url": "https://scholar.google.com/citations?user=158-kTQAAAAJ&hl=en&oi=sra",
+    "linkedin": "https://www.linkedin.com/in/enzoyangliu/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Timothy Bartholomew",
+    "degree_year": "PhD 2020",
+    "placement": "Senior Engineer, KeyLogic Systems",
+    "scholar_url": "https://scholar.google.com/citations?user=SXkRQAIAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/tim-bartholomew/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Alison Fritz",
+    "degree_year": "PhD 2023",
+    "placement": "Research Engineer, National Energy Technology Laboratory",
+    "scholar_url": "https://scholar.google.com/citations?user=uEUhboAAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/alisongfritz/",
+    "netID": "agfritz"
+  },
+  {
+    "name": "Dr. Conor Doherty",
+    "degree_year": "PhD 2023",
+    "placement": "Postdoctoral Research Fellow, NASA Ames Research Center",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/conor-doherty-85a1857b/",
+    "netID": ""
+  },
+  {
+    "name": "Emily Winn",
+    "degree_year": "Co-Term 2026",
+    "placement": "Transmission & Interconnection Analyst, Fervo Energy",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/winnemily/",
+    "netID": "emruwinn"
+  },
+  {
+    "name": "Dr. Daniel Gingerich",
+    "degree_year": "PhD & Postdoc 2019",
+    "placement": "Assisstant Professor, The Ohio State University",
+    "scholar_url": "https://scholar.google.com/citations?user=gwNKyC4AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/daniel-gingerich-5a9764b5/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Xitong Liu",
+    "degree_year": "Postdoc 2019",
+    "placement": "Assistant Professor, The George Washington University",
+    "scholar_url": "https://scholar.google.com/citations?user=XdCrTPYAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/xitong-liu/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Shiqiang Zou",
+    "degree_year": "Postdoc 2020",
+    "placement": "Assistant Professor, Auburn University",
+    "scholar_url": "https://scholar.google.com/citations?user=d6vU434AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/shiqiangzou/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Anjali Mulchandani",
+    "degree_year": "Postdoc 2020",
+    "placement": "Assistant Professor, University of New Mexico",
+    "scholar_url": "https://scholar.google.com/citations?user=4QvRl4YAAAAJ&hl=en&oi=ao",
+    "linkedin": "",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Marta Zaniolo",
+    "degree_year": "Postdoc 2024",
+    "placement": "Assistant Professor, Duke University",
+    "scholar_url": "https://scholar.google.com/citations?user=wBIiBV8AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/marta-zaniolo-3b78b816b/",
+    "netID": "mzaniolo"
+  },
+  {
+    "name": "Dr. Tanya Liu",
+    "degree_year": "Postdoc 2022",
+    "placement": "Thermal Engineer, Google",
+    "scholar_url": "https://scholar.google.com/citations?user=EDDLV_IAAAAJ&hl=en&oi=sra",
+    "linkedin": "https://www.linkedin.com/in/tanya-l-83611a30/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Yuanzhe Liang",
+    "degree_year": "Postdoc 2022",
+    "placement": "Postdoctoral Research Fellow, National Renewable Energy Laboratory",
+    "scholar_url": "https://scholar.google.com/citations?user=fhd2cL4AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/yuanzhe-liang-892a951a9/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Jose Bolorinos",
+    "degree_year": "Postdoc 2025",
+    "placement": "Co-Founder, Flows Energy",
+    "scholar_url": "https://scholar.google.com/citations?user=2KlSHR4AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/jose-bolorinos-a4137238/",
+    "netID": "jbolorin"
+  },
+  {
+    "name": "Dr. Inhyeong Jeon",
+    "degree_year": "Postdoc 2025",
+    "placement": "Assistant Professor, Korea University",
+    "scholar_url": "https://scholar.google.com/citations?user=ezHDG-4AAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/inhyeong-jeon/",
+    "netID": "inhyeong"
+  },
+  {
+    "name": "Dr. Lingchen Kong",
+    "degree_year": "Postdoc 2025",
+    "placement": "Co-Founder, Ellexco",
+    "scholar_url": "https://scholar.google.com/citations?user=3pQUdlwAAAAJ&hl=en&oi=sra",
+    "linkedin": "https://www.linkedin.com/in/lingchen-charles-kong/",
+    "netID": "lingchenkong"
+  },
+  {
+    "name": "Dr. Paul Welle",
+    "degree_year": "PhD 2017",
+    "placement": "Chief Data Scientist, Allegheny County Department of Human Services",
+    "scholar_url": "https://scholar.google.com/citations?user=UdqBEdMAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/pdgwelle/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Sneha Shanbhag",
+    "degree_year": "PhD 2019",
+    "placement": "Postdoctoral Research Fellow, McMaster University",
+    "scholar_url": "https://scholar.google.com/citations?user=TmGW6IkAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/sneha-shanbhag-4856666/",
+    "netID": ""
+  },
+  {
+    "name": "Dr. Amanda Quay",
+    "degree_year": "PhD 2022",
+    "placement": "Environmental Engineer, US Environmental Protection Agency",
+    "scholar_url": "https://scholar.google.com/citations?user=GwaCQ_AAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/quay-amanda-n-quay-1968311b8/",
+    "netID": ""
+  },
+  {
+    "name": "Yin-Li Liu",
+    "degree_year": "MS 2025",
+    "placement": "Solutions Architect Senior Associate, Equinix",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/lily-liu0719/",
+    "netID": "liuyinli"
+  },
+  {
+    "name": "Anne Jaminet",
+    "degree_year": "Visiting MS 2024",
+    "placement": "Financial Services Associate, BSR",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/annemariejaminet/",
+    "netID": "ajaminet"
+  },
+  {
+    "name": "Tong Ling",
+    "degree_year": "MS 2026",
+    "placement": "",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/tong-ling-00515a347/",
+    "netID": "tling"
+  }
+]

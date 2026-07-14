@@ -1,224 +1,188 @@
-{
-  "members": [
-    {
-      "name": "Dr. Erin Musabandesu",
-      "role": "research engineer",
-      "scholar_url": "https://scholar.google.com/citations?user=fEKOsmoAAAAJ",
-      "linkedin": "https://www.linkedin.com/in/erin-musabandesu-pe-48154a10a",
-      "website": "",
-      "cv": "",
-      "netID": "emusa",
-      "bio": "Erin Musabandesu received their Ph.D. in Civil and Environmental Engineering from the University of California, Davis, and is now a postdoc researcher in the Department of Civil and Environmental Engineering at Stanford University. Erin’s research focuses on optimizing water and industrial systems to provide sustainable, reliable operations, with an emphasis on translational research to advance energy flexibility and decarbonization. Their research leverages data analytics, visualization, machine learning, and interactive frameworks to support the optimization of complex systems.",
-      "research_areas": [
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "emusa@stanford.edu"
-    },
-    {
-      "name": "Dr. Haochi Wu",
-      "role": "postdoc",
-      "scholar_url": "https://scholar.google.com/citations?user=512_0RoAAAAJ",
-      "linkedin": "https://www.linkedin.com/in/haochi-wu-58b0b3202/",
-      "website": "",
-      "cv": "",
-      "netID": "haochiw",
-      "bio": "",
-      "research_areas": [
-        "energy flexibility"
-      ],
-      "email": "haochiw@stanford.edu"
-    },
-    {
-      "name": "Dr. Nitish Sarker",
-      "role": "postdoc",
-      "scholar_url": "https://scholar.google.com/citations?user=aqHdI_0AAAAJ",
-      "linkedin": "https://www.linkedin.com/in/nitish-ranjan-sarker/",
-      "website": "https://profiles.stanford.edu/nitishsarker",
-      "cv": "",
-      "netID": "nrsarker",
-      "bio": "",
-      "research_areas": [
-        "separations",
-        "infrastructure planning"
-      ],
-      "email": "nrsarker@stanford.edu"
-    },
-    {
-      "name": "Charan Samineni",
-      "role": "postdoc",
-      "scholar_url": "https://scholar.google.com/citations?user=k_DTvJgAAAAJ&hl=en",
-      "linkedin": "https://www.linkedin.com/in/laxmicharan-samineni-b3b5822b/",
-      "website": "",
-      "cv": "https://drive.google.com/file/d/1dJOCqQAe8p6Tev0wnl5S_-HRY5WNbIqq/view?usp=sharing",
-      "netID": "slcharan",
-      "bio": "Charan (Laxmicharan Samineni) received his Ph.D. in chemical engineering from the University of Texas at Austin. Before starting his Ph.D., he finished his bachelor's and master's in chemical engineering as well from India and worked as a research scientist in crystallization process development.",
-      "research_areas": [
-        "Reverse osmosis and desalination",
-        "Techno-economic analysis",
-        "Electrochemical water treatment",
-        "Bioinspired and biomimetic membranes",
-        "Plant-based water filtration",
-        "Resource recovery"
-      ],
-      "email": "slcharan@stanford.edu"
-    },
-    {
-      "name": "Akshay Rao",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=4jkAz8kAAAAJ",
-      "linkedin": "https://www.linkedin.com/in/akshayrao53/",
-      "website": "",
-      "cv": "",
-      "netID": "raoak",
-      "bio": "",
-      "research_areas": [
-        "separations",
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "raoak@stanford.edu"
-    },
-    {
-      "name": "Sinan Abi Farraj",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=jXY4gz0AAAAJ",
-      "linkedin": "https://www.linkedin.com/in/sinan-abi-farraj-832960148/",
-      "website": "",
-      "cv": "",
-      "netID": "sinanaf",
-      "bio": "Sinan is a Ph.D. student in Environmental Engineering at Stanford University and holds a B.Eng. in Materials Engineering and an M.Sc. in Chemical Engineering from McGill University. His doctoral research focuses on developing cost-optimization models for coordinating water and wastewater infrastructure investments to meet regional environmental targets.",
-      "research_areas": [
-        "infrastructure planning"
-      ],
-      "email": "sinanaf@stanford.edu"
-    },
-    {
-      "name": "Caroline Adkins",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=vUu8KmIAAAAJ",
-      "linkedin": "https://www.linkedin.com/in/caroline-adkins-154ab4197/",
-      "website": "",
-      "cv": "",
-      "netID": "cadkins",
-      "bio": "Caroline Adkins is a PhD student in Environmental Engineering at Stanford University. She earned her B.S.E. in Civil and Environmental Engineering from Princeton University in 2022 and completed her M.S. at Stanford in 2024. Her research focuses on brackish groundwater resources and the management of inland desalination brines. She is the lead developer of the SAWS tool (Screening Alternative Water Sources to Secure American Water Supplies), which combines a robust national database with a user-friendly web application to support high-level viability screening of non-traditional water supplies across the contiguous United States. On the brine valorization front, Caroline is particularly interested in leveraging desalination brines as resource streams to support more sustainable supply chains\u2014especially in the context of low-carbon cement production.",
-      "research_areas": [
-        "separations",
-        "infrastructure planning"
-      ],
-      "email": "cadkins@stanford.edu"
-    },
-    {
-      "name": "Fletcher Chapin",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=zZIdty8AAAAJ",
-      "linkedin": "https://www.linkedin.com/in/fletcher-chapin-838171a0",
-      "website": "",
-      "cv": "",
-      "netID": "fchapin",
-      "bio": "Fletcher is a Ph.D. student in Environmental Engineering. Prior to coming to Stanford, he received a B.S. in Environmental Engineering from Cornell University, then worked as both a software and environmental engineer. He is interested in applying software best practices to water resources and energy issues. His research currently focuses on the optimization of wastewater treatment facilities' design and operation for demand response.",
-      "research_areas": [
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "fchapin@stanford.edu"
-    },
-    {
-      "name": "Carson Tucker",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=UbafTjMAAAAJ",
-      "linkedin": "https://www.linkedin.com/in/carson-tucker-43b4a4145/",
-      "website": "",
-      "cv": "",
-      "netID": "carsont",
-      "bio": "Carson is a Ph.D. student in the Department of Mechanical Engineering at Stanford University. She is interested in using cost optimization modelling to better design and compare desalination processes. She is currently working on building a cost optimization model of mechanical vapor compression for high salinity brine treatment.",
-      "research_areas": [
-        "separations",
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "carsont@stanford.edu"
-    },
-    {
-      "name": "Daly Wettermark",
-      "role": "phd student",
-      "scholar_url": "https://scholar.google.com/citations?user=U1mAz_8AAAAJ&hl=en",
-      "linkedin": "https://www.linkedin.com/in/daly-wettermark",
-      "website": "",
-      "cv": "",
-      "netID": "dalyw",
-      "bio": "Daly Wettermark studies the potential to mitigate greenhouse emissions from wastewater treatment plants by optimizing novel resource recovery and energy management techniques. Her PhD focus areas include: Energy flexibility as a means to shift load from aeration, Comparison of nitrogen recovery mechanisms for reducing biological nutrient removal process intensity, Integrating load shifting with operation of nitrogen recovery processes. Daly previously worked as a product development engineer and corporate sustainability analyst with Xylem and as a volunteer with Water Sanitation and Hygiene (WASH)-focused nonprofit organizations.",
-      "research_areas": [
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "dalyw@stanford.edu"
-    },
-    {
-      "name": "Gina Kittleson",
-      "role": "phd student",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/gina-kittleson-a694a3207/",
-      "website": "",
-      "cv": "",
-      "netID": "gkittles",
-      "bio": "Gina’s research focuses on system-scale modeling of urban water supply planning under deep uncertainty due to climate change. She is investigating the impact that demand curtailment orders may have on Santa Barbara’s water supply planning flexibility when faced with drought conditions. Additionally, with the Stanford Sustainability Accelerator, she is deploying the PLANWater model as a modular Python library able to be generalized to new sites. In her free time, she enjoys baking, hiking, and volunteering at the Nine Lives cat shelter!",
-      "research_areas": [
-        "infrastructure planning"
-      ],
-      "email": "gkittles@stanford.edu"
-    },
-    {
-      "name": "Dr. Alexander Dudchenko",
-      "role": "staff scientist",
-      "scholar_url": "https://scholar.google.com/citations?user=qGxLrqoAAAAJ&hl=en&oi=ao",
-      "linkedin": "https://www.linkedin.com/in/avdudchenko/",
-      "website": "",
-      "cv": "",
-      "netID": "avd",
-      "bio": "",
-      "research_areas": [
-        "separations",
-        "energy flexibility",
-        "infrastructure planning"
-      ],
-      "email": "avd@slac.stanford.edu"
-    },
-    {
-      "name": "Abdullah Alhussain",
-      "role": "ms student",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/akh891/",
-      "netID": "abdull",
-      "bio": "Abdullah is a Master’s student in Mechanical Engineering at Stanford University. He earned his Bachelor’s degree in Mechanical Engineering from the University of California, Irvine, where he served as an energy consultant through the U.S. Department of Energy’s Industrial Assessment Center, conducting energy efficiency audits for manufacturing facilities. He is currently involved in customer discovery for WaterTAP, exploring market applications and user needs for water treatment and sustainability solutions.",
-      "research_areas": [
-        "water technology"
-      ],
-      "email": "abdull@stanford.edu"
-    },
-    {
-      "name": "Madeline Hodge",
-      "role": "undergrad",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/madeline-hodge/",
-      "netID": "mhodge27",
-      "bio": "",
-      "research_areas": [
-        "infrastructure planning"
-      ],
-      "email": "mhodge27@stanford.edu"
-    },
-    {
-      "name": "Meerashree Sundara Raju",
-      "role": "ms student",
-      "scholar_url": "",
-      "linkedin": "https://www.linkedin.com/in/meerashree-sundara-raju-6918501b8/",
-      "netID": "meerasr",
-      "bio": "",
-      "research_areas": [
-        "infrastructure planning"
-      ],
-      "email": "meerasr@stanford.edu"
-    }
-  ]
-}
+[
+  {
+    "name": "Dr. Erin Musabandesu",
+    "role": "staff",
+    "scholar_url": "https://scholar.google.com/citations?user=fEKOsmoAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/erin-musabandesu-pe-48154a10a",
+    "website": "",
+    "cv": "",
+    "netID": "emusa",
+    "bio": "Erin Musabandesu received their Ph.D. in Civil and Environmental Engineering from the University of California, Davis, and is now a postdoc researcher in the Department of Civil and Environmental Engineering at Stanford University. Erin’s research focuses on optimizing water and industrial systems to provide sustainable, reliable operations, with an emphasis on translational research to advance energy flexibility and decarbonization. Their research leverages data analytics, visualization, machine learning, and interactive frameworks to support the optimization of complex systems.",
+    "email": "emusa@stanford.edu"
+  },
+  {
+    "name": "Dr. Haochi Wu",
+    "role": "postdoc",
+    "scholar_url": "https://scholar.google.com/citations?user=512_0RoAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/haochi-wu-58b0b3202/",
+    "website": "https://profiles.stanford.edu/haochi-wu",
+    "cv": "",
+    "netID": "haochiw",
+    "bio": "Haochi’s research interests include the energy-water nexus, climate adaptation, macro energy systems, and efficient data-driven energy system operation. His research leverages energy system modeling, power system economics, convex optimization, and machine learning to support the optimization and analysis of complex systems.",
+    "email": "haochiw@stanford.edu"
+  },
+  {
+    "name": "Dr. Nitish Sarker",
+    "role": "postdoc",
+    "scholar_url": "https://scholar.google.com/citations?user=aqHdI_0AAAAJ",
+    "linkedin": "https://www.linkedin.com/in/nitish-ranjan-sarker/",
+    "website": "https://profiles.stanford.edu/nitishsarker",
+    "cv": "",
+    "netID": "nrsarker",
+    "bio": "Nitish's core research focus is on developing lower-order fouling models that connect mechanistic membrane fouling science with large-scale water treatment planning. His work integrates experimental, pilot-scale, and operational data with technoeconomic and decision-support modeling to guide sustainable water and energy system design. He earned his Ph.D. from the University of Toronto in Canada, following an M.Sc. from the University of Alberta and a B.Sc. from the Bangladesh University of Engineering and Technology. His research spans solar desalination, separation processes design and characterizations, and decentralized water treatment and sanitation.",
+    "email": "nrsarker@stanford.edu"
+  },
+  {
+    "name": "Dr. Charan Samineni",
+    "role": "postdoc",
+    "scholar_url": "https://scholar.google.com/citations?user=k_DTvJgAAAAJ&hl=en",
+    "linkedin": "https://www.linkedin.com/in/laxmicharan-samineni-b3b5822b/",
+    "website": "",
+    "cv": "https://drive.google.com/file/d/1dJOCqQAe8p6Tev0wnl5S_-HRY5WNbIqq/view?usp=sharing",
+    "netID": "slcharan",
+    "bio": "Charan received his Ph.D. in chemical engineering from the University of Texas at Austin. Before starting his Ph.D., he finished his bachelor's and master's in chemical engineering as well from India and worked as a research scientist in crystallization process development.",
+    "email": "slcharan@stanford.edu"
+  },
+  {
+    "name": "Akshay Rao",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=4jkAz8kAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/akshayrao53/",
+    "website": "",
+    "cv": "",
+    "netID": "raoak",
+    "bio": "Akshay received his B.S. and M.S. from Purdue University in Mechanical Engineering and Computational Science, and his Ph.D. in Civil and Environmental Engineering from Stanford University. His research focuses on developing algorithmic approaches to design and operate of electrified industrial separations. Akshay was named a Siebel Scholar in Energy Sciences for his contributions in this space.",
+    "email": "raoak@stanford.edu"
+  },
+  {
+    "name": "Sinan Abi Farraj",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=jXY4gz0AAAAJ",
+    "linkedin": "https://www.linkedin.com/in/sinan-abi-farraj-832960148/",
+    "website": "",
+    "cv": "",
+    "netID": "sinanaf",
+    "bio": "Sinan is a Ph.D. student in Environmental Engineering at Stanford University and holds a B.Eng. in Materials Engineering and an M.Sc. in Chemical Engineering from McGill University. His doctoral research focuses on developing cost-optimization models for coordinating water and wastewater infrastructure investments to meet regional environmental targets.",
+    "email": "sinanaf@stanford.edu"
+  },
+  {
+    "name": "Caroline Adkins",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=vUu8KmIAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/caroline-adkins-154ab4197/",
+    "website": "",
+    "cv": "",
+    "netID": "cadkins",
+    "bio": "Caroline Adkins is a PhD student in Environmental Engineering at Stanford University. She earned her B.S.E. in Civil and Environmental Engineering from Princeton University in 2022 and completed her M.S. at Stanford in 2024. Her research focuses on brackish groundwater resources and the management of inland desalination brines. She is the lead developer of the SAWS tool (Screening Alternative Water Sources to Secure American Water Supplies), which combines a robust national database with a user-friendly web application to support high-level viability screening of non-traditional water supplies across the contiguous United States. On the brine valorization front, Caroline is particularly interested in leveraging desalination brines as resource streams to support more sustainable supply chains—especially in the context of low-carbon cement production.",
+    "email": "cadkins@stanford.edu"
+  },
+  {
+    "name": "Fletcher Chapin",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=zZIdty8AAAAJ",
+    "linkedin": "https://www.linkedin.com/in/fletcher-chapin-838171a0",
+    "website": "",
+    "cv": "",
+    "netID": "fchapin",
+    "bio": "Fletcher is a Ph.D. student in Environmental Engineering. Prior to coming to Stanford, he received a B.S. in Environmental Engineering from Cornell University, then worked as both a software and environmental engineer. He is interested in applying software best practices to water resources and energy issues. His research currently focuses on the optimization of wastewater treatment facilities' design and operation for demand response.",
+    "email": "fchapin@stanford.edu"
+  },
+  {
+    "name": "Carson Tucker",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=UbafTjMAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/carson-tucker-43b4a4145/",
+    "website": "",
+    "cv": "",
+    "netID": "carsont",
+    "bio": "Carson is a Ph.D. student in the Department of Mechanical Engineering at Stanford University. She is interested in using cost optimization modelling to better design and compare desalination processes. She is currently working on building a cost optimization model of mechanical vapor compression for high salinity brine treatment.",
+    "email": "carsont@stanford.edu"
+  },
+  {
+    "name": "Daly Wettermark",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=U1mAz_8AAAAJ&hl=en",
+    "linkedin": "https://www.linkedin.com/in/daly-wettermark",
+    "website": "",
+    "cv": "",
+    "netID": "dalyw",
+    "bio": "Daly Wettermark studies the potential to mitigate greenhouse emissions from wastewater treatment plants by optimizing novel resource recovery and energy management techniques. Her PhD focus areas include: Energy flexibility as a means to shift load from aeration, Comparison of nitrogen recovery mechanisms for reducing biological nutrient removal process intensity, Integrating load shifting with operation of nitrogen recovery processes, and leveraging public data for wastewater treatment and resource recovery decision making. Daly previously worked as a product development engineer and corporate sustainability analyst with Xylem and as a volunteer with Water Sanitation and Hygiene (WASH)-focused nonprofit organizations.",
+    "email": "dalyw@stanford.edu"
+  },
+  {
+    "name": "Gina Kittleson",
+    "role": "phd student",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/gina-kittleson-a694a3207/",
+    "website": "",
+    "cv": "",
+    "netID": "gkittles",
+    "bio": "Gina’s research focuses on system-scale modeling of urban water supply planning under deep uncertainty due to climate change. She is investigating the impact that demand curtailment orders may have on Santa Barbara’s water supply planning flexibility when faced with drought conditions. Additionally, with the Stanford Sustainability Accelerator, she is deploying the PLANWater model as a modular Python library able to be generalized to new sites.",
+    "email": "gkittles@stanford.edu"
+  },
+  {
+    "name": "Dr. Alexander Dudchenko",
+    "role": "staff",
+    "scholar_url": "https://scholar.google.com/citations?user=qGxLrqoAAAAJ&hl=en&oi=ao",
+    "linkedin": "https://www.linkedin.com/in/avdudchenko/",
+    "website": "",
+    "cv": "",
+    "netID": "avd",
+    "bio": "Alexander V. Dudchenko (Ph.D) is a staff scientist at SLAC National Accelerator Laboratory. His work is focused on developing detailed and accurate techno-economic process models of emerging separation systems used in water treatment and critical mineral extraction. He leverages a combination of advanced equation-oriented programming methods (Using WaterTAP https://watertap.readthedocs.io/en/stable/), gray box methods (https://github.com/watertap-org/reaktoro-pse) and machine learning models to quantify the performance and costs of new technologies and treatment trains, identify critical areas of innovation, and developing strategies for optimizing process layout and operation.",
+    "email": "avd@slac.stanford.edu"
+  },
+  {
+    "name": "Abdullah Alhussain",
+    "role": "ms student",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/akh891/",
+    "netID": "abdull",
+    "bio": "Abdullah is a Master’s student in Mechanical Engineering at Stanford University. He earned his Bachelor’s degree in Mechanical Engineering from the University of California, Irvine, where he served as an energy consultant through the U.S. Department of Energy’s Industrial Assessment Center, conducting energy efficiency audits for manufacturing facilities. He is currently involved in customer discovery for WaterTAP, exploring market applications and user needs for water treatment and sustainability solutions.",
+    "email": "abdull@stanford.edu"
+  },
+  {
+    "name": "Madeline Hodge",
+    "role": "undergrad",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/madeline-hodge/",
+    "netID": "mhodge27",
+    "bio": "Madeline is an undergraduate and coterm student in Environmental Systems Engineering, with an interest in Coastal systems. Her work in the WE3 lab focuses on wastewater treatment infrastructure resilience to sea level rise and supports development of the SAWS tool.",
+    "email": "mhodge27@stanford.edu"
+  },
+  {
+    "name": "Meerashree Sundara Raju",
+    "role": "ms student",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/meerashree-sundara-raju-6918501b8/",
+    "netID": "meerasr",
+    "bio": "Meera is a graduate student pursuing dual master’s degrees in Environmental Engineering and Natural Resources Conservation. At the WE3 Lab, she is developing a harmonized national Underground Injection Control (UIC) well database for the SAWS screening tool, supporting feasibility assessments of non-traditional water supply projects across the United States. She has also led a 48-state policy and literature review on brackish groundwater development, synthesizing state strategies, investments, and regulatory approaches to inform national water supply planning under Project SAWS.",
+    "email": "meerasr@stanford.edu"
+  },
+  {
+    "name": "Ariana Hofelmann",
+    "role": "phd student",
+    "scholar_url": "https://scholar.google.com/citations?user=-zFQ5qcAAAAJ&hl=en&oi=ao",
+    "linkedin": "",
+    "netID": "arianah",
+    "bio": "Ariana is a PhD candidate in electrical engineering at Stanford University. She has earned a Bachelors in mechanical engineering from Johns Hopkins University (2022), a Masters in electrical engineering from Stanford University (2025). Her research focuses on designing and optimizing induction heating thermochemical reactors. ",
+    "email": "arianah@stanford.edu"
+  },
+  {
+    "name": "Dr. Anthony Cheng",
+    "role": "postdoc",
+    "scholar_url": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
+    "linkedin": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
+    "netID": "",
+    "bio": "Anthony Cheng is an ORISE Postdoctoral Fellow with the National Energy Technology Laboratory, with a visiting appointment at the WE3 Lab at Stanford. He received his PhD from Carnegie Mellon University in Engineering and Public Policy. His research focuses on understanding manufacturing and commercialization of technologies needed in the energy transition, with a particular emphasis on critical minerals supply chains, with a previous emphasis on electric vehicle batteries; his current focus is on unconventional sources and processing pathways for security-relevant critical minerals. His work incorporates technoeconomic, life-cycle, material flow, and optimization methods to evaluate engineering systems in policy-relevant contexts. He will join the faculty of the School of Industrial Systems and Engineering at Georgia Tech in Fall 2027.",
+    "email": ""
+  },
+  {
+    "name": "Constance Rouffet",
+    "role": "ms student",
+    "scholar_url": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
+    "linkedin": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
+    "netID": "rouffetc",
+    "bio": "Constance Rouffet is a master’s student in Civil and Environmental Engineering at Stanford University. Her research focuses on developing an LLM model to extract information about treatment processes described in wastewater treatment plant permits. She began her master’s degree at Stanford in Fall 2025, after earning an engineering diploma (equivalent to a master’s degree in Energy Engineering) from École Polytechnique in France.",
+    "email": "rouffetc@stanford.edu"
+  }
+]

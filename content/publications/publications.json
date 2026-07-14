@@ -1,38 +1,1334 @@
 [
   {
+    "title": "Acquirium: Toward Interoperable Data Driven Applications in Water Treatment Systems",
+    "authors": "U. Saka, Fletcher T. Chapin, Lazlo Paul, Aviasti Anwar, S. Struck, Meagan S. Mauter, Gabriel Fierro",
+    "journal": "International Conference on Systems for Energy-efficient Built Environments",
+    "year": 2026,
+    "doi": "10.1145/3744256.3812557",
+    "research_areas": [
+      "data"
+    ],
+    "team": [
+      "fchapin"
+    ]
+  },
+  {
     "title": "Demand response event simulator and risk-aware bidding tool for industrial customers",
-    "authors": "Sakthivelu, A., Chapin, F.T., Bolorinos, J., Mauter, M.S.",
+    "authors": "Adhithyan Sakthivelu, Fletcher T. Chapin, Jose Bolorinos, Meagan S. Mauter",
     "journal": "Applied Energy",
     "year": 2026,
-    "doi": "https://doi.org/10.1016/j.apenergy.2026.127456",
-    "research_areas": ["energy flexibility"],
-    "team": ["fchapin"]
+    "doi": "10.1016/j.apenergy.2026.127456",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "adhiths",
+      "fchapin",
+      "jbolorin"
+    ]
   },
   {
-    "title": "Incorporating corrosion design constraints in desalination process optimization: A case study in mechanical vapor compression",
-    "authors": "Tucker, C.I., Amusat, O.O., Atia, A.A., Dudchenko, A.D., Bartholomew, T.V., Mauter, M.S.",
-    "journal": "Desalination",
-    "year": 2025,
-    "doi": "https://doi.org/10.1016/j.desal.2025.119698",
-    "research_areas": ["separations"],
-    "team": ["carsont", "avd"]
-  },
-  {
-    "title": "Probabilistic estimates of fresh and saline groundwater availability and composition for a 0.5˚ grid of the contiguous United States",
-    "authors": "Adkins, C., Fritz, A.G., Mauter, M.S.",
-    "journal": "In preparation",
+    "title": "Enhancing Household Water End-Use Estimates from Low Time-Resolution Smart Meter Data via Stochastic Discrete Event Modeling and Bayesian Inference",
+    "authors": "Xinyu Fang, Jize Zhang, Meagan S. Mauter, A. Cominola, Zhongming Lu",
+    "journal": "Water Research X",
     "year": 2026,
-    "doi": "",
-    "research_areas": ["separations", "infrastructure planning"],
-    "team": ["cadkins"]
-  }, 
-{
-    "title": "Optimizing distribution controls for safe, affordable, low-carbon water supply",
-    "authors": "Musabandesu, E and Mauter, MS",
+    "doi": "10.1016/j.wroa.2026.100526",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Expedited desalination permitting enables adaptive planning and water system cost reduction",
+    "authors": "M. Zaniolo, S. Fletcher, M. Mauter",
+    "journal": "Environmental Research: Infrastructure and Sustainability",
+    "year": 2026,
+    "doi": "10.1088/2634-4505/ae3e3c",
+    "research_areas": [
+      "planning"
+    ],
+    "team": [
+      "mzaniolo"
+    ]
+  },
+  {
+    "title": "Editorial overview: Transforming water technologies in the United States: Insights from the National Alliance for Water Innovation",
+    "authors": "J. McCutcheon, M. Mauter",
+    "journal": "Current Opinion in Chemical Engineering",
+    "year": 2025,
+    "doi": "10.1016/j.coche.2025.101180",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Field-scale mapping of California crop water productivity to inform water management in critically overdrafted groundwater basins",
+    "authors": "Corisa A Wong, David B. Lobell, M. Mauter",
+    "journal": "Environmental Research Letters",
+    "year": 2025,
+    "doi": "10.1088/1748-9326/add6b8",
+    "research_areas": [
+      "wef"
+    ],
+    "team": [
+      "corisaw"
+    ]
+  },
+  {
+    "title": "Fisher Discriminant Analysis for Extracting Interpretable Phenological Information From Multivariate Time Series Data",
+    "authors": "Conor T. Doherty, M. Mauter",
+    "journal": "IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing",
+    "year": 2025,
+    "doi": "10.1109/JSTARS.2024.3517415",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "How much can we save? Upper bound cost and emissions benefits from commercial and industrial load flexibility",
+    "authors": "Akshay K. Rao, Fletcher T. Chapin, E. Musabandesu, Adhithyan Sakthivelu, Carson I. Tucker, Daly Wettermark, M. Mauter",
+    "journal": "ArXiv",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2511.14928",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "raoak",
+      "fchapin",
+      "emusa",
+      "adhiths",
+      "carsont",
+      "dalyw"
+    ]
+  },
+  {
+    "title": "Load-Shifting Strategies for Cost-Effective Emission Reductions at Wastewater Facilities.",
+    "authors": "Fletcher T. Chapin, Daly Wettermark, Jose Bolorinos, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2025,
+    "doi": "10.1021/acs.est.4c09773",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "fchapin",
+      "dalyw",
+      "jbolorin"
+    ]
+  },
+  {
+    "title": "Measuring impacts of California agri-environmental programs using field-scale satellite data",
+    "authors": "Corisa A Wong, Wyatt Abramson Sklarin, M. Mauter, David B. Lobell",
+    "journal": "Environmental Research Letters",
+    "year": 2025,
+    "doi": "10.1088/1748-9326/ae2ca6",
+    "research_areas": [
+      "wef"
+    ],
+    "team": [
+      "corisaw"
+    ]
+  },
+  {
+    "title": "Optimizing Distribution Controls for Safe, Affordable, Low‐Carbon Water Supply",
+    "authors": "E. Musabandesu, M. Mauter",
     "journal": "Water Resources Research",
     "year": 2025,
     "doi": "10.1029/2024WR039830",
-    "research_areas": ["energy flexibility"],
-    "team": ["emusa"]
+    "research_areas": [
+      "planning",
+      "flexibility"
+    ],
+    "team": [
+      "emusa"
+    ]
+  },
+  {
+    "title": "PyPES: A data and metadata schema for portable water system models",
+    "authors": "Fletcher T. Chapin, Yin-Li Liu, M. Mauter",
+    "journal": "Environ. Model. Softw.",
+    "year": 2025,
+    "doi": "10.1016/j.envsoft.2025.106788",
+    "research_areas": [
+      "data"
+    ],
+    "team": [
+      "fchapin",
+      "liuyinli"
+    ]
+  },
+  {
+    "title": "Retail electricity costs and emissions incentives are misaligned for commercial and industrial power consumers",
+    "authors": "Fletcher T. Chapin, Akshay K. Rao, Adhithyan Sakthivelu, Carson I. Tucker, E. David, Casey S. Chen, E. Musabandesu, M. Mauter",
+    "journal": "ArXiv",
+    "year": 2025,
+    "doi": "10.48550/arXiv.2511.10775",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "fchapin",
+      "raoak",
+      "adhiths",
+      "carsont",
+      "emusa"
+    ]
+  },
+  {
+    "title": "Using Bayesian Inference and Flowpipe Construction to Bound Predictions of Biogas Production at Wastewater Treatment Plants",
+    "authors": "Fletcher T. Chapin, A. Varma, Samuel Akinwande, Meagan S. Mauter, Sriram Sankaranarayanan",
+    "journal": "International Conference on Integrated Formal Methods",
+    "year": 2025,
+    "doi": "10.1007/978-3-032-10794-7_10",
+    "research_areas": [],
+    "team": [
+      "fchapin"
+    ]
+  },
+  {
+    "title": "Visual‐Analytics Bridge Complexity and Accessibility for Robust Urban Water Planning",
+    "authors": "M. Zaniolo, M. Mauter, S. Fletcher",
+    "journal": "Water Resources Research",
+    "year": 2025,
+    "doi": "10.1029/2024WR037633",
+    "research_areas": [
+      "planning"
+    ],
+    "team": [
+      "mzaniolo"
+    ]
+  },
+  {
+    "title": "Component innovations for lower cost mechanical vapor compression.",
+    "authors": "Carson I. Tucker, Timothy V. Bartholomew, A. Dudchenko, M. Mauter",
+    "journal": "Water research",
+    "year": 2024,
+    "doi": "10.1016/j.watres.2024.121950",
+    "research_areas": [
+      "separations"
+    ],
+    "team": [
+      "carsont",
+      "avd"
+    ]
+  },
+  {
+    "title": "Electricity and natural gas tariffs at United States wastewater treatment plants",
+    "authors": "Fletcher T. Chapin, Jose Bolorinos, M. Mauter",
+    "journal": "Scientific Data",
+    "year": 2024,
+    "doi": "10.1038/s41597-023-02886-6",
+    "research_areas": [
+      "flexibility",
+      "data"
+    ],
+    "team": [
+      "fchapin",
+      "jbolorin"
+    ]
+  },
+  {
+    "title": "Optimizing Desalination Operations for Energy Flexibility",
+    "authors": "Akshay K. Rao, A. Atia, Bernard Knueven, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2024,
+    "doi": "10.1021/acssuschemeng.4c06353",
+    "research_areas": [
+      "separations",
+      "flexibility"
+    ],
+    "team": [
+      "raoak"
+    ]
+  },
+  {
+    "title": "Quantifying the Value of Technology and Policy Innovation in Water Resource Portfolios",
+    "authors": "M. Zaniolo, S. Fletcher, M. Mauter",
+    "journal": "Earth's Future",
+    "year": 2024,
+    "doi": "10.1029/2023EF004167",
+    "research_areas": [
+      "planning"
+    ],
+    "team": [
+      "mzaniolo"
+    ]
+  },
+  {
+    "title": "Valuing energy flexibility from water systems",
+    "authors": "Akshay K. Rao, Jose Bolorinos, E. Musabandesu, Fletcher T. Chapin, M. Mauter",
+    "journal": "Nature Water",
+    "year": 2024,
+    "doi": "10.1038/s44221-024-00316-4",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "raoak",
+      "jbolorin",
+      "emusa",
+      "fchapin"
+    ]
+  },
+  {
+    "title": "Advancing Desalination and Treatment of Non-Traditional Source Water: The First 3.5 Years of the National Alliance for Water Innovation (NAWI)",
+    "authors": "Meagan S. Mauter, R. Kostecki, Jordan Macknick",
+    "journal": "Proceedings of the Water Environment Federation",
+    "year": 2023,
+    "doi": "10.2175/193864718825158978",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Aqueous Bromide Discharges from U.S. Coal-Fired Power Plants: Points of Origin, Concentration Ranges, and Effluent Treatment Costs",
+    "authors": "Alison G. Fritz, Chad Able, M. Mauter, E. Grol",
+    "journal": "Energy & Fuels",
+    "year": 2023,
+    "doi": "10.1021/acs.energyfuels.2c03364",
+    "research_areas": [],
+    "team": [
+      "agfritz"
+    ]
+  },
+  {
+    "title": "Assessing the economic viability of unconventional rare earth element feedstocks",
+    "authors": "Alison G. Fritz, Thomas J. Tarka, M. Mauter",
+    "journal": "Nature Sustainability",
+    "year": 2023,
+    "doi": "10.1038/s41893-023-01145-1",
+    "research_areas": [],
+    "team": [
+      "agfritz"
+    ]
+  },
+  {
+    "title": "Comparative Infrared Microscopy for Measuring Membrane Thermal Conductivity and Validating Theoretical Heat Transport Models",
+    "authors": "Tanya Liu, M. Mauter",
+    "journal": "ACS ES&T Engineering",
+    "year": 2023,
+    "doi": "10.1021/acsestengg.2c00436",
+    "research_areas": [
+      "technology"
+    ],
+    "team": [
+      "liuyinli"
+    ]
+  },
+  {
+    "title": "EXTREME DECENTRALIZED WATER TREATMENT: Exploring the Future of Premise-Scale Water Treatment and Reuse",
+    "authors": "Alex Fairhart, David Sedlak, Meagan S. Mauter, P. Fiske, P. Kehoe",
+    "journal": "",
+    "year": 2023,
+    "doi": "10.2172/3366057",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "FIND: A Synthetic weather generator to control drought Frequency, Intensity, and Duration",
+    "authors": "M. Zaniolo, S. Fletcher, M. Mauter",
+    "journal": "Environ. Model. Softw.",
+    "year": 2023,
+    "doi": "10.1016/j.envsoft.2023.105927",
+    "research_areas": [
+      "planning"
+    ],
+    "team": [
+      "mzaniolo"
+    ]
+  },
+  {
+    "title": "Fixing the desalination membrane pipeline",
+    "authors": "J. McCutcheon, M. Mauter",
+    "journal": "Science",
+    "year": 2023,
+    "doi": "10.1126/science.ade5313",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Fouling of Reverse Osmosis Membrane with Effluent Organic Matter: Componential Role of Hydrophobicity",
+    "authors": "Noa Stein, Revital Sharon-Gojman, M. Mauter, Roy Bernstein, M. Herzberg",
+    "journal": "ACS ES&T Water",
+    "year": 2023,
+    "doi": "10.1021/acsestwater.3c00116",
+    "research_areas": [
+      "technology"
+    ],
+    "team": []
+  },
+  {
+    "title": "Integrated Energy Flexibility Management at Wastewater Treatment Facilities.",
+    "authors": "Jose Bolorinos, M. Mauter, R. Rajagopal",
+    "journal": "Environmental Science & Technology",
+    "year": 2023,
+    "doi": "10.1021/acs.est.3c00365",
+    "research_areas": [
+      "flexibility"
+    ],
+    "team": [
+      "jbolorin"
+    ]
+  },
+  {
+    "title": "Microporous Polyethersulfone Membranes Grafted with Zwitterionic Polymer Brushes Showing Microfiltration Permeance and Ultrafiltration Bacteriophage Removal.",
+    "authors": "J. Qin, E. Ziemann, E. Bar‐Zeev, S. Bone, Yuanzhe Liang, M. Mauter, M. Herzberg, Roy Bernstein",
+    "journal": "ACS applied materials & interfaces",
+    "year": 2023,
+    "doi": "10.1021/acsami.3c01495",
+    "research_areas": [
+      "technology"
+    ],
+    "team": []
+  },
+  {
+    "title": "Multi-scale planning model for robust urban drought response",
+    "authors": "M. Zaniolo, S. Fletcher, M. Mauter",
+    "journal": "Environmental Research Letters",
+    "year": 2023,
+    "doi": "10.1088/1748-9326/acceb5",
+    "research_areas": [
+      "planning"
+    ],
+    "team": [
+      "mzaniolo"
+    ]
+  },
+  {
+    "title": "Multicriteria Suitability Index for Prioritizing Early-Stage Deployments of Wastewater-Derived Fertilizers in Sub-Saharan Africa.",
+    "authors": "Corisa A Wong, David B. Lobell, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2023,
+    "doi": "10.1021/acs.est.3c05435",
+    "research_areas": [
+      "wef"
+    ],
+    "team": [
+      "corisaw"
+    ]
+  },
+  {
+    "title": "Novel Method for Accurately Estimating Membrane Transport Properties and Mass Transfer Coefficients in Reverse Osmosis",
+    "authors": "Yuanzhe Liang, A. Dudchenko, M. Mauter",
+    "journal": "SSRN Electronic Journal",
+    "year": 2023,
+    "doi": "10.2139/ssrn.4349423",
+    "research_areas": [
+      "separations",
+      "technology"
+    ],
+    "team": [
+      "avd"
+    ]
+  },
+  {
+    "title": "The Future of Municipal Wastewater Reuse Concentrate Management: Drivers, Challenges, and Opportunities",
+    "authors": "Casey T. K. Finnerty, Amy E. Childress, K. Hardy, Eric M. V. Hoek, M. Mauter, M. Plumlee, Joan B. Rose, M. Sobsey, Paul Westerhoff, Pedro J. J. Alvarez, M. Elimelech",
+    "journal": "Environmental Science & Technology",
+    "year": 2023,
+    "doi": "10.1021/acs.est.3c06774",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Trace Element Sampling and Partitioning Modeling to Estimate Wastewater Composition and Treatment Performance at Coal Generators",
+    "authors": "Meagan S. Mauter, James Hower, Heileen Hsu-Kim",
+    "journal": "",
+    "year": 2023,
+    "doi": "10.2172/2228329",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Desalination Process Design Assisted by Osmotic Power for High Water Recovery and Low Energy Consumption",
+    "authors": "K. Touati, A. Dudchenko, M. Mauter, Md. Saifur Rahaman",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2022,
+    "doi": "10.1021/acssuschemeng.1c07078.s001",
+    "research_areas": [
+      "separations",
+      "technology"
+    ],
+    "team": [
+      "avd"
+    ]
+  },
+  {
+    "title": "Effects of meteorological and land surface modeling uncertainty on errors in winegrape ET calculated with SIMS",
+    "authors": "C. Doherty, L. Johnson, J. Volk, M. Mauter, N. Bambach, A. McElrone, J. Alfieri, L. Hipps, J. Prueger, S. Castro, M. M. Alsina, W. Kustas, F. Melton",
+    "journal": "Irrigation Science",
+    "year": 2022,
+    "doi": "10.1007/s00271-022-00808-9",
+    "research_areas": [
+      "wef"
+    ],
+    "team": []
+  },
+  {
+    "title": "Guidance on Nusselt Number Correlation Selection in Membrane Distillation",
+    "authors": "A. Dudchenko, Mukta Hardikar, Alaina Anand, Ruikun Xin, Ruoyu Wang, Chitanya Gopu, M. Mauter",
+    "journal": "ACS ES&T Engineering",
+    "year": 2022,
+    "doi": "10.1021/acsestengg.1c00496",
+    "research_areas": [
+      "technology"
+    ],
+    "team": [
+      "avd"
+    ]
+  },
+  {
+    "title": "Heat transfer innovations and their application in thermal desalination processes",
+    "authors": "Tanya Liu, M. Mauter",
+    "journal": "Joule",
+    "year": 2022,
+    "doi": "10.1016/j.joule.2022.05.004",
+    "research_areas": [
+      "technology"
+    ],
+    "team": [
+      "liuyinli"
+    ]
+  },
+  {
+    "title": "High-Resolution Carbon Accounting Framework for Urban Water Supply Systems.",
+    "authors": "Yang Liu, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2022,
+    "doi": "10.1021/acs.est.2c04127",
+    "research_areas": [],
+    "team": [
+      "liuyinli"
+    ]
+  },
+  {
+    "title": "Inadequacy of Current Approaches for Characterizing Membrane Transport Properties at High Salinities",
+    "authors": "Yuanzhe Liang, A. Dudchenko, M. Mauter",
+    "journal": "SSRN Electronic Journal",
+    "year": 2022,
+    "doi": "10.2139/ssrn.4127038",
+    "research_areas": [],
+    "team": [
+      "avd"
+    ]
+  },
+  {
+    "title": "Technology Baselines and Innovation Priorities for Securing Water Supply",
+    "authors": "M. Mauter, D. Dionysiou, Jae-Hong Kim",
+    "journal": "ACS ES&T Engineering",
+    "year": 2022,
+    "doi": "10.1021/acsestengg.2c00014",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Treatment of Bromides in Coal Plant Wastewater Streams [Slides]",
+    "authors": "Chad Able, M. Woods, M. Mauter, Alison G. Fritz, E. Grol",
+    "journal": "",
+    "year": 2022,
+    "doi": "10.2172/1968476",
+    "research_areas": [],
+    "team": [
+      "agfritz"
+    ]
+  },
+  {
+    "title": "Unraveling pH Effects on Ultrafiltration Membrane Fouling by Extracellular Polymeric Substances: Adsorption and Conformation Analyzed with Localized Surface Plasmon Resonance.",
+    "authors": "Noya Ran, Revital Sharon-Gojman, S. Larsson, O. Gillor, M. Mauter, M. Herzberg",
+    "journal": "Environmental Science & Technology",
+    "year": 2022,
+    "doi": "10.1021/acs.est.2c03085",
+    "research_areas": [
+      "technology"
+    ],
+    "team": []
+  },
+  {
+    "title": "(Invited) Electrochemical Selenium Remediation: Direct Reduction Pathways and System Optimization",
+    "authors": "S. Zou, M. Mauter",
+    "journal": "ECS Meeting Abstracts",
+    "year": 2021,
+    "doi": "10.1149/ma2021-0223766mtgabs",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Build back wiser",
+    "authors": "M. Mauter",
+    "journal": "Science",
+    "year": 2021,
+    "doi": "10.1126/science.abm3438",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Carbon Benefits of Drinking Water Treatment Electrification",
+    "authors": "Daniel B. Gingerich, Jiachen Liu, M. Mauter",
+    "journal": "ACS ES&T Engineering",
+    "year": 2021,
+    "doi": "10.1021/acsestengg.1c00165",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Competing Ion Behavior in Direct Electrochemical Selenite Reduction",
+    "authors": "S. Zou, M. Mauter",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.1021/ACSESTENGG.1C00099",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Cost and energy intensity of U.S. potable water reuse systems",
+    "authors": "Alison Sim, M. Mauter",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.1039/D1EW00017A",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Cost optimization of multi-stage gap membrane distillation",
+    "authors": "A. Dudchenko, Timothy V. Bartholomew, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2021,
+    "doi": "10.1016/J.MEMSCI.2021.119228",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Direct Electrochemical Pathways for Selenium Reduction in Aqueous Solutions",
+    "authors": "S. Zou, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2021,
+    "doi": "10.1021/ACSSUSCHEMENG.0C06585",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Energy and CO2 Emissions Penalty Ranges for Geologic Carbon Storage Brine Management.",
+    "authors": "Timothy V. Bartholomew, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2021,
+    "doi": "10.1021/acs.est.0c06017",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Energy-Optimal Siting of Decentralized Water Recycling Systems.",
+    "authors": "Yang Liu, Alison Sim, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2021,
+    "doi": "10.1021/acs.est.1c04708",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "High-impact innovations for high-salinity membrane desalination",
+    "authors": "A. Dudchenko, Timothy V. Bartholomew, M. Mauter",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "year": 2021,
+    "doi": "10.1073/pnas.2022196118",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Impact of Non-Steady State Operation on Cooling Water Consumption at Coal- and Natural Gas-Fired Power Plants",
+    "authors": "A. Mulchandani, M. Mauter, A. Fritz, E. Grol",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.2172/1901808",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Marginal energy intensity of water supply",
+    "authors": "Yang Liu, M. Mauter",
+    "journal": "ArXiv",
+    "year": 2021,
+    "doi": "10.1039/d1ee00925g",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "National Alliance for Water Innovation (NAWI) Master Technology Roadmap",
+    "authors": "D. Sedlak, M. Mauter, J. Macknick, Jennifer R. Stokes-Draut, Peter S. Fiske, D. Agarwal, T. Borch, Richard P. Breckenridge, T. Cath, S. Chellam, A. Childress, D. Dionysiou, D. Giammar, E. Hoek, Sunny Jiang, L. Katz, Jaehong Kim, R. Kostecki, J. McCutcheon, Y. Polsky, Zachary A. Stoll, P. Xu",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.2172/1818076",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Real-time feedback improves multi-stakeholder design for complex environmental systems",
+    "authors": "Niles Xunan Guo, Alex Davis, M. Mauter, J. Whitacre",
+    "journal": "Environmental Research Communications",
+    "year": 2021,
+    "doi": "10.1088/2515-7620/abf466",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Recommendations for Advancing FAIR and Open Data Standards in the Water Treatment Community",
+    "authors": "Amanda N. Quay, P. Fiske, M. Mauter",
+    "journal": "ACS ES&T Engineering",
+    "year": 2021,
+    "doi": "10.1021/acsestengg.1c00245.s001",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Robust technology and policy pathways to urban water security",
+    "authors": "M. Zaniolo, S. Fletcher, M. Mauter",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.5194/EGUSPHERE-EGU21-6835",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Technoeconomic Assessment of a Sequential Step-Leaching Process for Rare Earth Element Extraction from Acid Mine Drainage Precipitates",
+    "authors": "Alison G. Fritz, Thomas J. Tarka, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2021,
+    "doi": "10.1021/ACSSUSCHEMENG.1C02069",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "The Economic Infeasibility of Salinity Gradient Energy via Pressure Retarded Osmosis",
+    "authors": "Alexandra N. Newby, Timothy V. Bartholomew, M. Mauter",
+    "journal": "",
+    "year": 2021,
+    "doi": "10.1021/ACSESTENGG.1C00078",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Assessing the demand response capacity of U.S. drinking water treatment plants",
+    "authors": "Yang Liu, M. Mauter",
+    "journal": "Applied Energy",
+    "year": 2020,
+    "doi": "10.1016/j.apenergy.2020.114899",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Bacterial biofilm formation on ion exchange membranes",
+    "authors": "M. Herzberg, Soumya Pandit, M. Mauter, Y. Oren",
+    "journal": "Journal of Membrane Science",
+    "year": 2020,
+    "doi": "10.1016/j.memsci.2019.117564",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "By-process disaggregation of flow and electricity load of U.S. drinking water treatment plants",
+    "authors": "Yang Liu, M. Mauter",
+    "journal": "",
+    "year": 2020,
+    "doi": "10.17632/K6G5H47TM2.1",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Cost Comparison of Capacitive Deionization and Reverse Osmosis for Brackish Water Desalination",
+    "authors": "Xitong Liu, S. Shanbhag, Timothy V. Bartholomew, J. Whitacre, M. Mauter",
+    "journal": "ACS ES&T Engineering",
+    "year": 2020,
+    "doi": "10.1021/ACSESTENGG.0C00094",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Cost optimization of high recovery single stage gap membrane distillation",
+    "authors": "Timothy V. Bartholomew, A. Dudchenko, N. Siefert, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2020,
+    "doi": "10.1016/j.memsci.2020.118370",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Desalination for a circular water economy",
+    "authors": "M. Mauter, Peter S. Fiske",
+    "journal": "Energy & Environmental Science",
+    "year": 2020,
+    "doi": "10.1039/d0ee01653e",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Flue gas desulfurization wastewater composition and implications for regulatory and treatment train design.",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2020,
+    "doi": "10.1021/acs.est.9b07433",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Foulant Adsorption to Heterogeneous Surfaces with Zwitterionic Nanoscale Domains",
+    "authors": "A. Dudchenko, Prity Bengani-Lutz, A. Asatekin, M. Mauter",
+    "journal": "",
+    "year": 2020,
+    "doi": "10.1021/acsapm.0c00738",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Impact of module design on heat transfer in membrane distillation",
+    "authors": "A. Dudchenko, Mukta Hardikar, Ruikun Xin, Shounak G. Joshi, Ruoyu Wang, Nikita Sharma, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2020,
+    "doi": "10.1016/j.memsci.2020.117898",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Magnetic field-induced alignment of nanofibrous supramolecular membranes: a molecular design approach to create tissue-like biomaterials.",
+    "authors": "Elham Radvar, Yejiao Shi, S. Grasso, C. Edwards-Gayle, Xitong Liu, M. Mauter, V. Castelletto, I. Hamley, M. Reece, Helena S. Azevedo",
+    "journal": "ACS applied materials & interfaces",
+    "year": 2020,
+    "doi": "10.1021/acsami.0c05191",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Nanomaterial",
+    "authors": "M. Mauter, Timothy Tsung - Program Administrator",
+    "journal": "Definitions",
+    "year": 2020,
+    "doi": "10.1007/978-94-017-8739-0",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Neural networks for estimating physical parameters in membrane distillation",
+    "authors": "A. Dudchenko, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2020,
+    "doi": "10.1016/j.memsci.2020.118285",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Optimization Framework to Assess the Demand Response Capacity of a Water Distribution System",
+    "authors": "Yang Liu, C. Barrows, J. Macknick, M. Mauter",
+    "journal": "Journal of Water Resources Planning and Management",
+    "year": 2020,
+    "doi": "10.1061/(asce)wr.1943-5452.0001258",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Performance Loss of Activated Carbon Electrodes in Capacitive Deionization: Mechanisms and Material Property Predictors.",
+    "authors": "Xitong Liu, S. Shanbhag, S. Natesakhawat, J. Whitacre, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2020,
+    "doi": "10.1021/acs.est.0c06549",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Quantifying uncertainty in groundwater depth from sparse well data in the California Central Valley",
+    "authors": "Amanda N. Quay, A. Hering, M. Mauter",
+    "journal": "Environmental Research Letters",
+    "year": 2020,
+    "doi": "10.1088/1748-9326/ab88fb",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Computational framework for modeling membrane processes without process and solution property simplifications",
+    "authors": "Timothy V. Bartholomew, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2019,
+    "doi": "10.1016/J.MEMSCI.2018.11.067",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "COntaminant behavior in Air, Liquids, and Solids (COALS) Controls Tool",
+    "authors": "Jiachen Liu, Daniel B. Gingerich, M. Mauter",
+    "journal": "",
+    "year": 2019,
+    "doi": "10.17605/OSF.IO/6RFE8",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Environmentally significant shifts in trace element emissions from coal plants complying with the 1990 Clean Air Act Amendments",
+    "authors": "Daniel B. Gingerich, Yifan Zhao, M. Mauter",
+    "journal": "Energy Policy",
+    "year": 2019,
+    "doi": "10.1016/J.ENPOL.2019.07.003",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Trace Element Mass Flow Rates from U.S. Coal Fired Power Plants.",
+    "authors": "Xiaodi Sun, Daniel B. Gingerich, I. Azevedo, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2019,
+    "doi": "10.1021/acs.est.9b01039",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Understanding and mitigating performance decline in electrochemical deionization",
+    "authors": "Xitong Liu, S. Shanbhag, M. Mauter",
+    "journal": "Current Opinion in Chemical Engineering",
+    "year": 2019,
+    "doi": "10.1016/j.coche.2019.07.003",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Water Associated Health and Environmental Air Damages (AHEAD) Model",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "",
+    "year": 2019,
+    "doi": "10.17605/OSF.IO/P28AX",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Water Desalination: Electrostatic and Electrochemical Separation Processes",
+    "authors": "S. Shanbhag, L. Karimi, J. Whitacre, M. Mauter",
+    "journal": "",
+    "year": 2019,
+    "doi": "10.1002/9781119300762.wsts0189",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Zwitterionic copolymer additive architecture affects membrane performance: fouling resistance and surface rearrangement in saline solutions",
+    "authors": "Papatya Kaner, A. Dudchenko, M. Mauter, A. Asatekin",
+    "journal": "Journal of Materials Chemistry A",
+    "year": 2019,
+    "doi": "10.1039/C8TA11553B",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "ACS Sustainable Chemistry & Engineering Virtual Special Issue on Systems Analysis, Design, and Optimization for Sustainability",
+    "authors": "H. Cabezas, M. Mauter, D. Shonnard, F. You",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2018,
+    "doi": "10.1021/ACSSUSCHEMENG.8B02227",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Cost Optimization of Osmotically Assisted Reverse Osmosis.",
+    "authors": "Timothy V. Bartholomew, N. Siefert, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2018,
+    "doi": "10.1021/acs.est.8b02771",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Fundamental challenges and engineering opportunities in flue gas desulfurization wastewater treatment at coal fired power plants",
+    "authors": "Daniel B. Gingerich, E. Grol, M. Mauter",
+    "journal": "",
+    "year": 2018,
+    "doi": "10.1039/C8EW00264A",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Mechanisms of Humic Acid Fouling on Capacitive and Insertion Electrodes for Electrochemical Desalination.",
+    "authors": "Xitong Liu, J. Whitacre, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2018,
+    "doi": "10.1021/acs.est.8b03261",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Retrofitting the Regulated Power Plant: Optimizing Energy Allocation to Electricity Generation, Water Treatment, and Carbon Capture Processes at Coal-Fired Generating Facilities",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2018,
+    "doi": "10.1021/ACSSUSCHEMENG.7B04316",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "The Impact of Demand-Side Policies on Firms' Balance between Exploration and Exploitation Alliances",
+    "authors": "Joern Hoppmann, Hyundo Choi, M. Mauter",
+    "journal": "Academy of Management Proceedings",
+    "year": 2018,
+    "doi": "10.5465/ambpp.2018.11594abstract",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "The role of nanotechnology in tackling global water challenges",
+    "authors": "M. Mauter, I. Zucker, F. Perreault, Jay R. Werber, Jae-Hong Kim, M. Elimelech",
+    "journal": "Nature Sustainability",
+    "year": 2018,
+    "doi": "10.1038/s41893-018-0046-8",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Air Emission Reduction Benefits of Biogas Electricity Generation at Municipal Wastewater Treatment Plants.",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2017,
+    "doi": "10.1021/acs.est.7b04649",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Air Emissions Damages from Municipal Drinking Water Treatment Under Current and Proposed Regulatory Standards.",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2017,
+    "doi": "10.1021/acs.est.7b03461",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Allocating Damage Compensation in a Federalist System: Lessons from Spatially Resolved Air Emissions in the Marcellus.",
+    "authors": "A. Patrick Behrer, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2017,
+    "doi": "10.1021/acs.est.6b04886",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Characterizing convective heat transfer coefficients in membrane distillation cassettes",
+    "authors": "M. Leitch, G. Lowry, M. Mauter",
+    "journal": "Journal of Membrane Science",
+    "year": 2017,
+    "doi": "10.1016/J.MEMSCI.2017.05.028",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Computing the Diamagnetic Susceptibility and Diamagnetic Anisotropy of Membrane Proteins from Structural Subunits.",
+    "authors": "M. Babaei, I. C. Jones, Kaushik Dayal, M. Mauter",
+    "journal": "Journal of chemical theory and computation",
+    "year": 2017,
+    "doi": "10.1021/acs.jctc.6b01251",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Dimensional analysis of membrane distillation flux through fibrous membranes",
+    "authors": "M. Mauter",
+    "journal": "Bulletin of the American Physical Society",
+    "year": 2017,
+    "doi": "",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Evaluating the Techno-Economic Feasibility of Forward Osmosis Process Utilizing Low Grade Heat: Applications in Power Plant Water, Wastewater, and Reclaimed Water Treatment",
+    "authors": "M. Mauter, D. Dzombak",
+    "journal": "",
+    "year": 2017,
+    "doi": "10.2172/1415992",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "High-resolution model for estimating the economic and policy implications of agricultural soil salinization in California",
+    "authors": "P. Welle, M. Mauter",
+    "journal": "Environmental Research Letters",
+    "year": 2017,
+    "doi": "10.1088/1748-9326/aa848e",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Influence of Electric Fields on Biofouling of Carbonaceous Electrodes.",
+    "authors": "Soumya Pandit, S. Shanbhag, M. Mauter, Y. Oren, M. Herzberg",
+    "journal": "Environmental Science & Technology",
+    "year": 2017,
+    "doi": "10.1021/acs.est.6b06339",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Ion Transport and Competition Effects on NaTi2(PO4)3 and Na4Mn9O18 Selective Insertion Electrode Performance.",
+    "authors": "S. Shanbhag, Y. Bootwala, J. Whitacre, M. Mauter",
+    "journal": "Langmuir : the ACS journal of surfaces and colloids",
+    "year": 2017,
+    "doi": "10.1021/acs.langmuir.7b02861",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Liquid Separation I",
+    "authors": "M. Mauter",
+    "journal": "",
+    "year": 2017,
+    "doi": "10.1016/s0958-2118(00)80052-x",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Management and dewatering of brines extracted from geologic carbon storage sites",
+    "authors": "Jason T. Arena, J. Jain, C. Lopano, J. Hakala, Timothy V. Bartholomew, M. Mauter, N. Siefert",
+    "journal": "International Journal of Greenhouse Gas Control",
+    "year": 2017,
+    "doi": "10.1016/J.IJGGC.2017.03.032",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Nanotechnology for sustainable food production: promising opportunities and scientific challenges",
+    "authors": "S. Rodrigues, P. Demokritou, N. Dokoozlian, C. Hendren, B. Karn, M. Mauter, O. Sadik, M. Safarpour, J. Unrine, J. Viers, P. Welle, J. White, M. Wiesner, G. Lowry",
+    "journal": "Environmental science. Nano",
+    "year": 2017,
+    "doi": "10.1039/C6EN00573J",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Osmotically assisted reverse osmosis for high salinity brine treatment",
+    "authors": "Timothy V. Bartholomew, L. Mey, Jason T. Arena, N. Siefert, M. Mauter",
+    "journal": "Desalination",
+    "year": 2017,
+    "doi": "10.1016/J.DESAL.2017.04.012",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Spatially resolved air-water emissions tradeoffs improve regulatory impact analyses for electricity generation",
+    "authors": "Daniel B. Gingerich, Xiaodi Sun, A. Patrick Behrer, I. Azevedo, M. Mauter",
+    "journal": "Proceedings of the National Academy of Sciences",
+    "year": 2017,
+    "doi": "10.1073/pnas.1524396114",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Technoeconomic Optimization of Emerging Technologies for Regulatory Analysis",
+    "authors": "Daniel B. Gingerich, Timothy V. Bartholomew, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2017,
+    "doi": "10.1021/ACSSUSCHEMENG.7B03821",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Bacterial Nanocellulose Aerogel Membranes: Novel High-Porosity Materials for Membrane Distillation",
+    "authors": "M. Leitch, Chen-Kai Li, O. Ikkala, M. Mauter, G. Lowry",
+    "journal": "Environmental Science and Technology Letters",
+    "year": 2016,
+    "doi": "10.1021/ACS.ESTLETT.6B00030",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Economic and policy drivers of agricultural water desalination in California’s central valley",
+    "authors": "P. Welle, J. Medellín-Azuara, J. Viers, M. Mauter",
+    "journal": "Agricultural Water Management",
+    "year": 2016,
+    "doi": "10.1016/J.AGWAT.2017.07.024",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Magnetically Directed Two-Dimensional Crystallization of OmpF Membrane Proteins in Block Copolymers.",
+    "authors": "Steven S. Klara, Patrick O. Saboe, Ian T. Sines, M. Babaei, Po-Lin Chiu, Rita DeZorzi, Kaushik Dayal, T. Walz, Manish Kumar, M. Mauter",
+    "journal": "Journal of the American Chemical Society",
+    "year": 2016,
+    "doi": "10.1021/jacs.5b03320",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Multiobjective Optimization Model for Minimizing Cost and Environmental Impact in Shale Gas Water and Wastewater Management",
+    "authors": "Timothy V. Bartholomew, M. Mauter",
+    "journal": "ACS Sustainable Chemistry & Engineering",
+    "year": 2016,
+    "doi": "10.1021/ACSSUSCHEMENG.6B00372",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Surface Wetting Study via Pseudocontinuum Modeling",
+    "authors": "Meysam Makaremi, M. Jhon, M. Mauter, L. Biegler",
+    "journal": "Journal of Physical Chemistry C",
+    "year": 2016,
+    "doi": "10.1021/acs.jpcc.6b02142",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "The Origins of Low Efficiency in Electrochemical De-Ionization Systems",
+    "authors": "S. Shanbhag, J. Whitacre, M. Mauter",
+    "journal": "Journal of The Electrochemical Society",
+    "year": 2016,
+    "doi": "10.1149/2.0181614JES",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Crosslinked poly(ethylene oxide) containing siloxanes fabricated through thiol-ene photochemistry",
+    "authors": "Victor A. Kusuma, E. Roth, W. Clafshenkel, Steven S. Klara, Xu Zhou, Surendar R. Venna, Erik J. Albenze, D. Luebke, M. Mauter, R. Koepsel, A. Russell, David P. Hopkinson, Hunaid Nulwala",
+    "journal": "Journal of Polymer Science Part A",
+    "year": 2015,
+    "doi": "10.1002/POLA.27594",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Dual Plenary: USAEE/SPE Plenary Session - Water at the Well-site: Production, Handling and Disposal",
+    "authors": "M. Mauter",
+    "journal": "",
+    "year": 2015,
+    "doi": "",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Electrodeposited MnO2 For Pseudocapacitive Deionization: Relating Deposition Condition and Electrode Structure to Performance",
+    "authors": "P. Walker, M. Mauter, J. Whitacre",
+    "journal": "Electrochimica Acta",
+    "year": 2015,
+    "doi": "10.1016/J.ELECTACTA.2015.09.126",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Influence of surface charge on the rate, extent, and structure of adsorbed Bovine Serum Albumin to gold electrodes.",
+    "authors": "Burcu Beykal, M. Herzberg, Y. Oren, M. Mauter",
+    "journal": "Journal of colloid and interface science",
+    "year": 2015,
+    "doi": "10.1016/j.jcis.2015.08.055",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Investment optimization model for freshwater acquisition and wastewater handling in shale gas production",
+    "authors": "Linlin Yang, I. Grossmann, M. Mauter, R. Dilmore",
+    "journal": "Aiche Journal",
+    "year": 2015,
+    "doi": "10.1002/AIC.14804",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Quantity, Quality, and Availability of Waste Heat from United States Thermal Power Generation.",
+    "authors": "Daniel B. Gingerich, M. Mauter",
+    "journal": "Environmental Science & Technology",
+    "year": 2015,
+    "doi": "10.1021/es5060989",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Water Treatment Capacity of Forward-Osmosis Systems Utilizing Power-Plant Waste Heat",
+    "authors": "Xingshi Zhou, Daniel B. Gingerich, M. Mauter",
+    "journal": "Industrial & Engineering Chemistry Research",
+    "year": 2015,
+    "doi": "10.1021/ACS.IECR.5B00460",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Expert Elicitation of Trends in Marcellus Oil and Gas Wastewater Management",
+    "authors": "M. Mauter, Vanessa R. Palmer",
+    "journal": "Journal of Environmental Engineering",
+    "year": 2014,
+    "doi": "10.1061/(ASCE)EE.1943-7870.0000811",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Modular polymerized ionic liquid block copolymer membranes for CO2/N2 separation",
+    "authors": "Brian J. Adzima, Surendar R. Venna, Steven S. Klara, Hongkun He, Mingjiang Zhong, D. Luebke, M. Mauter, K. Matyjaszewski, Hunaid Nulwala",
+    "journal": "Journal of Materials Chemistry",
+    "year": 2014,
+    "doi": "10.1039/C4TA00661E",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Regional variation in water-related impacts of shale gas development and implications for emerging international plays.",
+    "authors": "M. Mauter, P. Alvarez, Allen G. Burton, Diego C. Cafaro, Wei Chen, K. Gregory, G. Jiang, Qilin Li, J. Pittock, D. Reible, J. Schnoor",
+    "journal": "Environmental Science & Technology",
+    "year": 2014,
+    "doi": "10.1021/es405432k",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Risks and risk governance in unconventional shale gas development.",
+    "authors": "Mitchell J. Small, Paul C. Stern, E. Bomberg, S. Christopherson, B. D. Goldstein, Andrei L. Israel, Robert B. Jackson, A. Krupnick, M. Mauter, J. Nash, D. North, Sheila M. Olmstead, A. Prakash, B. Rabe, N. Richardson, Susan Tierney, T. Webler, G. Wong‐Parodi, B. Zielińska",
+    "journal": "Environmental Science & Technology",
+    "year": 2014,
+    "doi": "10.1021/es502111u",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Correction to Surface Cell Density Effects onEscherichia coliGene Expression during Cell Attachment",
+    "authors": "M. Mauter, A. Fait, M. Elimelech, M. Herzberg",
+    "journal": "Environmental Science & Technology",
+    "year": 2013,
+    "doi": "10.1021/ES402943N",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Emerging Pollutants – Part II: Treatment",
+    "authors": "K. Bell, Jeff Bandy, Benjamin J. Finnegan, O. Keen, M. Mauter, A. Parker, Laura C. Sima, H. Stretz",
+    "journal": "Water Environment Research",
+    "year": 2013,
+    "doi": "10.2175/106143013X13698672323308",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Surface cell density effects on Escherichia coli gene expression during cell attachment.",
+    "authors": "M. Mauter, A. Fait, M. Elimelech, M. Herzberg",
+    "journal": "Environmental Science & Technology",
+    "year": 2013,
+    "doi": "10.1021/es3047069",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Workshop on Risks of Unconventional Shale Gas Development",
+    "authors": "P. Stern, M. Small, K. Nygaard, B. Zielińska, M. Zoback, M. Mauter, J. Nicot",
+    "journal": "",
+    "year": 2013,
+    "doi": "",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Estimating the Upper Limits of U.S. Power Plant Waste Heat Driven Forward Osmosis",
+    "authors": "Daniel B. Gingerich, Xingshi Zhou, M. Mauter",
+    "journal": "",
+    "year": 2012,
+    "doi": "",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "New perspectives on nanomaterial aquatic ecotoxicity: production impacts exceed direct exposure impacts for carbon nanotoubes.",
+    "authors": "M. Eckelman, M. Mauter, J. Isaacs, M. Elimelech",
+    "journal": "Environmental Science & Technology",
+    "year": 2012,
+    "doi": "10.1021/es203409a",
+    "research_areas": [],
+    "team": []
+  },
+  {
+    "title": "Stable sequestration of single-walled carbon nanotubes in self-assembled aqueous nanopores.",
+    "authors": "M. Mauter, M. Elimelech, C. Osuji",
+    "journal": "Journal of the American Chemical Society",
+    "year": 2012,
+    "doi": "10.1021/ja209847u",
+    "research_areas": [],
+    "team": []
   }
 ]

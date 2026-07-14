@@ -18,6 +18,18 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch publications from Semantic Scholar
+        run: python scripts/fetch_publications.py
+
+      - name: Tag publications with research areas and team members
+        run: python scripts/tag_publications.py
+
+      - name: Build partnerships page
+        run: python scripts/build_partnerships_page.py
+
       - name: Build home page
         run: python scripts/build_home_page.py
 
