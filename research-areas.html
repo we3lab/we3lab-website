@@ -29,14 +29,16 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="people.html">Who We Are</a></li>
         <li class="dropdown">
-          <a href="work.html" class="active">What We Do</a>
+          <a href="research-areas.html" class="active">What We Do</a>
           <ul class="dropdown-content">
             <li><a href="research-areas.html">Research</a></li>
             <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>
-        <li><a href="stories.html">Why We Do It</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="partnerships.html">Why We Do It</a></li>
+        <li><a href="contact.html">Join Us</a></li>
       </ul>
     </div>
   </nav>
@@ -45,9 +47,16 @@
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <div class="breadcrumb"><a href="work.html">What We Do</a> &rsaquo; Research</div>
+    <div class="breadcrumb"><a href="research-areas.html">What We Do</a> &rsaquo; Research</div>
     <h1>Research</h1>
-    <p>INSERT PAGE DESCRIPTION HERE</p>
+    <div style="display:flex;align-items:center;gap:3rem">
+      <p style="margin:0;flex:1">The Water &amp; Energy Efficiency for the Environment Lab (WE3Lab) develops and applies process-based and systems-level optimization models to improve the affordability, resiliency, and sustainability of water-energy infrastructure systems. Our computational tools guide robust infrastructure planning, prioritize technology innovation and investment, and unlock system flexibility.</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;flex-shrink:0;margin-left:auto">
+        <p style="margin:0 0 .25rem;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)">Additional Resources</p>
+        <a href="publications.html" style="color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;white-space:nowrap"><i class="fa-solid fa-file-lines"></i> Publications &amp; Presentations</a>
+        <a href="https://github.com/we3lab" target="_blank" rel="noopener" style="color:rgba(255,255,255,.85);text-decoration:none;display:flex;align-items:center;gap:.5rem;font-size:.875rem;white-space:nowrap"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -62,38 +71,38 @@
         <div class="research-card-inner">
           <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/reverse_osmosis.jpg') center/cover no-repeat"></div>
           <div class="research-card-body">
-            <h3>Separations Process Modeling &amp; Design</h3>
-            <p>We advance the science and engineering of membrane-based and electrochemical separations for water treatment, contaminant removal, and resource recovery, with an emphasis on energy-efficient processes and circular water economy applications.</p>
+            <h3>Separations Process Optimization &amp; Technoeconomic Analysis</h3>
+            <p>Open-source tools for optimizing and evaluating the economics of separation processes across the water and energy sectors.</p>
             <span class="research-card-link">Learn more &rarr;</span>
           </div>
         </div>
       </a>
-      <a class="research-card" href="research/energyflexibility.html">
+      <a class="research-card" href="research/flexibility.html">
         <div class="research-card-inner">
           <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/electric_shutoff.jpg') center/cover no-repeat"></div>
           <div class="research-card-body">
-            <h3>Water-Energy Flexibility</h3>
-            <p>We develop optimization and control frameworks that make electricity demand more responsive to grid conditions — enabling deeper integration of renewables, reducing peak loads, and unlocking value from distributed energy resources including EVs, batteries, and flexible building loads.</p>
+            <h3>Industrial-Energy Flexibility &amp; Grid Integration</h3>
+            <p>Expanding the operational flexibility of the industrial base with process optimization and data-driven modeling.</p>
             <span class="research-card-link">Learn more &rarr;</span>
           </div>
         </div>
       </a>
-      <a class="research-card" href="research/infrastructureplanning.html">
+      <a class="research-card" href="research/planning.html">
         <div class="research-card-inner">
           <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/wwtp.jpg') center/cover no-repeat"></div>
           <div class="research-card-body">
             <h3>Water &amp; Wastewater Systems Planning</h3>
-            <p>We build data-driven and model-based tools for planning, operating, and maintaining water infrastructure — from distribution networks and stormwater systems to regional supply planning under climate uncertainty.</p>
+            <p>Stochastic, multi-scale optimization for long-horizon water infrastructure decisions that explicitly account for uncertainty in hydrology, technology, and policy.</p>
             <span class="research-card-link">Learn more &rarr;</span>
           </div>
         </div>
       </a>
-      <a class="research-card" href="research/waterenergyfoodpolicies.html">
+      <a class="research-card" href="research/data.html">
         <div class="research-card-inner">
-          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/farm.jpg') center/cover no-repeat"></div>
+          <div class="research-card-banner" style="background:linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4)), url('content/research_areas/data.jpeg') center/cover no-repeat"></div>
           <div class="research-card-body">
-            <h3>Water-Energy-Food Policies</h3>
-            <p>We examine the intersection of water, energy, and food systems to inform policy decisions that promote sustainability, equity, and resilience.</p>
+            <h3>Water-Energy Data &amp; Data Infrastructure</h3>
+            <p>Advancing the collection, organization, and validation of data to support planning, operation, and innovation in water and energy systems.</p>
             <span class="research-card-link">Learn more &rarr;</span>
           </div>
         </div>
@@ -104,8 +113,18 @@
 <!-- BEGIN:previous-research-generated -->
     <div style="margin-top:4rem">
       <h2 class="people-section-title">Previous Research</h2>
-      <p style="color:var(--gray-500);max-width:640px;margin-bottom:2rem">This thrust was the foundation of the lab's early work and produced many of our most-cited publications. The group has since evolved into our current research directions.</p>
-      <a class="research-card" href="research/watertechnology.html" style="max-width:380px;display:block">
+      <p style="color:var(--gray-500);max-width:640px;margin-bottom:2rem">These thrusts helped lay the foundations of the lab's early work and produced many of our most-cited publications. The group has since evolved into our current research directions.</p>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+      <a class="research-card" href="research/wef.html" style="max-width:380px">
+        <div class="research-card-inner" style="opacity:.8">
+          <div class="research-card-body">
+            <h3>Water-Energy-Food Policies</h3>
+            <p>We examine the intersection of water, energy, and food systems to inform policy decisions that promote sustainability, equity, and resilience.</p>
+            <span class="research-card-link" style="color:var(--gray-500)">View archive &rarr;</span>
+          </div>
+        </div>
+      </a>
+      <a class="research-card" href="research/watertechnology.html" style="max-width:380px">
         <div class="research-card-inner" style="opacity:.8">
           <div class="research-card-body">
             <h3>Water Treatment Technology</h3>
@@ -114,6 +133,7 @@
           </div>
         </div>
       </a>
+      </div>
     </div>
 <!-- END:previous-research-generated -->
 
@@ -152,11 +172,14 @@
         </div>
       </div>
       <div class="dissertation-card">
-        <div class="dissertation-thumb"><div class="dissertation-thumb-placeholder">🎓</div></div>
+        <div class="dissertation-video-wrap">
+          <iframe src="https://www.youtube.com/embed/PRtbGdSjuWM" title="Fletcher T. Chapin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <button class="dissertation-copy-btn" onclick="navigator.clipboard.writeText('https://youtu.be/PRtbGdSjuWM').then(function(){var b=this;b.innerHTML='<i class=\'fa-solid fa-check\'></i>';setTimeout(function(){b.innerHTML='<i class=\'fa-solid fa-link\'></i>';},1500);}.bind(this))" title="Copy link"><i class="fa-solid fa-link"></i></button>
+        </div>
         <div class="dissertation-body">
           <p class="dissertation-date">May 14, 2026</p>
           <p class="dissertation-name">Fletcher T. Chapin</p>
-          
+          <p class="dissertation-title">Data management, optimization, and verification frameworks for wastewater operations</p>
         </div>
       </div>
       <div class="dissertation-card">

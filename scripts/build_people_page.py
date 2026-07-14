@@ -29,7 +29,7 @@ PEOPLE_RE = re.compile(r"<!-- BEGIN:people-generated -->.*?<!-- END:people-gener
 
 AV_COUNT = 8
 
-ROLE_ORDER = ["postdoc", "phd student", "ms student", "undergrad", "staff", "alumni"]
+ROLE_ORDER = ["staff", "postdoc", "phd student", "ms student", "undergrad", "alumni"]
 ROLE_LABELS = {
     "postdoc":    "Postdoctoral Researchers",
     "phd student":"PhD Students",
@@ -59,6 +59,18 @@ ROLE_GROUP = {
 
 def h(text: str) -> str:
     return html.escape(str(text))
+
+def hm(text: str) -> str:
+    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
+    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
+    out = []
+    for part in parts:
+        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
+        if m:
+            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
+        else:
+            out.append(html.escape(part))
+    return ''.join(out)
 
 
 def member_slug(name: str) -> str:
@@ -120,7 +132,7 @@ def social_links(m: dict) -> str:
 
 def build_pi(pi: dict) -> str:
     bio_html = "\n".join(
-        f'        <p style="font-size:.9rem;color:var(--blk);line-height:1.6;margin-bottom:.75rem">{h(p)}</p>'
+        f'        <p style="font-size:.9rem;color:var(--blk);line-height:1.6;margin-bottom:.75rem">{hm(p)}</p>'
         for p in pi.get("bio", [])
     )
     edu_items = "\n".join(
@@ -154,7 +166,7 @@ def build_pi(pi: dict) -> str:
         <div style="display:flex;gap:.6rem;align-items:center;margin-top:.35rem">
           {social}
         </div>
-        <p style="font-size:.85rem;color:#555;margin-top:.4rem;margin-bottom:.75rem">{h(pi['title'])}</p>
+        <p style="font-size:.85rem;color:#555;margin-top:.4rem;margin-bottom:.75rem">{hm(pi['title'])}</p>
 {bio_html}
       </div>
     </div>"""
@@ -189,7 +201,7 @@ def build_alumni_card(a: dict, av_class: str) -> str:
                      f'<i class="fa-brands fa-linkedin"></i></a>')
     links_html = f'        <div class="links">{" &middot; ".join(parts)}</div>\n' if parts else ""
     deg_html   = f'        <div class="role">{h(a.get("degree_year", ""))}</div>\n' if a.get("degree_year") else ""
-    place_html = f'        <p class="research-area">{h(a.get("placement", ""))}</p>\n' if a.get("placement") else ""
+    place_html = f'        <p class="research-area">{hm(a.get("placement", ""))}</p>\n' if a.get("placement") else ""
 
     return (
         f'      <div class="person-card">\n'
@@ -301,14 +313,8 @@ def build_member_projects(netid: str, projects: list, members_by_netid: dict = N
 
     cards = []
     for project in member_projects:
-        img_path = project.get("image", "").lstrip("/")
-        img_html = (
-            f'<img src="../{img_path}" style="width:64px;height:48px;object-fit:cover;'
-            f'border-radius:4px;flex-shrink:0" alt="">'
-            if img_path else ""
-        )
         summary = (
-            f'  <summary>\n    {img_html}\n'
+            f'  <summary>\n'
             f'    <span class="project-expand-title">{h(project["title"])}</span>\n'
             f'  </summary>'
         )
@@ -329,11 +335,17 @@ def build_member_projects(netid: str, projects: list, members_by_netid: dict = N
                 f'<div class="person-avatar av-1" style="width:44px;height:44px;border-radius:50%;'
                 f'font-size:.8rem;flex-shrink:0">{initials(m["name"])}</div>'
             )
-            team_items.append(
-                f'<a href="{slug}.html" style="display:flex;align-items:center;gap:.5rem;'
-                f'text-decoration:none;color:inherit">'
-                f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></a>'
-            )
+            if m.get("is_alumni"):
+                team_items.append(
+                    f'<span style="display:flex;align-items:center;gap:.5rem;color:inherit">'
+                    f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></span>'
+                )
+            else:
+                team_items.append(
+                    f'<a href="{slug}.html" style="display:flex;align-items:center;gap:.5rem;'
+                    f'text-decoration:none;color:inherit">'
+                    f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></a>'
+                )
         team_html = ""
         if team_items:
             team_html = (
@@ -345,7 +357,7 @@ def build_member_projects(netid: str, projects: list, members_by_netid: dict = N
         # Overview
         overview_html = (
             f'    <p class="project-section-label">Overview</p>\n'
-            f'    <p style="font-size:.9rem;margin-bottom:.75rem">{h(project.get("description", ""))}</p>\n'
+            f'    <p style="font-size:.9rem;margin-bottom:.75rem">{hm(project.get("description", ""))}</p>\n'
         )
 
         # Resources
@@ -460,7 +472,7 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
 
     bio_html = (
         f'      <p style="color:rgba(255,255,255,.8);font-size:1.1rem;'
-        f'line-height:1.6;margin-top:1rem;margin-bottom:0">{h(bio_text)}</p>'
+        f'line-height:1.6;margin-top:1rem;margin-bottom:0">{hm(bio_text)}</p>'
         if bio_text else
         f'      <p style="color:rgba(255,255,255,.45);font-size:1.05rem;font-style:italic;'
         f'margin-top:1rem;margin-bottom:0">Bio coming soon.</p>'
@@ -532,14 +544,16 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
         <li><a href="../index.html">Home</a></li>
         <li><a href="../people.html" class="active">Who We Are</a></li>
         <li class="dropdown">
-          <a href="../work.html">What We Do</a>
+          <a href="../research-areas.html">What We Do</a>
           <ul class="dropdown-content">
             <li><a href="../research-areas.html">Research</a></li>
             <li><a href="../teaching.html">Teaching</a></li>
+            <li><a href="../publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>
-        <li><a href="../stories.html">Why We Do It</a></li>
-        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../partnerships.html">Why We Do It</a></li>
+        <li><a href="../contact.html">Join Us</a></li>
       </ul>
     </div>
   </nav>
@@ -653,6 +667,10 @@ def main():
     members_by_netid = {m.get("netID", ""): m for m in members if m.get("netID")}
     alumni_data = json.loads(ALUMNI_JSON.read_text())
     alumni = alumni_data["alumni"] if isinstance(alumni_data, dict) else alumni_data
+    for a in alumni:
+        nid = a.get("netID", "")
+        if nid and nid not in members_by_netid:
+            members_by_netid[nid] = {**a, "is_alumni": True}
 
     page = PEOPLE_HTML.read_text()
 

@@ -24,6 +24,18 @@ IMAGES_DIR          = Path("content/members/images")
 def h(text: str) -> str:
     return html.escape(str(text))
 
+def hm(text: str) -> str:
+    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
+    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
+    out = []
+    for part in parts:
+        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
+        if m:
+            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
+        else:
+            out.append(html.escape(part))
+    return ''.join(out)
+
 
 def member_slug(name: str) -> str:
     clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
@@ -58,6 +70,11 @@ def member_display(m: dict, asset_prefix: str, member_link_prefix: str) -> str:
         f'<div style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--cerulean);font-size:.8rem;font-weight:700;color:#fff;">'
         f'{initials(m["name"])}</div>'
     )
+    if m.get("is_alumni"):
+        return (
+            f'<span style="display:inline-flex;align-items:center;gap:.5rem;color:inherit">'
+            f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></span>'
+        )
     return (
         f'<a href="{member_link_prefix}{slug}.html" '
         f'style="display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit">'
@@ -68,15 +85,8 @@ def member_display(m: dict, asset_prefix: str, member_link_prefix: str) -> str:
 def build_project_card(project: dict, members_by_netid: dict,
                        asset_prefix: str = "../",
                        member_link_prefix: str = "../people/") -> str:
-    # Thumbnail image in summary
-    img_path = project.get("image", "").lstrip("/")
-    img_html = (
-        f'<img src="{asset_prefix}{img_path}" '
-        f'style="width:64px;height:48px;object-fit:cover;border-radius:4px;flex-shrink:0" alt="">'
-        if img_path else ""
-    )
     summary = (
-        f'  <summary>\n    {img_html}\n'
+        f'  <summary>\n'
         f'    <span class="project-expand-title">{h(project["title"])}</span>\n'
         f'  </summary>'
     )
@@ -100,7 +110,7 @@ def build_project_card(project: dict, members_by_netid: dict,
     # Overview
     overview_html = (
         f'    <p class="project-section-label">Overview</p>\n'
-        f'    <p style="font-size:.9rem;margin-bottom:.75rem">{h(project.get("description", ""))}</p>\n'
+        f'    <p style="font-size:.9rem;margin-bottom:.75rem">{hm(project.get("description", ""))}</p>\n'
     )
 
     # Resources
@@ -181,7 +191,7 @@ def build_projects_section(area_id: str, projects: list, members_by_netid: dict)
 
 def build_overview_block(area: dict) -> str:
     paras = "\n".join(
-        f'    <p style="max-width:760px">{h(p)}</p>'
+        f'    <p style="max-width:760px">{hm(p)}</p>'
         for p in area.get("overview", [])
     )
     if not paras:
@@ -197,7 +207,7 @@ def build_archive_note(area: dict) -> str:
         f'    <div style="background:#fff8e1;border-left:4px solid #f9a825;'
         f'border-radius:var(--radius);padding:1rem 1.25rem;margin-bottom:2rem">\n'
         f'      <p style="margin:0;font-size:.9rem;color:#5d4037">'
-        f'<strong>Archive note:</strong> {h(note)}</p>\n'
+        f'<strong>Archive note:</strong> {hm(note)}</p>\n'
         f'    </div>\n'
     )
 
@@ -244,14 +254,16 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
         <li><a href="../index.html">Home</a></li>
         <li><a href="../people.html">Who We Are</a></li>
         <li class="dropdown">
-          <a href="../work.html" class="active">What We Do</a>
+          <a href="../research-areas.html" class="active">What We Do</a>
           <ul class="dropdown-content">
             <li><a href="../research-areas.html">Research</a></li>
             <li><a href="../teaching.html">Teaching</a></li>
+            <li><a href="../publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>
-        <li><a href="../stories.html">Why We Do It</a></li>
-        <li><a href="../contact.html">Contact Us</a></li>
+        <li><a href="../partnerships.html">Why We Do It</a></li>
+        <li><a href="../contact.html">Join Us</a></li>
       </ul>
     </div>
   </nav>
@@ -260,9 +272,9 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <div class="breadcrumb"><a href="../work.html">What We Do</a> &rsaquo; {h(area["name"])}</div>
+    <div class="breadcrumb"><a href="../research-areas.html">What We Do</a> &rsaquo; {h(area["name"])}</div>
     <h1>{h(area["name"])}</h1>
-    <p>{h(area["description"])}</p>
+    <p>{hm(area["description"])}</p>
   </div>
 </div>
 
@@ -279,11 +291,11 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
     <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Projects</h2>
 {projects_html}
 
-    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
+    <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Recent Publications</h2>
 {publications_html}
 
     <div style="margin-top:3rem">
-      <a href="../work.html" class="btn btn-navy">&larr; Back to What We Do</a>
+      <a href="../research-areas.html" class="btn btn-navy">&larr; Back to Research</a>
     </div>
 
   </div>
@@ -351,6 +363,12 @@ def main():
     members  = json.loads(MEMBERS_JSON.read_text())
     raw      = members["members"] if isinstance(members, dict) else members
     members_by_netid = {m.get("netID", ""): m for m in raw if m.get("netID")}
+    alumni_raw = json.loads(Path("content/members/alumni.json").read_text())
+    alumni_list = alumni_raw["alumni"] if isinstance(alumni_raw, dict) else alumni_raw
+    for a in alumni_list:
+        nid = a.get("netID", "")
+        if nid and nid not in members_by_netid:
+            members_by_netid[nid] = {**a, "is_alumni": True}
 
     # Remove any research sub-pages no longer listed in research_areas.json
     expected = {Path(a["file"]) for a in areas}

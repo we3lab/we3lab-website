@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us — WE3 Lab</title>
+  <title>Join Us — WE3 Lab</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -29,14 +29,16 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="people.html">Who We Are</a></li>
         <li class="dropdown">
-          <a href="work.html">What We Do</a>
+          <a href="research-areas.html">What We Do</a>
           <ul class="dropdown-content">
             <li><a href="research-areas.html">Research</a></li>
             <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>
-        <li><a href="stories.html">Why We Do It</a></li>
-        <li><a href="contact.html" class="active">Contact Us</a></li>
+        <li><a href="partnerships.html">Why We Do It</a></li>
+        <li><a href="contact.html" class="active">Join Us</a></li>
       </ul>
     </div>
   </nav>
@@ -45,89 +47,41 @@
 <!-- ── Page Banner ─────────────────────────────────────── -->
 <div class="page-banner">
   <div class="container">
-    <h1>Contact Us</h1>
-    <p>INSERT PAGE DESCRIPTION HERE</p>
+    <h1>Join Us</h1>
+    <p>We are always excited to welcome new members to the WE3 Lab. If you are interested in joining our team, please review the relevant section below and follow the instructions provided.</p>
   </div>
 </div>
 
 <!-- ── Main contact section ────────────────────────────── -->
 <section class="section">
-  <div class="container">
-    <div class="contact-grid">
+  <div class="container" style="max-width:760px">
 
-      <!-- Left: Info -->
-      <div>
-        <h3>Get in Touch</h3>
-        <p style="margin-bottom:2rem">Use the form to reach out or find us directly at the contact details below.</p>
-
-        <!-- Prospective postdocs box -->
-        <div style="margin-top:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--we3-blue);border-radius:0 var(--radius) var(--radius) 0">
-          <h4 style="color:var(--deep-space);margin-bottom:.4rem">Prospective Post-docs</h4>
-          <p style="font-size:.875rem">If you are interested in joining as a Post-doc, please apply through the department's official admissions portal and mention WE3 Lab in your statement. You may also email the PI directly with your CV and research interests — we read every inquiry.</p>
-        </div>
-
-        <!-- Prospective grad students box -->
-        <div style="margin-top:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--deep-space);border-radius:0 var(--radius) var(--radius) 0">
-          <h4 style="color:var(--deep-space);margin-bottom:.4rem">Prospective Graduate Students</h4>
-          <p style="font-size:.875rem">If you are interested in joining as a PhD student, please apply through the department's official admissions portal and mention WE3 Lab in your statement. You may also email the PI directly with your CV and research interests — we read every inquiry.</p>
-        </div>
-
-        <!-- Visiting / undergrad box -->
-        <div style="margin-top:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--we3-green);border-radius:0 var(--radius) var(--radius) 0">
-          <h4 style="color:var(--deep-space);margin-bottom:.4rem">Undergraduate &amp; Visiting Researchers</h4>
-          <p style="font-size:.875rem">We regularly host undergraduates for independent study and REU projects. Visiting researchers and international students are also welcome — please reach out with a CV and a one-paragraph statement of interest.</p>
-        </div>
-      </div>
-
-      <!-- Right: Form -->
-      <div>
-        <div class="card card-body" style="padding:2rem">
-          <h3 style="color:var(--deep-space);margin-bottom:1.5rem">Send a Message</h3>
-          <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="first-name">First Name <span style="color:var(--cerulean)">*</span></label>
-                <input type="text" id="first-name" name="first_name" required placeholder="Jane" />
-              </div>
-              <div class="form-group">
-                <label for="last-name">Last Name <span style="color:var(--cerulean)">*</span></label>
-                <input type="text" id="last-name" name="last_name" required placeholder="Smith" />
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address <span style="color:var(--cerulean)">*</span></label>
-              <input type="email" id="email" name="email" required placeholder="jane@university.edu" />
-            </div>
-            <div class="form-group">
-              <label for="affiliation">Affiliation / Institution</label>
-              <input type="text" id="affiliation" name="affiliation" placeholder="University of Example" />
-            </div>
-            <div class="form-group">
-              <label for="inquiry-type">Inquiry Type <span style="color:var(--cerulean)">*</span></label>
-              <select id="inquiry-type" name="inquiry_type" required>
-                <option value="" disabled selected>Select one…</option>
-                <option value="prospective-phd">Prospective PhD Student</option>
-                <option value="prospective-ms">Prospective MS Student</option>
-                <option value="prospective-undergrad">Undergraduate Research</option>
-                <option value="postdoc">Postdoctoral Opportunity</option>
-                <option value="collaboration">Research Collaboration</option>
-                <option value="media">Media / Press</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="message">Message <span style="color:var(--cerulean)">*</span></label>
-              <textarea id="message" name="message" rows="5" required placeholder="What would you like to discuss?"></textarea>
-            </div>
-            <button type="submit" class="btn btn-navy" style="width:100%;justify-content:center">Send Message &rarr;</button>
-            <p style="font-size:.78rem;color:var(--gray-500);margin-top:.75rem;text-align:center">
-              Suspected AI-generated outreach requests will be automatically flagged and de-prioritized.
-            </p>
-          </form>
-        </div>
-      </div>
-
+    <!-- Prospective postdocs box -->
+    <div style="margin-bottom:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--we3-blue);border-radius:0 var(--radius) var(--radius) 0">
+      <h4 style="color:var(--deep-space);margin-bottom:.4rem">Prospective Post-Docs</h4>
+      <p style="font-size:.875rem">Post-Doctoral training is integral to our lab mission. We welcome applications to open positions through <a href="https://postdocs.stanford.edu/prospective/opportunities" target="_blank" rel="noopener">Stanford’s Post-Doctoral Affairs website</a>, as well as through the <a href="https://energypostdoc.stanford.edu/" target="_blank" rel="noopener">Precourt’s Stanford Energy Postdoctoral Fellowship program</a> and the <a href="https://sustainability.stanford.edu/about-school/dei/postdoctoral-resources/postdoctoral-fellowship-program" target="_blank" rel="noopener">Stanford Doerr School of Sustainability’s Dean’s Sustainability Leaders Postdoctoral Fellowship</a>. Scholars with strong alignment to the lab mission are welcome to reach out with inquiries about forthcoming openings. Please identify the specific areas of research alignment and reference active projects that would benefit from your existing skill-set.</p>
     </div>
+
+    <!-- Prospective grad students box -->
+    <div style="margin-bottom:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--deep-space);border-radius:0 var(--radius) var(--radius) 0">
+      <h4 style="color:var(--deep-space);margin-bottom:.4rem">Prospective PhD Students</h4>
+      <p style="font-size:.875rem">Prof. Mauter admits 1-2 PhD students each year through the <a href="https://cee.stanford.edu/academics-admissions/graduate-admissions" target="_blank" rel="noopener">Department of Civil &amp; Environmental Engineering’s</a> central pool of candidates. Prof. Mauter has also admitted and advised students through central applicant pools in Stanford’s Departments of <a href="https://cheme.stanford.edu/" target="_blank" rel="noopener">Chemical Engineering</a> and <a href="https://me.stanford.edu/" target="_blank" rel="noopener">Mechanical Engineering</a>. Applications are due in early December. Please note that Prof. Mauter has limited bandwidth to meet individually with students before applications are submitted, but she reviews all applicants with stated interest in the WE3Lab, and she interviews 10-20 applicants per year during the admissions cycle. Please review active projects on our website and watch recent dissertation defenses to ensure alignment with the group’s active projects.</p>
+    </div>
+
+    <!-- Visiting / undergrad box -->
+    <div style="margin-bottom:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--we3-green);border-radius:0 var(--radius) var(--radius) 0">
+      <h4 style="color:var(--deep-space);margin-bottom:.4rem">Undergraduate and Master's Researchers</h4>
+      <p style="font-size:.875rem">The WE3Lab is committed to engaging the next generation of water-energy system engineers in our research. Currently enrolled Stanford undergraduates and masters students are welcome to join our group meetings and should contact the lab’s PhD and Post-Doctoral scholars directly to inquire about research opportunities. Most long-term research engagements in our lab commence through one of Stanford’s Summer Undergraduate Research Programs (<a href="https://solo.stanford.edu/" target="_blank" rel="noopener">search</a> MUIR, SUPER, SESUR, SERGE, and SURGE). We also encourage undergraduate engagement with the lab’s entrepreneurial activities through the <a href="https://sustainability-accelerator.stanford.edu/get-involved/ecoramp-undergraduate-research-opportunities" target="_blank" rel="noopener">Stanford Sustainability Accelerator’s EcoRAMP program</a>.</p>
+      <p style="font-size:.875rem">Undergraduates from outside institutions are welcome to apply to relevant programs through Stanford and <a href="https://careers.slac.stanford.edu/slac-summer-internship-program" target="_blank" rel="noopener">SLAC National Laboratory</a>. We cannot accept unsolicited applications from external applicants.</p>
+      <p style="font-size:.875rem">We do not accept high-school student interns in our laboratory due to training requirements.</p>
+    </div>
+
+    <!-- Visiting researchers box -->
+    <div style="margin-bottom:2rem;padding:1.25rem;background:var(--bright-snow);border:1px solid var(--gray-200);border-left:4px solid var(--cerulean);border-radius:0 var(--radius) var(--radius) 0">
+      <h4 style="color:var(--deep-space);margin-bottom:.4rem">Visiting Researchers</h4>
+      <p style="font-size:.875rem">We occasionally host self-funded visiting researchers in an effort to spark new collaborations, broaden our group's expertise, and disseminate our research methods. Please review requirements for <a href="https://doresearch.stanford.edu/policies/research-policy-handbook/non-faculty-research-appointments/visiting-student-researchers" target="_blank" rel="noopener">Visiting Student Researchers</a> and <a href="https://doresearch.stanford.edu/policies/research-policy-handbook/non-faculty-research-appointments/visiting-scholars" target="_blank" rel="noopener">Visiting Scholars</a> in the Stanford Research Policy Handbook before reaching out to Prof. Mauter directly.</p>
+    </div>
+
   </div>
 </section>
 
@@ -135,7 +89,7 @@
 <section class="section-sm" style="background:var(--bright-snow);border-top:1px solid var(--gray-200)">
   <div class="container text-center">
     <h2 class="text-deep-space" style="margin-bottom:.5rem">Find Us</h2>
-    <p style="color:var(--gray-500);margin-bottom:2rem">We are located in the Engineering complex on the main campus.</p>
+    <p style="color:var(--gray-500);margin-bottom:2rem">We are located in the Jerry Yang and Akiko Yamazaki Environment and Energy Building (Y2E2) at the far west side of the Science and Engineering Quad. .</p>
     <iframe
       src="https://maps.google.com/maps?q=473+Via+Ortega,Stanford,CA+94305&hl=en&z=16&output=embed"
       width="100%" height="300"

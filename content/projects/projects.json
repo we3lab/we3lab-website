@@ -2,10 +2,9 @@
   {
     "id": "saws",
     "title": "Screening Alternative Water Sources to Secure American Water Supplies (SAWS)",
-    "team": ["cadkins","meerasr","mhodge27"],
+    "team": ["cadkins","meerasr","mhodge27", "emruwinn"],
     "description": "Increasing water stress is forcing state and local water resource managers to evaluate non-traditional water supplies. Complicating this process is the fact that local political, economic, social, technical, legal, and environmental (PESTLE) contexts for tapping alternative source waters vary widely by geographic location. The screening of alternative water sources to secure American water supplies (SAWS) tool aims to provide a centralized data repository, analysis, and mapping tool for factors influencing adoption of non-traditional water supplies at the county scale. SAWS integrates these previously disparate PESTLE datasets into a centralized, uniform viability assessment framework to enable comparisons across different water supplies and geographic regions. SAWS supports a regional supply portfolio optimization, comparative supply viability assessments, and goal prioritization for technological development, among other analyses. Finally, the ability to import new datasets, combined with native flexibility in how viability metrics are calculated and weighted, allows users to perform sensitivity analysis and assess the value of additional data collection. SAWS was designed to provide policy makers, water resource managers, consulting engineers, and other stakeholders with a common platform for gathering, interpreting, and visualizing pathways to enhanced water security, resilience, and affordability.",
-    "research_areas": ["infrastructure planning", "water energy food policies"],
-    "image": "/content/projects/images/saws_logo_no_bkgrnd.png",
+    "research_areas": ["planning", "data"],
     "funding": ["National Science Foundation", "ExxonMobil"],
     "links": [
       { "label": "Web Application", "url": "https://saws.lexunit.ai/" },
@@ -13,15 +12,159 @@
     ]
   },
   {
+    "id": "planwater",
+    "title": "Planning Adaptive Non-Traditional Waters (PLANWater)",
+    "team": ["gkittles", "mzaniolo"],
+    "description": "Unconventional new drought-resilient water technologies such as reuse and desalination offer the potential to diversify California's water mix and complement surface and groundwater sources. Our research is developing new modeling approaches to understand where, when, and how to target these technologies to develop a drought resilient water portfolio at low cost. Our approach integrates household-level water distribution network modeling with hydrological modeling of drought scenarios. An initial case study in Santa Barbara, CA focuses on identifying a least-cost pathway to water security by optimizing a portfolio of water augmentation actions to secure the city water supply in the face of hydrological and climate uncertainty. This project is a collaboration with Prof. Sarah Fletcher, PI of the Fletcher Lab",
+    "research_areas": ["planning"],
+    "funding": ["National Alliance for Water Innovation", "Stanford Sustainability Accelerator"],
+    "links": [
+      { "label": "Github Repository", "url": "https://github.com/m-zaniolo/DRIPP" }
+    ]
+  },
+  {
+    "id": "watertap",
+    "title": "WaterTAP: Process modeling and technoeconomic assessment platform",
+    "team": ["carstont", "avd", "slcharan", "raoak", "claraod", "dalyw", "nrsarker"],
+    "description": "Municipal and industrial water treatment facilities face increasingly complex technology decisions for treating nontraditional waters, water reuse, and resource recovery. Current tools provide limited capability to rigorously compare alternatives, predict performance under variable conditions, or justify R&D and pilot investments. This results in conservative design decisions, costly and time-intensive piloting programs, and missed opportunities for innovation. WaterTAP is an open-source, physics-based modeling framework for designing and evaluating advanced water treatment systems. WaterTAP process models are built within an optimization framework to solve for cost-optimal design and operation. WaterTAP enables researchers and engineers to simulate complex treatment trains; screen and prioritize technologies for piloting; integrate facility data into predictive models; and quantify the value of innovation.",
+    "research_areas": ["separations"],
+    "funding": ["National Alliance for Water Innovation (NAWI)"],
+    "links": [
+      { "label": "Github Repository", "url": "https://github.com/watertap-org/watertap" }
+    ]
+  },
+  {
+    "id": "flex",
+    "title": "Integrated decision-making for industrial energy flexibility",
+    "team": ["raoak", "fchapin", "carsont", "emusa", "haochiw", "dalyw", "avd"],
+    "description": "Most pathways for decarbonizing the electricity sector by 2050 include substantial increases in intermittent renewable generation paired with several TWh of grid-scale energy storage. Grid scale storage includes the ability to shift or schedule large amounts of power over time and can be deployed via a diverse range of technologies, like batteries or pumped hydropower. This project aims to understand the degree to which we can use existing infrastructure as virtual storage, by scheduling the operations and consequently the power consumption of electrified industrial processes (e.g., water treatment plants, chemical manufacturing, data centers, etc.). Our group develops methods rooted in numerical optimization to design, operate, and evaluate energy flexibility strategies across a range of industrial sectors and geographic regions. By modeling these processes from the ground up, we aim to understand the cost and feasibility requirements to unlock more flexibility from existing infrastructure and strategies to design and deploy flexibility more effectively for next generation infrastructure.",
+    "research_areas": ["flexibility", "planning"],
+    "funding": [],
+    "links": [
+      { "label": "", "url": "" }
+    ]
+  },
+  {
+    "id": "cleanerww",
+    "title": "Coordination for Lean Effective Affordable Nutrient Removal for Wastewater (CLEANRWastewater)",
+    "team": ["sinanaf"],
+    "description": "Wastewater treatment plants are under pressure to meet nutrient discharge regulations while maintaining rate payer affordability. This work introduces CLEANRWastewater, a decision support tool for valuing innovative staged deployment and coordinated infrastructure strategies for WWTPs sharing a regulated watershed.  Formulated as a multi-period, mixed-integer optimization framework and applied to a case study of three treatment facilities in the San Francisco Bay, this tool demonstrates that coordinating capital and operational decisions across facilities reduces the costs of sub-embayment nutrient removal by up to 48% ($268 million). These jointly realized savings stem from facilities delaying capital-intensive upgrades and deploying lowest-cost treatment options at the sub-embayment level. The framework's multi-period formulation uniquely incorporates time-varying constraints and accommodates uncertainty analysis around future nutrient loads. Quantifying the financial benefits of innovative infrastructure planning strategies may motivate utility managers to establish nutrient trading markets and coordinate regional infrastructure investments.",
+    "research_areas": ["planning"],
+    "funding": ["Stanford Woods Institute for the Environment"],
+    "links": [
+      { "label": "Github Repository", "url": "https://github.com/we3lab/Cap_Expansion_Model_SFBay" }
+    ]
+  },
+  {
+    "id": "pypes",
+    "title": "Python for Process Engineering Schema (PyPES)",
+    "team": ["fchapin", "liuyinli"],
+    "description": "Digital twins and other digital solutions are transforming the planning, design, operation, and maintenance of water assets. Implementing these solutions is often slowed by data management activities including cleaning, storage, and querying. We identify three limitations of existing data management platforms: data inaccessibility, inadequate integration of data and metadata, and the absence of embedded data analysis capabilities. We introduce Python for Process Engineering Schema (PyPES), an object-oriented, open-source schema for water data management, to address these shortcomings.",
+    "research_areas": ["data"],
+    "funding": ["Center for Integrated Facility Engineering (CIFE)"],
+    "links": [
+      { "label": "Github Repository", "url": "https://github.com/we3lab/pype-schema" }
+    ]
+  },
+  {
+    "id": "ontology",
+    "title": "Water Treatment (WaTr) Ontology and Acquirium",
+    "team": ["fchapin"],
+    "description": "Recent advances in machine learning and artificial intelligence show great promise for process automation. The data-driven nature of many state-of-the-art solutions presents challenges along the data pipeline from collection to validation, such as unavailability, misidentification, fragmentation, and low quality of data. We propose a water treatment ontology, WaTr, coupled with a data management platform, Acquirium, to address these challenges. A formal ontology (e.g., WaTr) can automatically enforce metadata rules and enable querying by logical relationships instead of esoteric tag names to increase data availability and avoid misidentification. Acquirium leverages the power of a formal ontology with a more user-friendly experience, providing built-in data reconciliation and validation tools to reconcile fragmented data and improve data quality. WaTr and Acquirium can help to accelerate the adoption of cutting-edge digital water solutions by alleviating data management headaches.",
+    "research_areas": ["data"],
+    "funding": ["National Alliance for Water Innovation (NAWI)"],
+    "links": [
+      { "label": "Github Repository", "url": "https://github.com/we3lab/pype-schema" }
+    ]
+  },
+  {
+    "id": "dcsiting",
+    "title": "Data and Models to Inform Optimal Siting and Flexible Operation of Data Centers",
+    "team": ["fchapin","haochiw"],
+    "description": "Data centers are among the fastest-growing electricity consumers in the U.S. and also require substantial cooling water, imposing significant economic and environmental impacts on water and energy systems. Because they can respond to changes in electricity prices, emissions, water availability, and utility incentive programs, data centers are strong candidates for flexible, dynamic operation—yet operators and policymakers lack the datasets needed to decide where to site facilities and how to operate them. This project develops a national, geospatial dataset spanning retail electricity and water costs, Scope 2 emissions, grid reliability, water supply sustainability risk, time-of-use tariffs, and demand response programs to inform data center siting and flexible operation. Preliminary analysis across the eight most common U.S. data center regions quantifies the tradeoffs between candidate locations—for example, low electricity costs in Phoenix are accompanied by high Scope 2 emissions and the most at-risk water supply—informing site-specific permitting, utility incentive design, and operational decisions.",
+    "research_areas": ["flexibility"],
+    "funding": ["Precourt Institute for Energy", "Bits & Watts Initiative Seed Grant"
+    ],
+    "links": [
+      {
+        "label": "Powering AI Innovation Forum",
+        "url": "https://energy.stanford.edu/powerai-innovation-forum"
+      }
+    ]
+  },
+  {
+    "id": "dccapex",
+    "title": "Interconnection of Power Grid Capacity Expansion with Data Center Siting and Operation",
+    "team": ["fchapin","haochiw"],
+    "description": "The U.S. power system is facing unprecedented load growth driven largely by data centers for AI and large-scale computing, carrying significant greenhouse gas and water-consumption footprints that depend heavily on where facilities are sited. Existing analyses predominantly rely on static, short-run emissions assessments that fail to capture the bi-directional interaction between large new loads and the grid's long-term evolution. This project couples data center load-growth scenarios—spanning energy efficiency, flexible operation, and siting—with a power grid capacity expansion model to determine how siting and operating decisions shape, and are shaped by, future investment in generation, storage, and transmission. By comparing uniformly distributed load, clustering in today's major markets, and DOE-recommended sites, we quantify the system-wide cost, emissions, and water-consumption implications of different deployment pathways, helping policymakers and utilities mitigate the economic and environmental costs of AI growth while enabling data centers to come online in reasonable timeframes.",
+    "research_areas": ["flexibility"],
+    "funding": ["Precourt Institute for Energy", "Bits & Watts Initiative Seed Grant"],
+    "links": []
+  },
+  {
+    "id": "critmin",
+    "title": "Critical Mineral Extraction from Conventional and Unconventional Sources",
+    "team": ["slcharan", "carsont", "avd@slac", "claraod", "anthonycheng"],
+    "description": "Critical minerals like lithium, cobalt, and rare earth elements are essential to the energy transition, yet current supply chains are geographically concentrated, environmentally costly, and vulnerable to market fluctuations. Our group develops techno-economic models to evaluate both conventional and emerging extraction pathways for these materials. A core focus is lithium extraction, where we compare the cost, energy intensity, and scalability of conventional evaporation-pond brine processing against direct lithium extraction (DLE) technologies for unconventional brine sources such as geothermal brines. As part of this effort, we partner with teams developing electrodialysis-based lithium extraction technologies under separate DOE-funded projects, evaluating their techno-economic performance and scale-up potential relative to conventional and other DLE approaches. We also contribute to the HERMES consortium (Hastening the Exploration & Recovery of Minerals from Earth Energy Systems), an initiative to quantify the potential value of critical minerals contained in waste resources across the United States in diverse resource and market combinations, including coal refuse, coal ash, mine tailings, acid mine drainage, and red mud. Working alongside our colleagues in the SLAC National Accelerator Laboratory and six other national labs, we model and evaluate production processes and their costs, integrating AI and data-driven methods, with the broader goal of identifying which waste-to-mineral pathways are worth pursuing at scale.",
+    "research_areas": ["separations"],
+    "funding": ["Advanced Research Projects Agency - Energy", "Stanford Sustainability Accelerator", "Department of Energy - Critical Minerals Innovation Hub"],
+    "links": [
+      { "label": "", "url": "" }
+    ]
+  },
+  {
     "id": "nawi326",
     "title": "Technoeconomic Assessment of Brine Valorization from Brackish Water Desalination",
-    "team": ["cadkins","carsont"],
+    "team": ["cadkins","carsont","avd", "agfritz"],
     "description": "Desalination at inland brackish groundwater treatment plants is currently limited by high costs of concentrate management and disposal. With current methods, 5-25% of the feed is disposed of as concentrate, with 98% of disposal using conventional methods (i.e. no byproduct recovery). The levelized cost of water (LCOW) for current plants in operation ranges from $0.42-1.5/m3. This project aims to assess the technical and economic feasibility of industrial ecosystems to desalinate brackish groundwater and supply existing and potential markets for clean concentrate or other bulk constituents from the brine. Specific project goals include: 1) Developing location specific byproduct revenue models using market assessments, and 2) Creating treatment train schemas in WaterTAP for treatment and valorization of brackish groundwater and establish pipe parity cost and performance targets for brackish groundwater treatment.",
-    "research_areas": ["infrastructure planning", "separations"],
-    "image": "",
-    "funding": ["National Alliance for Water Innovation", "U.S. Department of Energy"],
+    "research_areas": ["planning", "separations"],
+    "funding": ["National Alliance for Water Innovation (NAWI)"],
     "links": [
       { "label": "Research Brief", "url": "https://www.nawihub.org/wp-content/uploads/sites/16/2024/03/3.26-Alison-Fritz-Technoeconomic-Assessment-of-Brine-Valorization-from-Brackish-Water-Desalination.pdf" }
     ]
+  },
+  {
+    "id": "wds_energy",
+    "title": "Water Distribution Energy Decision Support Tools",
+    "team": ["emusa"],
+    "description": "The energy management, decarbonization, affordability, and resilience of urban infrastructure systems are imperative to meeting global health, sustainability, and climate goals. Water supply systems account for 1–3% of urban electricity consumption in the US; this is expected to increase as water utilities integrate energy-intensive nontraditional water. Water distribution systems (WDSs) must increasingly operate flexibly to balance diverse sources, control costs, and meet emission mandates. Reducing the energy, carbon, and cost intensity of WDSs while preserving reliability will require a combination of infrastructure upgrades, operational modifications, and behavioral interventions. The Water Energy Efficiency for the Environment (WE3) Lab has developed tools that enable WDSs to value, assess, and deploy energy demand flexibility to reduce costs and emissions and maintain safe, reliable water supply. These tools model high-resolution energy and carbon use by water distribution utilities, assess the tradeoffs between costs, emissions, and water quality of different interventions, estimate the magnitude of available energy load flexibility without reductions in service, and value the financial benefits of energy load flexibility to the facility.",
+    "research_areas": ["flexibility"],
+    "funding": ["National Alliance for Water Innovation (NAWI)", "StorageX", "Stanford Sustainability Accelerator"],
+    "links": [
+      { "label": "", "url": "" }
+    ]
+  },
+  {
+    "id": "ww_data",
+    "title": "Unit Process Data for Wastewater Treatment Plants",
+    "team": ["dalyw", "fchapin", "rouffetc"],
+    "description": "Data on wastewater treatment plant’s (WWTP’s) installed processes enables regional and national emissions inventories and infrastructure planning, yet existing datasets like EPA's Clean Watershed Needs Survey (CWNS) suffer from data sparseness and update frequency. This project develops and validates a methodology combining large language models (LLMs) with formal ontologies to extract WWTP unit process configurations from unstructured regulatory permit documents. Applied to 609 California facilities, our ontology-structured LLM approach achieves an F1 score above 0.9 and reduces unit-process category-level error from 49% (CWNS baseline) to 13%. The methodology enables repeatable, automated extraction as permits are renewed and can be extended to other states and infrastructure types.",
+    "research_areas": ["data"],
+    "funding": ["National Alliance for Water Innovation (NAWI)", "Woods Institute for the Environment", "Stanford SURGE Summer Program"],
+    "links": [
+      { "label": "Dataset", "url": "https://doi.org/10.25740/nk282rk7079" }
+    ]
+  },
+  {
+    "id": "ww_model",
+    "title": "Wastewater Modeling Platforms for Modern Facility Needs",
+    "team": ["dalyw", "ctucker"],
+    "description": "This project seeks to provide a framework for selecting water resource recovery facility (WRRF) modeling platforms based on their ability to incorporate effluent limits, resource recovery, and energy-flexible operation goals. By benchmarking mechanistic (e.g., GPS-X, SUMO) and data-driven platforms, and considering the role of numerical optimization (e.g., WaterTAP), we demonstrate how platform selection affects design decisions including aeration system sizing, time-of-use electricity cost optimization, and identification of process synergies that reduce overall lifetime cost. Although established platforms excel at simulation of a given design, integrated design and operation decisions across complex treatment trains benefit from systematic design space exploration.",
+    "research_areas": ["planning"],
+    "funding": ["Woods Institute for the Environment"],
+    "links": [
+      { "label": "", "url": "" }
+    ]
+  },
+  {
+    "id": "ceciaw",
+    "title": "California Energy Commission Industrial Agriculture and Water FlexHub",
+    "team": ["emusa","haochiw"],
+    "description": "California’s industrial, agriculture, and water sectors account for approximately 25% of the state’s electricity consumption and present a substantial opportunity for load flexible technologies to optimize energy use and reduce operational costs. The Industrial Agriculture and Water (IAW) FlexHub’s goal is to deploy demonstrations with accessible, quantifiable, and transferable results for energy transformation everywhere.  WE3 Lab is working with IAWHub to externalize a set of digital tools that enable water utilities and similar industrial facilities to value, assess, and deploy energy demand flexibility.",
+    "research_areas": ["flexibility"],
+    "funding": ["California Energy Commission"],
+    "links": [
+      { "label": "IAW FlexHub", "url": "https://iawflexhub.org/" }
+     ]
   }
 ]
