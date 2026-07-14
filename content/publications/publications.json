@@ -752,7 +752,9 @@
     "journal": "Energy & Environmental Science",
     "year": 2020,
     "doi": "10.1039/d0ee01653e",
-    "research_areas": ["technology"],
+    "research_areas": [
+      "technology"
+    ],
     "team": []
   },
   {
@@ -779,8 +781,12 @@
     "journal": "Journal of Membrane Science",
     "year": 2020,
     "doi": "10.1016/j.memsci.2020.117898",
-    "research_areas": ["technology"],
-    "team": ["avd"]
+    "research_areas": [
+      "technology"
+    ],
+    "team": [
+      "avd"
+    ]
   },
   {
     "title": "Magnetic field-induced alignment of nanofibrous supramolecular membranes: a molecular design approach to create tissue-like biomaterials.",
@@ -923,7 +929,9 @@
     "journal": "Environmental Science & Technology",
     "year": 2018,
     "doi": "10.1021/acs.est.8b02771",
-    "research_areas": ["technology"],
+    "research_areas": [
+      "technology"
+    ],
     "team": []
   },
   {
@@ -1058,7 +1066,9 @@
     "journal": "Langmuir : the ACS journal of surfaces and colloids",
     "year": 2017,
     "doi": "10.1021/acs.langmuir.7b02861",
-    "research_areas": ["technology"],
+    "research_areas": [
+      "technology"
+    ],
     "team": []
   },
   {
