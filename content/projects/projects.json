@@ -126,7 +126,7 @@
   {
     "id": "wds_energy",
     "title": "Water Distribution Energy Decision Support Tools",
-    "team": ["emusa"],
+    "team": ["emusa", "yliu025"],
     "description": "The energy management, decarbonization, affordability, and resilience of urban infrastructure systems are imperative to meeting global health, sustainability, and climate goals. Water supply systems account for 1–3% of urban electricity consumption in the US; this is expected to increase as water utilities integrate energy-intensive nontraditional water. Water distribution systems (WDSs) must increasingly operate flexibly to balance diverse sources, control costs, and meet emission mandates. Reducing the energy, carbon, and cost intensity of WDSs while preserving reliability will require a combination of infrastructure upgrades, operational modifications, and behavioral interventions. The Water Energy Efficiency for the Environment (WE3) Lab has developed tools that enable WDSs to value, assess, and deploy energy demand flexibility to reduce costs and emissions and maintain safe, reliable water supply. These tools model high-resolution energy and carbon use by water distribution utilities, assess the tradeoffs between costs, emissions, and water quality of different interventions, estimate the magnitude of available energy load flexibility without reductions in service, and value the financial benefits of energy load flexibility to the facility.",
     "research_areas": ["flexibility"],
     "funding": ["National Alliance for Water Innovation (NAWI)", "StorageX", "Stanford Sustainability Accelerator"],

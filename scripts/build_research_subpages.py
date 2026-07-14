@@ -338,16 +338,7 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
   </div>
 </footer>
 
-<script>
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {{
-    btn.addEventListener('click', () => {{
-      links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    }});
-  }}
-</script>
+<script src="../assets/js/nav.js"></script>
 
 </body>
 </html>

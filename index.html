@@ -63,7 +63,7 @@
 <!-- ── Mission ─────────────────────────────────────────── -->
 <section class="section">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+    <div class="mission-layout" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
       <div>
         <h2 class="text-deep-space">Our Mission</h2>
         <div class="divider" style="margin:1rem 0"></div>
@@ -182,16 +182,8 @@
   </div>
 </footer>
 
+<script src="assets/js/nav.js"></script>
 <script>
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {
-    btn.addEventListener('click', () => {
-      links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    });
-  }
-
   (function() {
     const strip = document.getElementById('news-scroll');
     const prev  = document.getElementById('news-prev');
@@ -210,15 +202,11 @@
     function cardWidth() {
       const card = strip.querySelector('.card');
       if (!card) return strip.clientWidth;
-      return card.offsetWidth + 24; // card width + gap (1.5rem = 24px)
+      return card.offsetWidth + 24;
     }
 
-    prev.addEventListener('click', () => {
-      strip.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
-    });
-    next.addEventListener('click', () => {
-      strip.scrollBy({ left: cardWidth(), behavior: 'smooth' });
-    });
+    prev.addEventListener('click', () => strip.scrollBy({ left: -cardWidth(), behavior: 'smooth' }));
+    next.addEventListener('click', () => strip.scrollBy({ left:  cardWidth(), behavior: 'smooth' }));
     strip.addEventListener('scroll', updateArrows, { passive: true });
     updateArrows();
   })();

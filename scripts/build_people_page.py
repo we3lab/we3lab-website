@@ -151,9 +151,9 @@ def build_pi(pi: dict) -> str:
     social = " ".join(filter(None, [scholar_link, linkedin_link]))
 
     return f"""\
-    <div style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
-      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
-        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover">
+    <div class="pi-layout" style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
+      <div class="pi-image-col" style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
+        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover" class="pi-image">
         <div style="margin-top:1rem;width:100%">
           <p style="font-size:.8rem;font-weight:600;color:var(--blk);margin-bottom:.35rem">Education</p>
           <ul style="font-size:.8rem;color:#444;line-height:1.7;margin:0;padding-left:1.1rem">
@@ -620,16 +620,7 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
   </div>
 </footer>
 
-<script>
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {{
-    btn.addEventListener('click', () => {{
-      links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    }});
-  }}
-</script>
+<script src="../assets/js/nav.js"></script>
 
 </body>
 </html>
