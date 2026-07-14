@@ -2,21 +2,28 @@
   {
     "course_code": "CEE 273W",
     "name": "Water Innovation & Investment",
-    "quarters": ["Winter 2026"],
+    "quarters": [
+      "Winter 2026"
+    ],
     "description": "As climate induced variability, aging infrastructure, and regulatory pressure stress traditional water networks, utilities and water end users are forced to get creative about how they procure, treat, and deliver water. These stressors are creating new investment opportunities, as well as opportunities for researchers and entrepreneurs to introduce new solutions. This course will explore the emerging water landscape from a business and innovation perspective. Students will learn about how water systems are currently financed and operated, how technology innovation is changing the status-quo, and which specific technology spaces are most likely to deliver value.",
     "link": "https://navigator.stanford.edu/classes/1264/30837"
   },
   {
     "course_code": "CEE 273T",
     "name": "Modern Modeling Techniques for Water and Wastewater Systems",
-    "quarters": ["Summer 2024","Summer 2023"],
+    "quarters": [
+      "Summer 2024",
+      "Summer 2023"
+    ],
     "description": "As climate induced variability, aging infrastructure, and regulatory pressure stress traditional water networks, utilities and water end users are forced to get creative about how they procure, treat, and deliver water. These stressors are creating new investment opportunities, as well as opportunities for researchers and entrepreneurs to introduce new solutions. This course will explore the emerging water landscape from a business and innovation perspective. Students will learn about how water systems are currently financed and operated, how technology innovation is changing the status-quo, and which specific technology spaces are most likely to deliver value.",
     "link": "https://navigator.stanford.edu/classes/1264/30837"
   },
   {
     "course_code": "CEE 273M",
     "name": "Desalination for a Circular Water Economy",
-    "quarters": ["Winter 2024"],
+    "quarters": [
+      "Winter 2024"
+    ],
     "description": "This course explores the technological innovations required to support a circular water economy in which nontraditional water is treated to fit-for-purpose standards and reused locally. The first part of this course reviews the key constituents present in nontraditional source waters and the state-of-the-art pretreatment, desalination, and concentrate disposal technologies for their removal. Attention is given to the thermodynamic and operational barriers to improving the efficiency and cost-effectiveness of current technologies. The second part of this course identifies opportunities for next generation autonomous, precise, resilient, process-intensified, modular, and electrically powered desalination alternatives to lower the cost and energy intensity of water reuse. Over the duration of the course, students will form teams to perform an in-depth review of a single nontraditional source water treatment train, research the state-of-technology relative to that required for reuse, and perform a quantitative estimate of life cycle capex and opex costs.",
     "link": "https://navigator.stanford.edu/classes/1256/6384"
   }

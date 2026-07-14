@@ -18,11 +18,14 @@ Run from the repo root.
 import json
 import math
 import re
+import shutil
 from pathlib import Path
+
+from helpers import content_to_img_url
 
 NEWS_JSON           = Path("content/news/news.json")
 RESEARCH_AREAS_JSON = Path("content/research_areas/research_areas.json")
-INDEX_HTML          = Path("index.html")
+INDEX_HTML          = Path("docs/index.html")
 
 OVERLAY = "linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.7))"
 
@@ -74,7 +77,7 @@ def build_news_card(item: dict) -> str:
 
 
 def build_mission_circle(area: dict, top: int, left: int) -> str:
-    bg    = f"{OVERLAY}, url('{area['image']}') center/cover no-repeat"
+    bg    = f"{OVERLAY}, url('{content_to_img_url(area['image'])}') center/cover no-repeat"
     name  = area["name"].replace("&", "&amp;")
     style = f"top:{top}px;left:{left}px;background:{bg}"
     return (
@@ -89,6 +92,14 @@ def build_mission_circle(area: dict, top: int, left: int) -> str:
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    # Copy research area images into docs/images/ so GitHub Pages can serve them
+    src = Path("content/research_areas/research_area_images")
+    dst = Path("docs/images/research_area_images")
+    if src.exists():
+        if dst.exists():
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+
     html  = INDEX_HTML.read_text()
     items = json.loads(NEWS_JSON.read_text())
     areas = [a for a in json.loads(RESEARCH_AREAS_JSON.read_text()) if a.get("active")]

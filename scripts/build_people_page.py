@@ -10,19 +10,21 @@ active (non-alumni) member except Meagan.
 Run from the repo root.
 """
 
-import html
 import json
 import re
+import shutil
 from pathlib import Path
+
+from helpers import h, hm, member_slug, initials, find_image, member_display, build_project_card
 
 MEAGAN_JSON  = Path("content/members/meagan.json")
 MEMBERS_JSON = Path("content/members/members.json")
 PROJECTS_JSON      = Path("content/projects/projects.json")
 PUBLICATIONS_JSON  = Path("content/publications/publications.json")
 ALUMNI_JSON = Path("content/members/alumni.json")
-PEOPLE_HTML = Path("people.html")
-IMAGES_DIR = Path("content/members/images")
-PEOPLE_DIR = Path("people")
+PEOPLE_HTML = Path("docs/people.html")
+IMAGES_DIR = Path("content/members/headshots")
+PEOPLE_DIR = Path("docs/people")
 
 PI_RE = re.compile(r"<!-- BEGIN:pi-generated -->.*?<!-- END:pi-generated -->", re.DOTALL)
 PEOPLE_RE = re.compile(r"<!-- BEGIN:people-generated -->.*?<!-- END:people-generated -->", re.DOTALL)
@@ -55,44 +57,7 @@ ROLE_GROUP = {
 }
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
-
-def h(text: str) -> str:
-    return html.escape(str(text))
-
-def hm(text: str) -> str:
-    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
-    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
-    out = []
-    for part in parts:
-        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
-        if m:
-            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
-        else:
-            out.append(html.escape(part))
-    return ''.join(out)
-
-
-def member_slug(name: str) -> str:
-    """'Dr. Foo Bar' → 'FooBar'"""
-    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
-    return "".join(w.capitalize() for w in clean.split())
-
-
-def initials(name: str) -> str:
-    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
-    parts = clean.split()
-    return (parts[0][0] + parts[-1][0]).upper() if len(parts) > 1 else parts[0][:2].upper()
-
-
-def find_image(name: str) -> str | None:
-    slug = member_slug(name)
-    for ext in ("png", "jpg"):
-        for variant in (slug, slug.lower()):
-            p = IMAGES_DIR / f"{variant}.{ext}"
-            if p.exists():
-                return str(p)
-    return None
+# ── Helpers (h, hm, member_slug, initials, find_image imported from helpers.py)
 
 
 def avatar(name: str, av_class: str, size: int = 100, prefix: str = "") -> str:
@@ -151,9 +116,9 @@ def build_pi(pi: dict) -> str:
     social = " ".join(filter(None, [scholar_link, linkedin_link]))
 
     return f"""\
-    <div style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
-      <div style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
-        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover">
+    <div class="pi-layout" style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
+      <div class="pi-image-col" style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
+        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover" class="pi-image">
         <div style="margin-top:1rem;width:100%">
           <p style="font-size:.8rem;font-weight:600;color:var(--blk);margin-bottom:.35rem">Education</p>
           <ul style="font-size:.8rem;color:#444;line-height:1.7;margin:0;padding-left:1.1rem">
@@ -292,106 +257,24 @@ def build_people(members: list, alumni: list) -> str:
 
 # ── Profile sub-pages ─────────────────────────────────────────────────────────
 
-NAV_DROPDOWN = """\
-          <ul class="dropdown-content">
-            <li><a href="../research/separations.html">Separations</a></li>
-            <li><a href="../research/energyflexibility.html">Water-Energy Flexibility</a></li>
-            <li><a href="../research/infrastructureplanning.html">Systems Planning</a></li>
-            <li><a href="../research/waterenergyfoodpolicies.html">WEF Policies</a></li>
-            <li class="dropdown-divider"></li>
-            <li><a href="../research/dissertations.html">Past Dissertations</a></li>
-          </ul>"""
-
 
 def build_member_projects(netid: str, projects: list, members_by_netid: dict = None) -> str:
-    """Return expandable project cards for a member's profile page."""
+    """Return expandable project cards for a member's profile page.
+
+    Filters projects to those the member (identified by netid) is part of,
+    then renders each as a <details> card using the shared build_project_card helper.
+    Profile pages live one level below root, so asset paths use '../' prefix.
+    """
     if members_by_netid is None:
         members_by_netid = {}
     member_projects = [p for p in projects if netid in p.get("team", [])]
     if not member_projects:
         return '<p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>'
 
-    cards = []
-    for project in member_projects:
-        summary = (
-            f'  <summary>\n'
-            f'    <span class="project-expand-title">{h(project["title"])}</span>\n'
-            f'  </summary>'
-        )
-
-        # Team Members
-        team_items = []
-        for tid in project.get("team", []):
-            m = members_by_netid.get(tid)
-            if not m:
-                team_items.append(f'<span style="font-weight:600;font-size:.875rem">{h(tid)}</span>')
-                continue
-            slug = member_slug(m["name"])
-            img = find_image(m["name"])
-            av = (
-                f'<div class="person-avatar" style="width:44px;height:44px;border-radius:50%;'
-                f'font-size:.8rem;flex-shrink:0"><img src="../{img}" alt="{h(m["name"])}"></div>'
-                if img else
-                f'<div class="person-avatar av-1" style="width:44px;height:44px;border-radius:50%;'
-                f'font-size:.8rem;flex-shrink:0">{initials(m["name"])}</div>'
-            )
-            if m.get("is_alumni"):
-                team_items.append(
-                    f'<span style="display:flex;align-items:center;gap:.5rem;color:inherit">'
-                    f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></span>'
-                )
-            else:
-                team_items.append(
-                    f'<a href="{slug}.html" style="display:flex;align-items:center;gap:.5rem;'
-                    f'text-decoration:none;color:inherit">'
-                    f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></a>'
-                )
-        team_html = ""
-        if team_items:
-            team_html = (
-                f'    <p class="project-section-label">Team Members</p>\n'
-                f'    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">\n'
-                f'      ' + "\n      ".join(team_items) + '\n    </div>\n'
-            )
-
-        # Overview
-        overview_html = (
-            f'    <p class="project-section-label">Overview</p>\n'
-            f'    <p style="font-size:.9rem;margin-bottom:.75rem">{hm(project.get("description", ""))}</p>\n'
-        )
-
-        # Resources
-        links_html = ""
-        if project.get("links"):
-            link_tags = "".join(
-                f'<a href="{lnk["url"]}" target="_blank" rel="noopener">{h(lnk["label"])}</a>'
-                for lnk in project["links"] if lnk.get("url")
-            )
-            if link_tags:
-                links_html = (
-                    f'    <p class="project-section-label">Links</p>\n'
-                    f'    <div class="project-expand-links">{link_tags}</div>\n'
-                )
-
-        # Supported By
-        funding_html = ""
-        funders = [f for f in project.get("funding", []) if f]
-        if funders:
-            items = "".join(f"<li>{h(f)}</li>" for f in funders)
-            funding_html = (
-                f'    <p class="project-section-label" style="margin-top:.75rem">Supported By</p>\n'
-                f'    <ul style="margin:.25rem 0 0 1.1rem;font-size:.875rem;line-height:1.7">{items}</ul>\n'
-            )
-
-        body = (
-            f'  <div class="project-expand-body">\n'
-            f'{team_html}'
-            f'{overview_html}'
-            f'{links_html}'
-            f'{funding_html}'
-            f'  </div>'
-        )
-        cards.append(f'<details class="project-expand">\n{summary}\n{body}\n</details>')
+    cards = [
+        build_project_card(p, members_by_netid, asset_prefix="../", member_link_prefix="")
+        for p in member_projects
+    ]
     return "\n".join(cards)
 
 
@@ -516,9 +399,14 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="manifest" href="../images/site.webmanifest">
+  <link rel="shortcut icon" href="../images/favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{h(m["name"])} — WE3 Lab</title>
+  <title>WE3 Lab — {h(m["name"])}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -620,16 +508,7 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
   </div>
 </footer>
 
-<script>
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {{
-    btn.addEventListener('click', () => {{
-      links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    }});
-  }}
-</script>
+<script src="../assets/js/nav.js"></script>
 
 </body>
 </html>
@@ -659,6 +538,14 @@ def generate_profile_pages(members: list, projects: list, members_by_netid: dict
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
+    # Sync member headshots into docs/ so GitHub Pages can serve them
+    src = Path("content/members/headshots")
+    dst = Path("docs/images/headshots")
+    if src.exists():
+        if dst.exists():
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+
     pi = json.loads(MEAGAN_JSON.read_text())
     data = json.loads(MEMBERS_JSON.read_text())
     members = data["members"] if isinstance(data, dict) else data

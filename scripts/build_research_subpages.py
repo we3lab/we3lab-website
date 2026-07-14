@@ -9,142 +9,15 @@ Always regenerates pages fully so projects stay current.
 Run from the repo root.
 """
 
-import html
 import json
-import re
 from pathlib import Path
+
+from helpers import h, hm, build_project_card
 
 RESEARCH_AREAS_JSON = Path("content/research_areas/research_areas.json")
 PROJECTS_JSON        = Path("content/projects/projects.json")
 PUBLICATIONS_JSON    = Path("content/publications/publications.json")
-MEMBERS_JSON        = Path("content/members/members.json")
-IMAGES_DIR          = Path("content/members/images")
-
-
-def h(text: str) -> str:
-    return html.escape(str(text))
-
-def hm(text: str) -> str:
-    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
-    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
-    out = []
-    for part in parts:
-        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
-        if m:
-            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
-        else:
-            out.append(html.escape(part))
-    return ''.join(out)
-
-
-def member_slug(name: str) -> str:
-    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
-    return "".join(w.capitalize() for w in clean.split())
-
-
-def initials(name: str) -> str:
-    clean = re.sub(r"^Dr\.\s+", "", name, flags=re.IGNORECASE).strip()
-    parts = clean.split()
-    return (parts[0][0] + parts[-1][0]).upper() if len(parts) > 1 else parts[0][:2].upper()
-
-
-def find_headshot(name: str) -> str | None:
-    slug = member_slug(name)
-    for ext in ("png", "jpg"):
-        for variant in (slug, slug.lower()):
-            p = IMAGES_DIR / f"{variant}.{ext}"
-            if p.exists():
-                return str(p)
-    return None
-
-
-# ── Project card builder ──────────────────────────────────────────────────────
-
-def member_display(m: dict, asset_prefix: str, member_link_prefix: str) -> str:
-    slug = member_slug(m["name"])
-    hs   = find_headshot(m["name"])
-    av   = (
-        f'<div style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;">'
-        f'<img src="{asset_prefix}{hs}" style="width:100%;height:100%;object-fit:cover" alt="{h(m["name"])}"></div>'
-        if hs else
-        f'<div style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--cerulean);font-size:.8rem;font-weight:700;color:#fff;">'
-        f'{initials(m["name"])}</div>'
-    )
-    if m.get("is_alumni"):
-        return (
-            f'<span style="display:inline-flex;align-items:center;gap:.5rem;color:inherit">'
-            f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></span>'
-        )
-    return (
-        f'<a href="{member_link_prefix}{slug}.html" '
-        f'style="display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:inherit">'
-        f'{av}<span style="font-weight:600;font-size:.875rem">{h(m["name"])}</span></a>'
-    )
-
-
-def build_project_card(project: dict, members_by_netid: dict,
-                       asset_prefix: str = "../",
-                       member_link_prefix: str = "../people/") -> str:
-    summary = (
-        f'  <summary>\n'
-        f'    <span class="project-expand-title">{h(project["title"])}</span>\n'
-        f'  </summary>'
-    )
-
-    # Team Members
-    team_items = []
-    for netid in project.get("team", []):
-        m = members_by_netid.get(netid)
-        if m:
-            team_items.append(member_display(m, asset_prefix, member_link_prefix))
-        else:
-            team_items.append(f'<span style="font-weight:600;font-size:.875rem">{h(netid)}</span>')
-    team_html = ""
-    if team_items:
-        team_html = (
-            f'    <p class="project-section-label">Team Members</p>\n'
-            f'    <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem">\n'
-            f'      ' + "\n      ".join(team_items) + '\n    </div>\n'
-        )
-
-    # Overview
-    overview_html = (
-        f'    <p class="project-section-label">Overview</p>\n'
-        f'    <p style="font-size:.9rem;margin-bottom:.75rem">{hm(project.get("description", ""))}</p>\n'
-    )
-
-    # Resources
-    links_html = ""
-    if project.get("links"):
-        link_tags = "".join(
-            f'<a href="{lnk["url"]}" target="_blank" rel="noopener">{h(lnk["label"])}</a>'
-            for lnk in project["links"] if lnk.get("url")
-        )
-        if link_tags:
-            links_html = (
-                f'    <p class="project-section-label">Links</p>\n'
-                f'    <div class="project-expand-links">{link_tags}</div>\n'
-            )
-
-    # Supported By
-    funding_html = ""
-    funders = [f for f in project.get("funding", []) if f]
-    if funders:
-        items = "".join(f"<li>{h(f)}</li>" for f in funders)
-        funding_html = (
-            f'    <p class="project-section-label" style="margin-top:.75rem">Supported By</p>\n'
-            f'    <ul style="margin:.25rem 0 0 1.1rem;font-size:.875rem;line-height:1.7">{items}</ul>\n'
-        )
-
-    body = (
-        f'  <div class="project-expand-body">\n'
-        f'{team_html}'
-        f'{overview_html}'
-        f'{links_html}'
-        f'{funding_html}'
-        f'  </div>'
-    )
-    return f'<details class="project-expand">\n{summary}\n{body}\n</details>'
+MEMBERS_JSON         = Path("content/members/members.json")
 
 
 
@@ -226,9 +99,14 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="manifest" href="../images/site.webmanifest">
+  <link rel="shortcut icon" href="../images/favicon.ico">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{h(area["name"])} — WE3 Lab</title>
+  <title>WE3 Lab — {h(area["name"])}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -338,16 +216,7 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
   </div>
 </footer>
 
-<script>
-  const btn = document.querySelector('.nav-hamburger');
-  const links = document.querySelector('.nav-links');
-  if (btn && links) {{
-    btn.addEventListener('click', () => {{
-      links.classList.toggle('open');
-      btn.setAttribute('aria-expanded', links.classList.contains('open'));
-    }});
-  }}
-</script>
+<script src="../assets/js/nav.js"></script>
 
 </body>
 </html>
@@ -371,14 +240,14 @@ def main():
             members_by_netid[nid] = {**a, "is_alumni": True}
 
     # Remove any research sub-pages no longer listed in research_areas.json
-    expected = {Path(a["file"]) for a in areas}
-    for existing in Path("research").glob("*.html"):
+    expected = {Path("docs") / a["file"] for a in areas}
+    for existing in Path("docs/research").glob("*.html"):
         if existing not in expected:
             existing.unlink()
             print(f"  REMOVED  {existing} (no longer in research_areas.json)")
 
     for area in areas:
-        path = Path(area["file"])
+        path = Path("docs") / area["file"]
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(build_full_page(area, projects, members_by_netid, publications))
         n = sum(1 for p in projects if area["id"] in p.get("research_areas", []))

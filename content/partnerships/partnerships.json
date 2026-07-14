@@ -2,19 +2,19 @@
   {
     "name": "National Alliance for Water Innovation",
     "website": "https://www.nawihub.org/",
-    "logo": "content/partnerships/logos/nawi.svg",
+    "logo": "content/partnerships/partner_logos/nawi.svg",
     "section": "research"
   },
   {
     "name": "Water Treatment Technoeconomic Assessment Platform (WaterTAP)",
     "website": "https://github.com/watertap-org/watertap",
-    "logo": "content/partnerships/logos/watertap.svg",
+    "logo": "content/partnerships/partner_logos/watertap.svg",
     "section": "research"
   },
   {
     "name": "California Energy Commission",
     "website": "https://www.energy.ca.gov/",
-    "logo": "content/partnerships/logos/cec.jpg",
+    "logo": "content/partnerships/partner_logos/cec.png",
     "section": "research"
   },
   {
@@ -23,23 +23,22 @@
     "logo": "",
     "section": "research"
   },
-
   {
     "name": "Stanford Doerr School Sustainability Accelerator",
     "website": "https://sustainability-accelerator.stanford.edu/",
-    "logo": "content/partnerships/logos/sdss_accelerator.png",
+    "logo": "content/partnerships/partner_logos/sdss_accelerator.png",
     "section": "research"
   },
   {
     "name": "City of Santa Barbara",
     "website": "https://santabarbaraca.gov/water",
-    "logo": "content/partnerships/logos/santa_barbara.svg",
+    "logo": "content/partnerships/partner_logos/santa_barbara.svg",
     "section": "utility"
   },
   {
     "name": "Silicon Valley Clean Water",
     "website": "https://svcw.org/",
-    "logo": "content/partnerships/logos/svcw.jpg",
+    "logo": "content/partnerships/partner_logos/svcw.jpg",
     "section": "utility"
   }
 ]
