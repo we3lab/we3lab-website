@@ -15,7 +15,7 @@ import re
 import shutil
 from pathlib import Path
 
-from helpers import h, hm, member_slug, initials, find_image, member_display, build_project_card
+from helpers import h, hm, member_slug, initials, find_image, content_to_img_url, member_display, build_project_card
 
 MEAGAN_JSON  = Path("content/members/meagan.json")
 MEMBERS_JSON = Path("content/members/members.json")
@@ -118,7 +118,7 @@ def build_pi(pi: dict) -> str:
     return f"""\
     <div class="pi-layout" style="display:flex;gap:2rem;align-items:flex-start;margin-bottom:2.5rem">
       <div class="pi-image-col" style="display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:385px">
-        <img src="{pi['image']}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover" class="pi-image">
+        <img src="{content_to_img_url(pi['image'])}" alt="{h(pi['name'])}" style="width:385px;height:385px;border-radius:20%;object-fit:cover" class="pi-image">
         <div style="margin-top:1rem;width:100%">
           <p style="font-size:.8rem;font-weight:600;color:var(--blk);margin-bottom:.35rem">Education</p>
           <ul style="font-size:.8rem;color:#444;line-height:1.7;margin:0;padding-left:1.1rem">
