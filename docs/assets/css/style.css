@@ -841,6 +841,9 @@ details.project-expand[open] > summary::after { transform: rotate(45deg); }
   .section    { padding: 3rem 0; }
   .section-sm { padding: 2rem 0; }
 
+  /* Shrink footer logo proportionally */
+  .footer-we3-col img { height: 64px !important; width: auto !important; }
+
   /* Member profile banner: stack name → headshot → bio vertically */
   .profile-banner-outer {
     flex-direction: column !important;
