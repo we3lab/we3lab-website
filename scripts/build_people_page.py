@@ -365,19 +365,20 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
 
     if img_path:
         left_col = f"""\
-      <div style="display:flex;align-items:flex-start;gap:1.25rem">
+      <div class="profile-banner-img-row" style="display:flex;align-items:flex-start;gap:1.25rem">
         <img src="../{img_path}" alt="{h(m['name'])}"
+             class="profile-banner-headshot"
              style="width:220px;height:220px;border-radius:50%;object-fit:cover;flex-shrink:0">
-        <div style="min-height:220px;display:flex;flex-direction:column;justify-content:center">
+        <div class="profile-banner-text" style="min-height:220px;display:flex;flex-direction:column;justify-content:center">
           <h1 style="margin-bottom:.2rem">{h(m["name"])}</h1>
           <p style="color:rgba(255,255,255,.75);margin:0">{role_display}</p>
         </div>
       </div>
 {bio_html}"""
         banner_content = (
-            f'    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-top:.5rem">\n'
+            f'    <div class="profile-banner-outer" style="display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-top:.5rem">\n'
             f'      <div style="flex:1">\n{left_col}\n      </div>\n'
-            + (contact + "\n" if contact else "")
+            + (f'      <div class="profile-banner-contact">\n' + contact.strip() + '\n      </div>\n' if contact else "")
             + "    </div>"
         )
     else:
