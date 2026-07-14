@@ -787,10 +787,13 @@ details.project-expand[open] > summary::after { transform: rotate(45deg); }
     overflow: hidden;
   }
 
-  /* Scale down diamond so circles stay on screen; pull up to reclaim whitespace */
+  /* Scale down diamond so circles stay on screen.
+     transform doesn't affect layout (still 500px wide), so we manually
+     center the 300px visual result with a left offset and pull up whitespace. */
   .mission-diamond {
     transform: scale(0.6) !important;
-    transform-origin: top center !important;
+    transform-origin: top left !important;
+    margin-left: calc((100% - 300px) / 2) !important;
     margin-bottom: -200px !important;
   }
 

@@ -47,10 +47,11 @@ def build_publications_section(area_id: str, publications: list) -> str:
     return f'    <ul class="publication-list">\n    {cards}\n    </ul>'
 
 
-def build_projects_section(area_id: str, projects: list, members_by_netid: dict) -> str:
+def build_projects_section(area_id: str, projects: list, members_by_netid: dict, active: bool = True) -> str:
     area_projects = [p for p in projects if area_id in p.get("research_areas", [])]
     if not area_projects:
-        return '    <p style="color:var(--gray-500);font-style:italic">No projects listed yet.</p>'
+        placeholder = "No projects listed yet." if active else "No projects listed."
+        return f'    <p style="color:var(--gray-500);font-style:italic">{placeholder}</p>'
     cards = "\n    ".join(
         build_project_card(p, members_by_netid,
                            asset_prefix="../",
@@ -92,7 +93,7 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
         publications = []
     overview          = build_overview_block(area)
     archive_note      = build_archive_note(area)
-    projects_html     = build_projects_section(area["id"], projects, members_by_netid)
+    projects_html     = build_projects_section(area["id"], projects, members_by_netid, active=area.get("active", True))
     publications_html = build_publications_section(area["id"], publications)
 
     return f"""\
