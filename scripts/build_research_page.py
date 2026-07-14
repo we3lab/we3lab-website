@@ -7,18 +7,19 @@ Reads JSON content files and injects generated HTML into:
 Run from the repo root.
 """
 
-import html
 import json
 import re
 from pathlib import Path
+
+from helpers import h, hm, content_to_img_url
 
 RESEARCH_AREAS_JSON  = Path("content/research_areas/research_areas.json")
 TEACHING_JSON        = Path("content/teaching/teaching.json")
 DISSERTATIONS_JSON   = Path("content/dissertations/dissertations.json")
 PUBLICATIONS_JSON    = Path("content/publications/publications.json")
-RESEARCH_AREAS_HTML  = Path("research-areas.html")
-TEACHING_HTML        = Path("teaching.html")
-PUBLICATIONS_HTML    = Path("publications.html")
+RESEARCH_AREAS_HTML  = Path("docs/research-areas.html")
+TEACHING_HTML        = Path("docs/teaching.html")
+PUBLICATIONS_HTML    = Path("docs/publications.html")
 
 OVERLAY = "linear-gradient(rgba(24,52,70,0.4),rgba(24,52,70,0.4))"
 
@@ -29,26 +30,10 @@ PREVIOUS_RE      = re.compile(r"<!-- BEGIN:previous-research-generated -->.*?<!-
 PUBLICATIONS_RE  = re.compile(r"<!-- BEGIN:publications-generated -->.*?<!-- END:publications-generated -->", re.DOTALL)
 
 
-def h(text: str) -> str:
-    return html.escape(str(text))
-
-def hm(text: str) -> str:
-    """HTML-escape text, converting [label](url) markdown links to <a> tags."""
-    parts = re.split(r'(\[[^\]]+\]\([^)]+\))', str(text))
-    out = []
-    for part in parts:
-        m = re.match(r'\[([^\]]+)\]\(([^)]+)\)', part)
-        if m:
-            out.append(f'<a href="{html.escape(m.group(2))}" target="_blank" rel="noopener">{html.escape(m.group(1))}</a>')
-        else:
-            out.append(html.escape(part))
-    return ''.join(out)
-
-
 # ── Research area cards ───────────────────────────────────────────────────────
 
 def build_active_card(area: dict) -> str:
-    img_css = f"background:{OVERLAY}, url('{area['image']}') center/cover no-repeat"
+    img_css = f"background:{OVERLAY}, url('{content_to_img_url(area["image"])}') center/cover no-repeat"
     return (
         f'      <a class="research-card" href="{area["file"]}">\n'
         f'        <div class="research-card-inner">\n'

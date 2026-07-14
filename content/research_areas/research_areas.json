@@ -4,36 +4,44 @@
     "name": "Separations Process Optimization & Technoeconomic Analysis",
     "file": "research/separations.html",
     "active": true,
-    "image": "content/research_areas/reverse_osmosis.jpg",
+    "image": "content/research_areas/research_area_images/reverse_osmosis.jpg",
     "description": "Open-source tools for optimizing and evaluating the economics of separation processes across the water and energy sectors.",
-    "overview": ["This research area develops TEA and optimization frameworks to support the design, scale-up, and deployment of separation processes across water and energy applications. Our methods integrate process-level physics with cost and performance models to identify optimal operating conditions, technology configurations, and investment strategies, with an emphasis on robust operation under variable conditions. Open-source software supports rigorous trade-off analysis and comparison of emerging technologies against conventional processes, lowering barriers for practitioners and researchers. Case studies span seawater and brackish water desalination, water reuse, industrial wastewater recovery, critical mineral extraction, and energy-sector separations, with ongoing work extending TEA frameworks to capture uncertainty in energy prices, material costs, and regulatory constraints."]
+    "overview": [
+      "This research area develops TEA and optimization frameworks to support the design, scale-up, and deployment of separation processes across water and energy applications. Our methods integrate process-level physics with cost and performance models to identify optimal operating conditions, technology configurations, and investment strategies, with an emphasis on robust operation under variable conditions. Open-source software supports rigorous trade-off analysis and comparison of emerging technologies against conventional processes, lowering barriers for practitioners and researchers. Case studies span seawater and brackish water desalination, water reuse, industrial wastewater recovery, critical mineral extraction, and energy-sector separations, with ongoing work extending TEA frameworks to capture uncertainty in energy prices, material costs, and regulatory constraints."
+    ]
   },
   {
     "id": "flexibility",
     "name": "Industrial-Energy Flexibility & Grid Integration",
     "file": "research/flexibility.html",
     "active": true,
-    "image": "content/research_areas/electric_shutoff.jpg",
+    "image": "content/research_areas/research_area_images/electric_shutoff.jpg",
     "description": "Expanding the operational flexibility of the industrial base with process optimization and data-driven modeling.",
-    "overview": ["This research area focuses on developing modeling and optimization methods to harmonize system-level decision-making across the siting, process design, and minute-to-minute operations of flexible industrial processes. Methods apply generally to industrial power consumers, and case studies focus specifically on desalination, water reuse, wastewater treatment, and emerging large loads (e.g., data centers)."]
+    "overview": [
+      "This research area focuses on developing modeling and optimization methods to harmonize system-level decision-making across the siting, process design, and minute-to-minute operations of flexible industrial processes. Methods apply generally to industrial power consumers, and case studies focus specifically on desalination, water reuse, wastewater treatment, and emerging large loads (e.g., data centers)."
+    ]
   },
   {
     "id": "planning",
     "name": "Water & Wastewater Systems Planning",
     "file": "research/planning.html",
     "active": true,
-    "image": "content/research_areas/wwtp.jpg",
+    "image": "content/research_areas/research_area_images/wwtp.jpg",
     "description": "Stochastic, multi-scale optimization for long-horizon water infrastructure decisions that explicitly account for uncertainty in hydrology, technology, and policy.",
-    "overview": ["This area designs robust and cost-optimal water-supply expansion and water-quality protection strategies under deep uncertainty, extending planning models beyond hydrologic variability alone to also incorporate future technology innovation and policy change. It also develops the supporting tooling and visual-analytics interfaces that make rigorous scenario analysis usable by municipal planners and the public. Recent work quantifies how specific policy levers, such as desalination permitting timelines, propagate to system-level cost and reliability."]
+    "overview": [
+      "This area designs robust and cost-optimal water-supply expansion and water-quality protection strategies under deep uncertainty, extending planning models beyond hydrologic variability alone to also incorporate future technology innovation and policy change. It also develops the supporting tooling and visual-analytics interfaces that make rigorous scenario analysis usable by municipal planners and the public. Recent work quantifies how specific policy levers, such as desalination permitting timelines, propagate to system-level cost and reliability."
+    ]
   },
   {
     "id": "data",
     "name": "Water-Energy Data & Data Infrastructure",
     "file": "research/data.html",
     "active": true,
-    "image": "content/research_areas/data.jpeg",
+    "image": "content/research_areas/research_area_images/data.jpeg",
     "description": "Advancing the collection, organization, and validation of data to support planning, operation, and innovation in water and energy systems.",
-    "overview": ["Effective management of water and energy systems depends on high-quality, accessible, and interoperable data. This research area includes collection of new datasets, integration of existing disparate sources into central databases, data processing and management platforms, and standardized data representations. By organizing diverse data streams into consistent and machine-readable formats, this work enables researchers, utilities, policymakers, and technology developers to more effectively allocate resources, model system behavior, and deploy advanced analytics or control strategies."]
+    "overview": [
+      "Effective management of water and energy systems depends on high-quality, accessible, and interoperable data. This research area includes collection of new datasets, integration of existing disparate sources into central databases, data processing and management platforms, and standardized data representations. By organizing diverse data streams into consistent and machine-readable formats, this work enables researchers, utilities, policymakers, and technology developers to more effectively allocate resources, model system behavior, and deploy advanced analytics or control strategies."
+    ]
   },
   {
     "id": "wef",
@@ -55,6 +63,8 @@
     "image": "",
     "description": "Early-stage research on advanced oxidation, disinfection byproduct formation, and treatment process optimization.",
     "archive_note": "This page documents the Water Treatment Technology research area that was active from the lab's founding through 2022 and produced many of our group's most cited publications. Active research has since evolved into our Separations Process Modeling & Design work.",
-    "overview": ["Insert overview here."]
+    "overview": [
+      "Insert overview here."
+    ]
   }
 ]

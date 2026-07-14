@@ -14,13 +14,15 @@ Each partner entry:
 Run from the repo root.
 """
 
-import html
 import json
 import re
+import shutil
 from pathlib import Path
 
+from helpers import h, content_to_img_url
+
 PARTNERSHIPS_JSON = Path("content/partnerships/partnerships.json")
-PARTNERSHIPS_HTML = Path("partnerships.html")
+PARTNERSHIPS_HTML = Path("docs/partnerships.html")
 
 RESEARCH_RE = re.compile(
     r"<!-- BEGIN:research-partners-generated -->.*?<!-- END:research-partners-generated -->",
@@ -32,10 +34,6 @@ UTILITY_RE = re.compile(
 )
 
 PLACEHOLDER = '    <p style="color:var(--gray-500);font-style:italic">Content coming soon.</p>'
-
-
-def h(text: str) -> str:
-    return html.escape(str(text))
 
 
 def build_partner_grid(partners: list) -> str:
@@ -50,7 +48,7 @@ def build_partner_grid(partners: list) -> str:
 
         if logo and Path(logo).exists():
             inner_html = (
-                f'<img src="{h(logo)}" alt="{h(name)}" '
+                f'<img src="{h(content_to_img_url(logo))}" alt="{h(name)}" '
                 f'style="max-height:120px;max-width:220px;width:auto;object-fit:contain">'
             )
         else:
@@ -81,6 +79,14 @@ def build_partner_grid(partners: list) -> str:
 
 
 def main():
+    # Copy partner logos into docs/images/ so GitHub Pages can serve them
+    src = Path("content/partnerships/partner_logos")
+    dst = Path("docs/images/partner_logos")
+    if src.exists():
+        if dst.exists():
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst)
+
     partners = json.loads(PARTNERSHIPS_JSON.read_text()) if PARTNERSHIPS_JSON.exists() else []
 
     research = [p for p in partners if p.get("section") == "research"]

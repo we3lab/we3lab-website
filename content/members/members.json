@@ -172,17 +172,26 @@
     "role": "postdoc",
     "scholar_url": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
     "linkedin": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
-    "netID": "",
+    "netID": "anthonycheng",
     "bio": "Anthony Cheng is an ORISE Postdoctoral Fellow with the National Energy Technology Laboratory, with a visiting appointment at the WE3 Lab at Stanford. He received his PhD from Carnegie Mellon University in Engineering and Public Policy. His research focuses on understanding manufacturing and commercialization of technologies needed in the energy transition, with a particular emphasis on critical minerals supply chains, with a previous emphasis on electric vehicle batteries; his current focus is on unconventional sources and processing pathways for security-relevant critical minerals. His work incorporates technoeconomic, life-cycle, material flow, and optimization methods to evaluate engineering systems in policy-relevant contexts. He will join the faculty of the School of Industrial Systems and Engineering at Georgia Tech in Fall 2027.",
     "email": ""
   },
   {
     "name": "Constance Rouffet",
     "role": "ms student",
-    "scholar_url": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
-    "linkedin": "https://scholar.google.com/citations?user=-coomEQAAAAJ&hl=en",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/constance-rouffet/",
     "netID": "rouffetc",
     "bio": "Constance Rouffet is a master’s student in Civil and Environmental Engineering at Stanford University. Her research focuses on developing an LLM model to extract information about treatment processes described in wastewater treatment plant permits. She began her master’s degree at Stanford in Fall 2025, after earning an engineering diploma (equivalent to a master’s degree in Energy Engineering) from École Polytechnique in France.",
     "email": "rouffetc@stanford.edu"
+  },
+  {
+    "name": "Clara Drysdale",
+    "role": "undergrad",
+    "scholar_url": "",
+    "linkedin": "https://www.linkedin.com/in/clara-d22/",
+    "netID": "claraod",
+    "bio": "Clara Drysdale is an undergraduate student in the Department of Mechanical Engineering at Stanford University. She is interested in translating research into scalable solutions through tools like techno-economic analysis and process optimization. She is currently building a cost optimization model for conventional lithium extraction from solar evaporation ponds.",
+    "email": "claraod@stanford.edu"
   }
 ]
