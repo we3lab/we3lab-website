@@ -137,7 +137,7 @@ def build_full_page(area: dict, projects: list, members_by_netid: dict, publicat
           <ul class="dropdown-content">
             <li><a href="../research-areas.html">Research</a></li>
             <li><a href="../teaching.html">Teaching</a></li>
-            <li><a href="../publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="../publications.html">Dissertations &amp; Publications</a></li>
             <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>

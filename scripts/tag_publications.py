@@ -14,9 +14,11 @@ import json
 import re
 from pathlib import Path
 
-PUBLICATIONS_JSON = Path("content/publications/publications.json")
-MEMBERS_JSON      = Path("content/members/members.json")
-ALUMNI_JSON       = Path("content/members/alumni.json")
+# Paths are relative to the repo root, regardless of where the script is run from
+REPO_ROOT         = Path(__file__).parent.parent
+PUBLICATIONS_JSON = REPO_ROOT / "content/publications/publications.json"
+MEMBERS_JSON      = REPO_ROOT / "content/members/members.json"
+ALUMNI_JSON       = REPO_ROOT / "content/members/alumni.json"
 
 TAG_FROM_YEAR = 2022  # only tag publications from this year onwards
 

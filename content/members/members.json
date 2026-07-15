@@ -95,7 +95,7 @@
     "website": "",
     "cv": "",
     "netID": "carsont",
-    "bio": "Carson is a Ph.D. student in the Department of Mechanical Engineering at Stanford University. She is interested in using cost optimization modelling to better design and compare desalination processes. She is currently working on building a cost optimization model of mechanical vapor compression for high salinity brine treatment.",
+    "bio": "Carson received her BS in Mechanical Engineering from MIT and her Ph.D. from Stanford University. Her research uses detailed process modeling, optimization, and technoeconomic assessment to design and assess desalination processes, with a focus on high salinity brine treatment for MLD/ZLD, brine valorization, and water reuse. She is interested in externalizing these tools for broader use across the water treatment industry.",
     "email": "carsont@stanford.edu"
   },
   {
@@ -177,15 +177,6 @@
     "email": ""
   },
   {
-    "name": "Constance Rouffet",
-    "role": "ms student",
-    "scholar_url": "",
-    "linkedin": "https://www.linkedin.com/in/constance-rouffet/",
-    "netID": "rouffetc",
-    "bio": "Constance Rouffet is a master’s student in Civil and Environmental Engineering at Stanford University. Her research focuses on developing an LLM model to extract information about treatment processes described in wastewater treatment plant permits. She began her master’s degree at Stanford in Fall 2025, after earning an engineering diploma (equivalent to a master’s degree in Energy Engineering) from École Polytechnique in France.",
-    "email": "rouffetc@stanford.edu"
-  },
-  {
     "name": "Clara Drysdale",
     "role": "undergrad",
     "scholar_url": "",
@@ -193,5 +184,14 @@
     "netID": "claraod",
     "bio": "Clara Drysdale is an undergraduate student in the Department of Mechanical Engineering at Stanford University. She is interested in translating research into scalable solutions through tools like techno-economic analysis and process optimization. She is currently building a cost optimization model for conventional lithium extraction from solar evaporation ponds.",
     "email": "claraod@stanford.edu"
+  },
+  {
+    "name": "Tim Tsung",
+    "role": "admin",
+    "scholar_url": "",
+    "linkedin": "",
+    "netID": "ttsung2",
+    "bio": "Tim Tsung is an Administrative Associate in the Civil and Environmental Engineering Department at Stanford University.",
+    "email": "ttsung2@stanford.edu"
   }
 ]

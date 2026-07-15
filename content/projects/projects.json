@@ -60,7 +60,8 @@
       "raoak",
       "claraod",
       "dalyw",
-      "nrsarker"
+      "nrsarker",
+      "abdull"
     ],
     "description": "Municipal and industrial water treatment facilities face increasingly complex technology decisions for treating nontraditional waters, water reuse, and resource recovery. Current tools provide limited capability to rigorously compare alternatives, predict performance under variable conditions, or justify R&D and pilot investments. This results in conservative design decisions, costly and time-intensive piloting programs, and missed opportunities for innovation. WaterTAP is an open-source, physics-based modeling framework for designing and evaluating advanced water treatment systems. WaterTAP process models are built within an optimization framework to solve for cost-optimal design and operation. WaterTAP enables researchers and engineers to simulate complex treatment trains; screen and prioritize technologies for piloting; integrate facility data into predictive models; and quantify the value of innovation.",
     "research_areas": [

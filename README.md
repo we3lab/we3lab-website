@@ -98,7 +98,7 @@ we3lab-website/
   "netID": "jsmith",
   "email": "jsmith@stanford.edu",
   "role": "phd student",
-  // Valid roles: "postdoc" | "phd student" | "ms student" | "undergrad"
+  // Valid roles: "postdoc" | "phd student" | "ms student" | "undergrad" | "admin"
   //              "staff" | "staff scientist" | "research engineer"
   "bio": "One or two sentences about Jane's research focus.",
   "scholar_url": "https://scholar.google.com/citations?user=XXXXXXXXX",
@@ -135,6 +135,7 @@ we3lab-website/
   "degree_year": "PhD 2025",
   // Format: "PhD YYYY" | "MS YYYY" | "Postdoc YYYY" | "Co-Term YYYY" | "Visiting MS YYYY"
   "placement": "Assistant Professor, MIT",
+  // Convention is to put their first placement after graduation (we don't want to have to track alumni jobs forever)
   "scholar_url": "https://scholar.google.com/citations?user=XXXXXXXXX",
   "linkedin": "https://www.linkedin.com/in/janesmith/",
   "netID": "jsmith"
@@ -389,6 +390,7 @@ we3lab-website/
 | `phd student` | PhD Student | PhD Students |
 | `ms student` | MS Student | MS Students |
 | `undergrad` | Undergraduate Student | Undergraduate Researchers |
+| `admin` | Administrative Staff | Administrative Staff |
 | `staff` | Research Staff | Research Staff |
 | `staff scientist` | Staff Scientist | Research Staff |
 | `research engineer` | Research Engineer | Research Staff |

@@ -31,13 +31,14 @@ PEOPLE_RE = re.compile(r"<!-- BEGIN:people-generated -->.*?<!-- END:people-gener
 
 AV_COUNT = 8
 
-ROLE_ORDER = ["staff", "postdoc", "phd student", "ms student", "undergrad", "alumni"]
+ROLE_ORDER = ["staff", "postdoc", "phd student", "ms student", "undergrad", "admin", "alumni"]
 ROLE_LABELS = {
     "postdoc":    "Postdoctoral Researchers",
     "phd student":"PhD Students",
     "ms student": "MS Students",
     "undergrad":  "Undergraduate Researchers",
     "staff":      "Research Staff",
+    "admin":      "Administrative Staff",
     "alumni":     "Alumni",
 }
 ROLE_DISPLAY = {
@@ -48,6 +49,7 @@ ROLE_DISPLAY = {
     "staff":             "Research Staff",
     "staff scientist":   "Staff Scientist",
     "research engineer": "Research Engineer",
+    "admin":             "Administrative Staff",
 }
 
 # Maps specific roles to their section group in ROLE_ORDER
@@ -437,7 +439,7 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
           <ul class="dropdown-content">
             <li><a href="../research-areas.html">Research</a></li>
             <li><a href="../teaching.html">Teaching</a></li>
-            <li><a href="../publications.html">Publications &amp; Presentations</a></li>
+            <li><a href="../publications.html">Dissertations &amp; Publications</a></li>
             <li><a href="https://github.com/we3lab" target="_blank" rel="noopener">GitHub Repositories</a></li>
           </ul>
         </li>
@@ -460,12 +462,12 @@ def build_profile_page(m: dict, projects: list = None, members_by_netid: dict = 
 <section class="section">
   <div class="container">
 
-    <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
+{"" if m.get("role","").lower() == "admin" else f"""    <h2 class="text-deep-space" style="margin-bottom:1rem">Projects</h2>
 {build_member_projects(m.get("netID",""), projects, members_by_netid)}
 
     <h2 class="text-deep-space" style="margin-top:3rem;margin-bottom:1rem">Publications</h2>
 {build_member_publications(m.get("netID",""), publications)}
-
+"""}
     <div style="margin-top:3rem">
       <a href="../people.html" class="btn btn-navy">&larr; Back to Who We Are</a>
     </div>
