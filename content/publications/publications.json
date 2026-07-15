@@ -50,6 +50,19 @@
     ]
   },
   {
+    "title": "Incorporating corrosion design constraints in desalination process optimization: A case study in mechanical vapor compression",
+    "authors": "Carson I. Tucker, O. Amusat, A. Atia, Alexander V. Dudchenko, Timothy V. Bartholomew, Meagan S. Mauter",
+    "journal": "Desalination",
+    "year": 2026,
+    "doi": "10.1016/j.desal.2025.119698",
+    "research_areas": [
+      "separations"
+    ],
+    "team": [
+      "carsont"
+    ]
+  },
+  {
     "title": "Editorial overview: Transforming water technologies in the United States: Insights from the National Alliance for Water Innovation",
     "authors": "J. McCutcheon, M. Mauter",
     "journal": "Current Opinion in Chemical Engineering",
@@ -223,6 +236,15 @@
       "fchapin",
       "jbolorin"
     ]
+  },
+  {
+    "title": "NAWI Research Spotlight: Technoeconomic Assessment of Brine Valorization from Brackish Groundwater",
+    "authors": "Alison Fritz, C. Finnerty, Alexander Dudchenko, Haleigh Heil, Carol R. Adkins, Meagan S. Mauter, Adam A. Atia, Chad Able, Erik Shuster",
+    "journal": "Conference Name: Nawi Alliance Location: Virtual Start Date: 6/27/2024 12:00:00 Am End Date: 6/27/2024 12:00:00 Am",
+    "year": 2024,
+    "doi": "10.2172/2409381",
+    "research_areas": [],
+    "team": []
   },
   {
     "title": "Optimizing Desalination Operations for Energy Flexibility",

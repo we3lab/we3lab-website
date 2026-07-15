@@ -235,12 +235,6 @@ def main():
         d_cards  = "\n".join(build_dissertation_card(d) for d in sorted_d)
     else:
         d_cards = '      <p style="color:var(--gray-500);font-style:italic">Coming soon.</p>'
-    ra_page = DISSERTATIONS_RE.sub(
-        f"<!-- BEGIN:dissertations-generated -->\n{d_cards}\n<!-- END:dissertations-generated -->",
-        ra_page
-    )
-    print(f"  OK    dissertations — {len(dissertations)} entry(ies)")
-
     RESEARCH_AREAS_HTML.write_text(ra_page)
 
     # ── teaching.html: course cards ───────────────────────────────────────────
@@ -259,8 +253,15 @@ def main():
 
     TEACHING_HTML.write_text(t_page)
 
-    # ── publications.html ─────────────────────────────────────────────────────
+    # ── publications.html: dissertations + publications ───────────────────────
     p_page = PUBLICATIONS_HTML.read_text()
+
+    p_page = DISSERTATIONS_RE.sub(
+        f"<!-- BEGIN:dissertations-generated -->\n{d_cards}\n<!-- END:dissertations-generated -->",
+        p_page
+    )
+    print(f"  OK    dissertations — {len(dissertations)} entry(ies)")
+
     pub_block = build_publications_page(publications)
     p_page = PUBLICATIONS_RE.sub(
         f"<!-- BEGIN:publications-generated -->\n{pub_block}\n<!-- END:publications-generated -->",

@@ -28,10 +28,13 @@ except ImportError:
     sys.exit(1)
 
 S2_AUTHOR_ID  = "14672527"            # Meagan Mauter on Semantic Scholar
-S2_AUTHOR_ID2 = "2253994678"          # split S2 profile under "Meagan S. Mauter"
+S2_AUTHOR_ID2 = "2253994678"          # split S2 profile under "Meagan S. Mauter" (7 papers)
+S2_AUTHOR_ID3 = "2314871440"          # split S2 profile under "Meagan S. Mauter" (2 papers)
 S2_AUTHOR_QUERY = "Meagan S. Mauter"  # used for auto-lookup if S2_AUTHOR_ID is None
 YEAR_CUTOFF  = 2012
-OUTPUT_PATH  = Path("content/publications/publications.json")
+# Paths are relative to the repo root, regardless of where the script is run from
+REPO_ROOT   = Path(__file__).parent.parent
+OUTPUT_PATH = REPO_ROOT / "content/publications/publications.json"
 
 S2_BASE  = "https://api.semanticscholar.org/graph/v1"
 HEADERS  = {"User-Agent": "WE3Lab-website-builder/1.0"}
@@ -172,13 +175,13 @@ def main():
     raw_papers = fetch_all_papers(S2_AUTHOR_ID)
     print(f"Retrieved {len(raw_papers)} papers from primary profile.")
 
-    if S2_AUTHOR_ID2:
-        print(f"Fetching papers from secondary profile {S2_AUTHOR_ID2}...")
-        extra = fetch_all_papers(S2_AUTHOR_ID2)
-        # Deduplicate by S2 paper ID
-        seen_ids = {p.get("paperId") for p in raw_papers}
+    seen_ids = {p.get("paperId") for p in raw_papers}
+    for extra_id in filter(None, [S2_AUTHOR_ID2, S2_AUTHOR_ID3]):
+        print(f"Fetching papers from secondary profile {extra_id}...")
+        extra = fetch_all_papers(extra_id)
         new_extra = [p for p in extra if p.get("paperId") not in seen_ids]
-        print(f"Found {len(new_extra)} additional paper(s) from secondary profile.")
+        print(f"Found {len(new_extra)} additional paper(s).")
+        seen_ids.update(p.get("paperId") for p in new_extra)
         raw_papers.extend(new_extra)
 
     print(f"Total: {len(raw_papers)} papers.")

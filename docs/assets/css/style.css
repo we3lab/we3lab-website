@@ -811,19 +811,6 @@ details.project-expand[open] > summary::after { transform: rotate(45deg); }
     height: auto !important;
   }
 
-  /* Research page banner: stack description above links */
-  .research-banner-flex {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-  .research-banner-flex a {
-    white-space: normal !important;
-  }
-  .research-banner-links {
-    margin-left: 0 !important;
-    align-self: flex-start;
-  }
-
   /* Research cards: single column */
   .research-grid {
     grid-template-columns: 1fr !important;
