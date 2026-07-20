@@ -244,7 +244,11 @@
     "year": 2024,
     "doi": "10.2172/2409381",
     "research_areas": [],
-    "team": []
+    "team": [
+      "agfritz",
+      "avd",
+      "cadkins"
+    ]
   },
   {
     "title": "Optimizing Desalination Operations for Energy Flexibility",
