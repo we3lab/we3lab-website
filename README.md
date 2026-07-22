@@ -1,3 +1,7 @@
+
+***THIS REPOSITORY HAS BEEN ARCHIVED AND TRANSFERRED TO THE STANFORD-DEVELOPERS ORGANIZATION. PLEASE CONTACT SOCIAL MEDIA COORDINATOR WITH ANY QUESTIONS***
+
+
 # WE3 Lab Website — Content Editing Guide
 
 > **⚠️ Important:** Routine content updates should only be made to files inside the **`content/`** folder. Do not modify HTML files, CSS, JavaScript, or build scripts without permission from the group's Social Media coordinator.
